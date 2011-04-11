@@ -1,0 +1,495 @@
+#!/bin/ksh
+TBS_USERID=$1
+TBS_BSID=$2
+TBS_SUBID=$3
+TBS_SUBCID=$4
+TBS_SUBTYPE=$5
+TBS_STYPE=$6
+TBS_SWTYPE=$7
+TBS_WAITN=$8
+TBS_HOST=$9
+TBS_PORT=${10}
+TBS_JOBKEY=${11}
+TBS_JOBSETKEY=${12}
+
+TBS_SUBTYPE_I=$TBS_SUBTYPE
+
+cd $SCRIPT_HOME
+. ./trustmerge.package
+. ./THighPackage
+. ./TLogAdmin.Package
+##add by xrx for xiaoshan shebao
+#echo "`date` Begin Check Product Network,please waiting..."
+#trustping 172.16.4.200 linux w.sql 20 old
+#tping1=`echo $?`
+#trustping 172.16.4.200 aix w.sql 20
+#tping2=`echo $?`
+#if [ $tping1 = 0 -o $tping2 = 0 ] ;then
+#  echo "Network 172.16.21.200 or 172.16.21.200 is Active"
+#  echo "Failover exit"
+#  exit
+# else
+#  echo "`date` Product NetWork is inactive,start switchover"
+#  continue
+#fi
+#####################################
+
+TBS_START=`date`
+#Step 1: 预处理
+TBS_INDEX=1
+TBS_COUNT=6
+TBS_JOBTYPE="switchover"
+
+if [ "$TBS_USERID" = "" ] ;then
+#  TBS_CFGFILE="$SCRIPT_HOME/$HOSTNAME.USERID"
+  echo `date`
+  echo "缺省用户文件: $TBS_CFGFILE"
+  echo "GetUserid $HOSTNAME $TBS_CFGFILE"
+  TBS_USERID=`GetUserid $HOSTNAME $TBS_CFGFILE`
+fi
+
+if [ "$TBS_PORT" = "" ] ;then
+#  echo "缺省监听端口文件: $SCRIPT_HOME/LISTPORT.cfg"
+  echo "GetListenerPort"
+  TBS_PORT=`GetListenerPort`
+fi
+
+if [ "$TBS_HOST" = "" ] ;then
+#  echo "缺省HOSTNAME配置文件: $SCRIPT_HOME/LOCALHOST.cfg"
+  echo "GetLocalHost"
+  TBS_HOST=`GetLocalHost`
+fi
+
+if [ "$TBS_STYPE" = "" ] ;then
+  echo "缺省切换配置为全业务切换"
+  TBS_STYPE="FULL"
+fi
+
+case "$TBS_SWTYPE" in
+  dis*|DIS*)
+     TBS_SWTYPE="DISASTER"
+     ;;
+  *) TBS_SWTYPE="PLAN"
+     ;;
+esac
+
+if [ "$TBS_WAITN" = "" ] ;then
+  TBS_WAITN=$WAITOUT
+  if [ "$TBS_WAITN" = "" ] ;then
+    TBS_WAITN=10
+  fi  
+fi
+
+if [ "$TBS_JOBKEY" = "" ] ;then
+  TBS_JOBKEY="-1"
+  TBS_JOBSETKEY="-1"
+fi
+
+TBS_PLATFORM=`GetPlatform`
+
+######BeforeSwitchover Check####################
+echo "TBeforeSwitchover $TBS_BSID "$TBS_SUBID" "$TBS_SUBCID" "$TBS_SWTYPE" "
+TBeforeSwitchover $TBS_BSID "$TBS_SUBID" "$TBS_SUBTYPE" "$TBS_SWTYPE"
+if [ $? != 0 ] ;then
+  echo "`date` BeforeSwitchover check Error"
+  exit 1
+fi
+
+TBS_TMP1=$SCRIPT_HOME/tmp/TBSCONNECT$$.tmp1
+TBS_TMP2=$SCRIPT_HOME/tmp/TBSCONNECT$$.tmp2                
+trustconnect $TBS_USERID $TBS_TMP1 $TBS_TMP2
+if [ $trustconnect != 0 ] ;then
+  echo "Error: Administrator Database User/Password Error"   
+  rm -f $TBS_TMP1 $TBS_TMP2
+  TBS_ERROR="Error: Administrator Database User/Password Error"
+  SetCommandResponse "$TBS_USERID" "$TBS_BSID" "$TBS_SUBID" "$TBS_SUBCTYPE" "$TBS_JOBKEY" "$TBS_JOBSETKEY" "ERROR" "$TBS_ERROR" "$TBS_INDEX" "$TBS_COUNT" "$TBS_JOBTYPE"  
+  exit 1
+fi                
+rm -f $TBS_TMP1 $TBS_TMP2
+
+##judge
+TBS_PID_CFGFILE=$SCRIPT_HOME/tmp/$TBS_HOST.SWITCH.PID
+if [ -f $TBS_PID_CFGFILE ];then
+   TBS_PID=`GetCurrentStat $TBS_PID_CFGFILE`
+   if [ "$TBS_PID" != "" ] ;then
+     echo `date`
+     echo "Error: TBSwitchover current Running"
+     echo "Please Check Process and File: $TBS_PID_CFGFILE"
+     echo "if TBSwitchover is Not running,pls clear or delete $TBS_PID_CFGFILE,then continue"
+     TBS_ERROR="Error:TBSwitchover current Running"    
+     echo "SetCommandResponse $TBS_USERID $TBS_BSID $TBS_SUBID \"\" $TBS_JOBKEY $TBS_JOBSETKEY ERROR $TBS_ERROR"  
+     SetCommandResponse "$TBS_USERID" "$TBS_BSID" "$TBS_SUBID" "$TBS_SUBCTYPE" $TBS_JOBKEY $TBS_JOBSETKEY "ERROR" "$TBS_ERROR" $TBS_INDEX $TBS_COUNT $TBS_JOBTYPE 
+     exit 1
+   fi
+fi
+
+TBS_CFGFILE1=$SCRIPT_HOME/tmp/TSwitchover.$$.out
+SetCurrentStat $TBS_PID_CFGFILE
+if [ $? != 0 ] ;then
+  echo `date`
+  echo "Error: SetCurrentStat $TBS_PID_CFGFILE"
+  TBS_ERROR="Error:SetCurrentStat $TBS_PID_CFGFILE"
+  SetCommandResponse "$TBS_USERID" "$TBS_BSID" "$TBS_SUBID" "$TBS_SUBCTYPE" $TBS_JOBKEY $TBS_JOBSETKEY "ERROR" "$TBS_ERROR" $TBS_INDEX $TBS_COUNT $TBS_JOBTYPE 
+  ClearCurrentStat $TBS_PID_CFGFILE
+  exit 1
+fi
+
+if [ "$TBS_SWTYPE" = "DISASTER" ] ;then
+  echo "Warning: Current SwitchSite Type is Disaster Switchover"
+  echo "Warning: Waiting Delay Time: $TBS_WAITN * 10s"
+fi
+
+TBS_ERROR="SUCCEED: PreHandle"
+SetCommandResponse "$TBS_USERID" "$TBS_BSID" "$TBS_SUBID" "$TBS_SUBCTYPE" $TBS_JOBKEY $TBS_JOBSETKEY "SUCCEED" "$TBS_ERROR"  $TBS_INDEX $TBS_COUNT $TBS_JOBTYPE
+TBS_INDEX=`expr $TBS_INDEX + 1`
+#Step 2: 关闭相关应用
+
+TBS_BEGIN=`date +%Y%m%d%H%M%S`
+#Step 1: ...........
+#全业务切换需要启动和关闭相应的应用,其他切换只要关心各自即可
+if [ "$TBS_STYPE" = "FULL" ] ;then
+   TBS_CFGFILE_STOP=$SCRIPT_HOME/tmp/${TBS_HOST}.${TBS_BSID}.STOP
+   echo "**************************"
+   echo `date`
+   echo "Step 1: 获得需要的关闭和启动各个子系统的应用服务列表"
+   echo "关闭应用服务列表文件: $TBS_CFGFILE_STOP"
+   echo "GetStopOrder $TBS_USERID $TBS_BSID \"$TBS_SUBID\" \"$TBS_SUBCID\" \"$TBS_SUBTYPE\" $TBS_CFGFILE_STOP $TBS_HOST"
+   GetStopOrder $TBS_USERID $TBS_BSID "$TBS_SUBID" "$TBS_SUBCID" "$TBS_SUBTYPE" "$TBS_CFGFILE_STOP" "$TBS_HOST"
+   if [ $? != 0 ] ;then
+     if [ -f $TBS_CFGFILE_STOP ] ; then
+        echo "Error: 获取应用程序启动列表失败,采用本地定义列表替代"
+     else
+        echo "Error: 获取应用程序启动列表失败,而且本地应用服务文件不存在"
+        ClearCurrentStat $TBS_PID_CFGFILE
+        TBS_ERROR="Error: GetAppList Fail"
+        SetCommandResponse "$TBS_USERID" "$TBS_BSID" "$TBS_SUBID" "$TBS_SUBCTYPE" $TBS_JOBKEY $TBS_JOBSETKEY "ERROR" "$TBS_ERROR" $TBS_INDEX $TBS_COUNT $TBS_JOBTYPE 
+        exit 1
+     fi
+   fi
+   cat $TBS_CFGFILE_STOP
+   
+   echo "**************************"
+   echo "                          "
+   echo "                          "
+   echo "**************************"
+   echo `date`
+   TBS_CFGFILE_START=$SCRIPT_HOME/tmp/${TBS_HOST}.${TBS_BSID}.START
+   echo "启动应用服务列表文件: $TBS_CFGFILE_START"
+   echo "GetStartOrder $TBS_USERID $TBS_BSID \"$TBS_SUBID\" \"$TBS_SUBCID\" \"$TBS_SUBTYPE\" $TBS_CFGFILE_START $TBS_HOST"
+   GetStartOrder $TBS_USERID $TBS_BSID "$TBS_SUBID" "$TBS_SUBCID" "$TBS_SUBTYPE" "$TBS_CFGFILE_START" "$TBS_HOST"
+   if [ $? != 0 ] ;then
+     if [ -f $TBS_CFGFILE_START ] ; then
+        echo "Error: 获取应用程序启动列表失败,采用本地定义列表替代"
+     else
+        echo "Error: 获取应用程序启动列表失败,而且本地应用服务文件不存在"
+        ClearCurrentStat $TBS_PID_CFGFILE     
+        TBS_ERROR="Error: GetAppList Fail"
+        SetCommandResponse "$TBS_USERID" "$TBS_BSID" "$TBS_SUBID" "$TBS_SUBCTYPE" $TBS_JOBKEY $TBS_JOBSETKEY "ERROR" "$TBS_ERROR"  $TBS_INDEX $TBS_COUNT $TBS_JOBTYPE
+        exit 1
+     fi
+   fi
+   cat $TBS_CFGFILE_START
+   
+   echo "                          "
+   echo "**************************"
+   echo `date`
+   echo "Step 2: 执行关闭对应应用"
+   cat $TBS_CFGFILE_STOP
+   TBS_CIDFILE="$TBS_CFGFILE_STOP.CID"
+   echo "**************************"
+   echo "CallCommandList $TBS_USERID $TBS_BSID STOP $TBS_PORT $TBS_CFGFILE_STOP $TBS_CIDFILE"
+#   TBS_ERROR=`CallCommandList $TBS_USERID $TBS_BSID STOP $TBS_PORT $TBS_CFGFILE_STOP $TBS_CIDFILE`
+   CallCommandList $TBS_USERID $TBS_BSID STOP $TBS_PORT $TBS_CFGFILE_STOP $TBS_CIDFILE
+   if [ $? != 0 ] ;then
+     echo `date`
+     #echo "Error: $TBS_ERROR"
+     echo "Error: CallCommandList $TBS_USERID $TBS_BSID STOP $TBS_PORT $TBS_CFGFILE_STOP $TBS_CIDFILE"  
+     ClearCurrentStat $TBS_PID_CFGFILE
+     TBS_BEGIN=`date +%Y%m%d%H%M%S`     
+     LogSystemAlert $TBS_USERID $TBS_CFGFILE1 $TBS_BSID "$TBS_SUBID" "$TBS_SUBCID" $TBS_BEGIN $TBS_BEGIN "COMMAND ERROR" "TBSwitchover service Error"  
+     TBS_ERROR="Error: CallCommandList Fail"
+     SetCommandResponse "$TBS_USERID" "$TBS_BSID" "$TBS_SUBID" "$TBS_SUBCTYPE" $TBS_JOBKEY $TBS_JOBSETKEY "ERROR" "$TBS_ERROR" $TBS_INDEX $TBS_COUNT $TBS_JOBTYPE      
+     ClearCurrentStat $TBS_PID_CFGFILE
+     exit 1
+   fi
+   echo "任务已经被成功调度: CallCommandList $TBS_USERID $TBS_BSID STOP $TBS_PORT $TBS_CFGFILE_STOP $TBS_CIDFILE"
+   echo "CallCommandList: $TBS_ERROR"
+   
+   echo "**************************"
+   echo `date`
+   echo "Step 3: 等待业务系统服务关闭过程完成  "
+   echo "等待的任务列表: $TBS_CIDFILE"
+   cat $TBS_CIDFILE
+   echo "WaitCommandListResponse $TBS_USERID STOP $TBS_CIDFILE"   
+#   TBS_ERROR=`WaitCommandListResponse $TBS_USERID STOP $TBS_CIDFILE`
+   WaitCommandListResponse $TBS_USERID STOP $TBS_CIDFILE $TBS_SWTYPE $TBS_WAITN
+   if [ $? != 0 ] ;then 
+     echo `date`
+     echo "Error: WaitCommandListResponse $TBS_USERID STOP $TBS_CIDFILE"
+     TBS_ERROR="Warning: WaitCommandListResponse Fail"
+     TBS_WARNING=1
+     SetCommandResponse "$TBS_USERID" "$TBS_BSID" "$TBS_SUBID" "$TBS_SUBCTYPE" $TBS_JOBKEY $TBS_JOBSETKEY "WARNING" "$TBS_ERROR" $TBS_INDEX $TBS_COUNT $TBS_JOBTYPE      
+   fi
+   echo `date`
+   echo "业务系统相关服务已经成功关闭"
+fi 
+  
+  if [ "$TBS_WARNING" != "1" ] ;then
+   TBS_ERROR="SUCCEED: AppList Closed"
+   SetCommandResponse "$TBS_USERID" "$TBS_BSID" "$TBS_SUBID" "$TBS_SUBCTYPE" $TBS_JOBKEY $TBS_JOBSETKEY "SUCCEED" "$TBS_ERROR" $TBS_INDEX $TBS_COUNT $TBS_JOBTYPE       
+  fi
+  
+  TBS_INDEX=`expr $TBS_INDEX + 1`
+  #Step 3: 获得系统切换列表
+   
+   #Step 4: 获得需要启动进行资源切换的应用服务列表
+   echo "**************************"
+   echo `date`
+   echo "Step 4: 获得需要启动应用服务列表"
+   TBS_CFGFILE=$SCRIPT_HOME/tmp/${TBS_HOST}.${TBS_BSID}.SUBSYSTEM
+   echo "子系统应用启动服务列表"
+   #echo "GetSubSystemList $TBS_USERID $TBS_BSID $TBS_HOST PRIMARY $TBS_CFGFILE"
+   #TBS_ERROR=`GetSubSystemList $TBS_USERID $TBS_BSID $TBS_HOST PRIMARY $TBS_CFGFILE`
+   echo "GetSubSystemList $TBS_USERID $TBS_BSID \"$TBS_SUBID\" \"\" \"\" $TBS_CFGFILE"
+   TBS_ERROR=`GetSubSystemList $TBS_USERID $TBS_BSID "$TBS_SUBID" "" "" $TBS_CFGFILE`
+   if [ $? != 0 ] ;then
+     echo `date`
+     echo "Error: $TBS_ERROR"
+     ClearCurrentStat $TBS_PID_CFGFILE
+     TBS_BEGIN=`date +%Y%m%d%H%M%S`     
+     LogSystemAlert $TBS_USERID $TBS_CFGFILE1 $TBS_BSID "$TBS_SUBID" "$TBS_SUBCID" $TBS_BEGIN $TBS_BEGIN "COMMAND ERROR" "TBSwitchover service Error"            
+     TBS_ERROR="ERROR: GetStartAppList Fail"
+     SetCommandResponse "$TBS_USERID" "$TBS_BSID" "$TBS_SUBID" "$TBS_SUBCTYPE" $TBS_JOBKEY $TBS_JOBSETKEY "ERROR" "$TBS_ERROR" $TBS_INDEX $TBS_COUNT $TBS_JOBTYPE      
+     ClearCurrentStat $TBS_PID_CFGFILE
+     exit 1
+   fi
+   cat $TBS_CFGFILE
+   echo "获得需要启动进行资源切换的应用服务列表完成"
+   
+   TBS_ERROR="SUCCEED: Get Switchover SystemList"                                                                                                  
+   SetCommandResponse "$TBS_USERID" "$TBS_BSID" "$TBS_SUBID" "$TBS_SUBCTYPE" $TBS_JOBKEY $TBS_JOBSETKEY "SUCCEED" "$TBS_ERROR" $TBS_INDEX $TBS_COUNT $TBS_JOBTYPE         
+   TBS_INDEX=`expr $TBS_INDEX + 1`
+   
+   #Step 4: 执行业务系统切换
+
+   echo "                          "
+   echo "**************************"
+   echo `date`
+   echo "Step 5: 执行业务系统资源列表切换"
+   TBS_CIDFILE="$TBS_CFGFILE.SWITCH.CID"
+   >$TBS_CIDFILE
+   echo "TBS_BSID=$TBS_BSID $TBS_CFGFILE"
+   TBS_INFOID=""
+   cat $TBS_CFGFILE|grep -v ^$|while read line
+   do
+     case $line in
+       "#"*) continue 
+             ;;
+       "${TBS_BSID}"*)                  
+          echo $line
+          TBS_SUBID=`echo $line|awk -F";" '{print $2}'`
+          TBS_SUBCID=`echo $line|awk -F";" '{print $3}'`
+          TBS_SUBTYPE_1=`echo $line|awk -F";" '{print $4}'`
+          echo "$TBS_SUBTYPE_1"
+          TBS_SUBHOST=`echo $line|awk -F";" '{print $5}'`
+          TBS_IPADDR=`echo $line|awk -F";" '{print $6}'`
+          TBS_SUBROLE=`echo $line|awk -F";" '{print $7}'`
+          if [ "$TBS_SUBHOST" = "" ] ;then
+            echo "Error: HostName不能为空;忽略该节点处理: $line"
+          fi
+          
+          if [ "$TBS_IPADDR" = "" ] ;then
+            echo "Error: IP Address不能为空,忽略该节点处理: $line"
+            continue
+          fi          
+          
+          TBS_JTYPE="TrustShell"
+          TBS_JNAME="Switchover:$TBS_BSID:$TBS_SUBID"
+          TBS_TARGET="${TBS_IPADDR}:${TBS_PORT}"  
+          if [ "$TBS_SUBTYPE_I" = "" ] ;then
+             TBS_SUBTYPE=$TBS_SUBTYPE_1
+          fi
+          
+          echo "TBS_SUBTYPE=$TBS_SUBTYPE"
+          TBS_BEGIN=`date +%Y%m%d%H%M%S`
+          case $TBS_SUBTYPE in
+            DB*|db*)
+              case "$TBS_SWTYPE" in
+                PLAN|plan)
+                  if [ "$TBS_SUBROLE" = "PRIMARY" ] ;then
+                    TBS_COMMAND="Tswitchover -u $TBS_USERID -bsid $TBS_BSID -subid $TBS_SUBID -o plan $TBS_JOBKEY $TBS_JOBSETKEY"
+                  else
+                    continue
+                  fi
+                  ;;
+                *) if [ "$TBS_SUBROLE" = "STANDBY" ] ;then
+                     TBS_COMMAND="Tswitchover -u $TBS_USERID -bsid $TBS_BSID -subid $TBS_SUBID -o disaster $TBS_JOBKEY $TBS_JOBSETKEY"
+                   else
+                     continue
+                   fi  
+                   ;;           
+              esac
+                ;;
+            APP*|app*)
+              if [ "$TBS_SUBROLE" = "STANDBY" ] ;then
+                 TBS_COMMAND="TAppSwitchover $TBS_USERID $TBS_BSID $TBS_SUBID APP $TBS_SWTYPE $TBS_WAITN"
+              else
+                 continue
+              fi
+              ;;
+            FILE*|file*)
+              if [ "$TBS_SUBROLE" = "STANDBY" ] ;then
+                TBS_COMMAND="TAppSwitchover $TBS_USERID $TBS_BSID \"$TBS_SUBID\" FILE $TBS_SWTYPE $TBS_WAITN"
+              else
+                 continue
+              fi
+              ;;
+            *) continue ;;
+          esac
+          echo `date`
+          echo "Running: $TBS_COMMAND"
+        #  $TBS_COMMAND
+          if [ $? != 0 ] ;then
+            echo "`date` Error: Running $TBS_COMMAND"
+            TBS_BEGIN=`date +%Y%m%d%H%M%S`            
+            LogSystemAlert $TBS_USERID $TBS_CFGFILE1 $TBS_BSID "$TBS_SUBID" "$TBS_SUBCID" $TBS_BEGIN $TBS_BEGIN 'COMMAND ERROR' "TBSwitchover service Error"                   
+            TBS_ERROR="ERROR: $TBS_COMMAND"
+            SetCommandResponse "$TBS_USERID" "$TBS_BSID" "$TBS_SUBID" "$TBS_SUBCTYPE" $TBS_JOBKEY $TBS_JOBSETKEY "ERROR" "$TBS_ERROR" $TBS_INDEX $TBS_COUNT $TBS_JOBTYPE      
+            ClearCurrentStat $TBS_PID_CFGFILE            
+            exit 1
+          fi
+          TBS_ERROR="SUCCEED: $TBS_COMMAND"                                                                                                                                             
+          TBS_INFOID=`SetCommandResponse "$TBS_USERID" "$TBS_BSID" "$TBS_SUBID" "$TBS_SUBCTYPE" $TBS_JOBKEY $TBS_JOBSETKEY "CONTINUE" "$TBS_ERROR" $TBS_INDEX $TBS_COUNT $TBS_JOBTYPE $TBS_INFOID`                
+          TBS_END=`date +%Y%m%d%H%M%S`
+          echo "###;;$TBS_BSID;$TBS_SUBID;$TBS_SUBTYPE;;$TBS_BEGIN;$TBS_END" >> $TBS_CIDFILE            
+          echo "$TBS_INFOID" > $TBS_CIDFILE.INFO
+     esac
+   done
+
+   TBS_ERROR="SUCCEED: business switchover"
+   TBS_INFOID=`cat $TBS_CIDFILE.INFO|awk -F" " '{print $1}'`
+   SetCommandResponse "$TBS_USERID" "$TBS_BSID" "$TBS_SUBID" "$TBS_SUBCTYPE" $TBS_JOBKEY $TBS_JOBSETKEY "SUCCEED" "$TBS_ERROR" $TBS_INDEX $TBS_COUNT $TBS_JOBTYPE $TBS_INFOID     
+
+TBS_INDEX=`expr $TBS_INDEX + 1`
+#Step: 执行网络切换
+echo "`date` Starting Network Switch"
+TBS_CFGFILE=$SCRIPT_HOME/tmp/${TBS_HOST}.${TBS_BSID}.SUBSYSTEM
+cat $TBS_CFGFILE|while read line
+do
+  case $line in
+  "$TBS_BSID;"*)
+     TBS_SUBID=`echo $line|awk -F";" '{print $2}'`
+     TBS_IPADDR=`echo $line|awk -F";" '{print $6}'`
+     TBS_SUBROLE=`echo $line|awk -F";" '{print $7}'`
+     case $TBS_SUBROLE in
+       std*|STD*|STAND*|stand*)
+        if [ "$TBS_SWTYPE" = "DISASTER" ] ;then
+          TBS_COMMAND="TSwitchNetwork $TBS_BSID $TBS_SUBID primary FAILOVER $TBS_PLATFORM"
+          echo "`date` Running Command=$TBS_COMMAND"
+          TBS_JTYPE="TrustShell"
+          TBS_JNAME="NetworkSwitch"
+          if [ "$TBS_IPADDR" != "" ] ;then
+            echo "TCallRemoteCommand  $TBS_USERID $TBS_JTYPE $TBS_JNAME $TBS_IPADDR:$TBS_PORT \"$TBS_COMMAND\""
+            TCallRemoteCommand  $TBS_USERID $TBS_JTYPE $TBS_JNAME $TBS_IPADDR:$TBS_PORT "$TBS_COMMAND" 
+            if [ $? != 0 ] ;then
+              echo "`date` Error: $TBS_COMMAND"
+              echo "NERROR" > $TBS_CIDFILE.INFO
+            else
+              echo "`date` $TBS_COMMAND Succeed"
+              echo "NSUCCEED" > $TBS_CIDFILE.INFO 
+            fi
+          fi
+        fi
+        ;;
+     esac
+     ;;
+  esac
+done
+
+cat $TBS_CIDFILE.INFO|grep NERROR
+if [ $? = 0 ] ;then
+  TBS_ERROR="ERROR: Network switchover"
+  TBS_STAT="WARNING"
+else
+  TBS_STAT="SUCCEED"
+  TBS_ERROR="SUCCEED: Network switchover"
+fi
+SetCommandResponse "$TBS_USERID" "$TBS_BSID" "$TBS_SUBID" "$TBS_SUBCTYPE" $TBS_JOBKEY $TBS_JOBSETKEY "$TBS_STAT" "$TBS_ERROR" $TBS_INDEX $TBS_COUNT $TBS_JOBTYPE
+#TBS_INDEX=`expr $TBS_INDEX + 1`
+
+#执行网络切换后运行脚本
+echo "`date` Starting TStartAfterNetwork"
+if [ -f TStartAfterNetwork -a "$TBS_SWTYPE" = "DISASTER" ] ;then
+  TStartAfterNetwork  
+fi
+   TBS_INDEX=`expr $TBS_INDEX + 1`
+   # Step 5: 启动相关应用
+   
+if [ "$TBS_STYPE" = "FULL" ] ;then   
+   echo "                              "
+   echo `date`
+   echo "Step 7: 启动角色对应的相关应用"
+   echo "启动角色对应相关应用的文件列表: $TBS_CFGFILE_START"
+   cat $TBS_CFGFILE_START
+   TBS_CIDFILE=$TBS_CFGFILE_START.CID
+   #TBS_ERROR=`CallCommandList $TBS_USERID $TBS_BSID START $TBS_PORT $TBS_CFGFILE_START $TBS_CIDFILE`
+   echo "CallCommandList $TBS_USERID $TBS_BSID START $TBS_PORT $TBS_CFGFILE_START $TBS_CIDFILE"
+   CallCommandList $TBS_USERID $TBS_BSID START $TBS_PORT $TBS_CFGFILE_START $TBS_CIDFILE
+   if [ $? != 0 ] ;then
+     echo `date`
+     echo "Error: CallCommandList $TBS_USERID $TBS_BSID START $TBS_PORT $TBS_CFGFILE_START $TBS_CIDFILE"
+     ClearCurrentStat $TBS_PID_CFGFILE
+     TBS_BEGIN=`date +%Y%m%d%H%M%S`     
+     LogSystemAlert $TBS_USERID $TBS_CFGFILE1 $TBS_BSID "$TBS_SUBID" "$TBS_SUBCID" $TBS_BEGIN $TBS_BEGIN "COMMAND ERROR" "TBSwitchover service Error"            
+     TBS_ERROR="ERROR: CallCommandList"
+     SetCommandResponse "$TBS_USERID" "$TBS_BSID" "$TBS_SUBID" "$TBS_SUBCTYPE" $TBS_JOBKEY $TBS_JOBSETKEY "ERROR" "$TBS_ERROR" $TBS_INDEX $TBS_COUNT $TBS_JOBTYPE         
+     ClearCurrentStat $TBS_PID_CFGFILE
+     exit 1
+   fi
+   #echo $TBS_ERROR
+   echo "启动相关已经放入运行队列列表"
+   echo "*****************************"
+   
+   #Step 8: ..Start....
+   echo "                             "
+   echo `date`
+   echo "Step 8: 等待角色相关应用应用启动完成"
+   echo "等待角色相关应用任务列表文件: $TBS_CIDFILE"
+   cat $TBS_CIDFILE
+   echo "WaitCommandListResponse $TBS_USERID START $TBS_CIDFILE"
+#   TBS_ERROR=`WaitCommandListResponse $TBS_USERID START $TBS_CIDFILE`
+   WaitCommandListResponse $TBS_USERID START $TBS_CIDFILE $TBS_SWTYPE $TBS_WAITN
+   sleep 10
+   if [ $? != 0 ] ;then 
+     echo `date`
+     echo "Error: WaitCommandListResponse $TBS_USERID STOP"
+#     echo "Error: $TBS_ERROR"
+     ClearCurrentStat $TBS_PID_CFGFILE
+     TBS_BEGIN=`date +%Y%m%d%H%M%S`
+     LogSystemAlert $TBS_USERID $TBS_CFGFILE1 $TBS_BSID "$TBS_SUBID" "$TBS_SUBCID" $TBS_BEGIN $TBS_BEGIN "COMMAND ERROR" "TBSwitchover service Error"            
+     TBS_ERROR="ERROR: WaitCommandListResponse"
+     SetCommandResponse "$TBS_USERID" "$TBS_BSID" "$TBS_SUBID" "$TBS_SUBCTYPE" $TBS_JOBKEY $TBS_JOBSETKEY "ERROR" "$TBS_ERROR" $TBS_INDEX $TBS_COUNT $TBS_JOBTYPE           
+     ClearCurrentStat $TBS_PID_CFGFILE     
+     exit 1
+   fi
+   echo "****************************************"
+   echo `date`
+   echo "业务系统$TBS_BSID: 角色相关应用任务启动完成"
+fi
+
+TBS_ERROR="SUCCEED: TBSwitchover"
+SetCommandResponse "$TBS_USERID" "$TBS_BSID" "$TBS_SUBID" "$TBS_SUBCTYPE" $TBS_JOBKEY $TBS_JOBSETKEY "END" "$TBS_ERROR" $TBS_INDEX $TBS_COUNT $TBS_JOBTYPE      
+
+LogSystemAlert $TBS_USERID $TBS_CFGFILE1 $TBS_BSID "$TBS_SUBID" "$TBS_SUBCID" $TBS_BEGIN $TBS_BEGIN "NORMAL" "NORMAL"            
+ClearCurrentStat $TBS_PID_CFGFILE
+echo "                                      "
+echo "**************************************"
+echo "Start: $TBS_START End: `date`         "
+echo "TBSwitchover $TBS_BSID have been finished"
+echo "**************************************"
+
+echo "TAfterSwitchover $TBS_BSID "$TBS_SUBID" "$TBS_SUBCID" "$TBS_SWTYPE" "
+TAfterSwitchover $TBS_BSID "$TBS_SUBID" "$TBS_SUBCID" "$TBS_SWTYPE"
+
+
+

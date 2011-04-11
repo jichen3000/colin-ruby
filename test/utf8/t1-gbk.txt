@@ -1,0 +1,4 @@
+
+  # prefix              生成文件的前缀
+  # product_ora_os            生产端oracle所在的操作系统
+  # backup_ora_os             备份端oracle所在的操作系统

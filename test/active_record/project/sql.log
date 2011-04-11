@@ -1,0 +1,127 @@
+# Logfile created on Fri Apr 30 15:26:53 +0800 2010 by /
+  [4;36;1mSQL (6.0ms)[0m   [0;1m SELECT trigger_name
+ FROM all_triggers
+ WHERE owner = 'COLIN_TEST'
+ AND trigger_name = 'MC$MA_ISSUE_DETAIL_PKT'
+ AND table_owner = 'COLIN_TEST'
+ AND table_name = 'MC$MA_ISSUE_DETAIL'
+ AND status = 'ENABLED'
+[0m
+  [4;35;1mIssueDetail Columns (40.0ms)[0m   [0m select column_name as name, data_type as sql_type, data_default, nullable,
+ decode(data_type, 'NUMBER', data_precision,
+ 'FLOAT', data_precision,
+ 'VARCHAR2', decode(char_used, 'C', char_length, data_length),
+ 'CHAR', decode(char_used, 'C', char_length, data_length),
+ null) as limit,
+ decode(data_type, 'NUMBER', data_scale, null) as scale
+ from all_tab_columns
+ where owner = 'COLIN_TEST'
+ and table_name = 'MC$MA_ISSUE_DETAIL'
+ order by column_id
+[0m
+  [4;36;1mIssueDetail Load (35.0ms)[0m   [0;1mSELECT * FROM mc$ma_issue_detail ORDER BY id[0m
+  [4;36;1mSQL (31.0ms)[0m   [0;1m SELECT trigger_name
+ FROM all_triggers
+ WHERE owner = 'COLIN_TEST'
+ AND trigger_name = 'MC$MA_ISSUE_DETAIL_PKT'
+ AND table_owner = 'COLIN_TEST'
+ AND table_name = 'MC$MA_ISSUE_DETAIL'
+ AND status = 'ENABLED'
+[0m
+  [4;35;1mIssueDetail Columns (50.0ms)[0m   [0m select column_name as name, data_type as sql_type, data_default, nullable,
+ decode(data_type, 'NUMBER', data_precision,
+ 'FLOAT', data_precision,
+ 'VARCHAR2', decode(char_used, 'C', char_length, data_length),
+ 'CHAR', decode(char_used, 'C', char_length, data_length),
+ null) as limit,
+ decode(data_type, 'NUMBER', data_scale, null) as scale
+ from all_tab_columns
+ where owner = 'COLIN_TEST'
+ and table_name = 'MC$MA_ISSUE_DETAIL'
+ order by column_id
+[0m
+  [4;36;1mIssueDetail Load (33.0ms)[0m   [0;1mSELECT * FROM mc$ma_issue_detail ORDER BY id[0m
+  [4;36;1mSQL (9.0ms)[0m   [0;1m SELECT trigger_name
+ FROM all_triggers
+ WHERE owner = 'COLIN_TEST'
+ AND trigger_name = 'MC$MA_ISSUE_DETAIL_PKT'
+ AND table_owner = 'COLIN_TEST'
+ AND table_name = 'MC$MA_ISSUE_DETAIL'
+ AND status = 'ENABLED'
+[0m
+  [4;35;1mIssueDetail Columns (31.0ms)[0m   [0m select column_name as name, data_type as sql_type, data_default, nullable,
+ decode(data_type, 'NUMBER', data_precision,
+ 'FLOAT', data_precision,
+ 'VARCHAR2', decode(char_used, 'C', char_length, data_length),
+ 'CHAR', decode(char_used, 'C', char_length, data_length),
+ null) as limit,
+ decode(data_type, 'NUMBER', data_scale, null) as scale
+ from all_tab_columns
+ where owner = 'COLIN_TEST'
+ and table_name = 'MC$MA_ISSUE_DETAIL'
+ order by column_id
+[0m
+  [4;36;1mIssueDetail Load (23.0ms)[0m   [0;1mSELECT * FROM mc$ma_issue_detail ORDER BY id[0m
+  [4;36;1mSQL (6.0ms)[0m   [0;1m SELECT trigger_name
+ FROM all_triggers
+ WHERE owner = 'COLIN_TEST'
+ AND trigger_name = 'MC$MA_ISSUE_DETAIL_PKT'
+ AND table_owner = 'COLIN_TEST'
+ AND table_name = 'MC$MA_ISSUE_DETAIL'
+ AND status = 'ENABLED'
+[0m
+  [4;35;1mIssueDetail Columns (41.0ms)[0m   [0m select column_name as name, data_type as sql_type, data_default, nullable,
+ decode(data_type, 'NUMBER', data_precision,
+ 'FLOAT', data_precision,
+ 'VARCHAR2', decode(char_used, 'C', char_length, data_length),
+ 'CHAR', decode(char_used, 'C', char_length, data_length),
+ null) as limit,
+ decode(data_type, 'NUMBER', data_scale, null) as scale
+ from all_tab_columns
+ where owner = 'COLIN_TEST'
+ and table_name = 'MC$MA_ISSUE_DETAIL'
+ order by column_id
+[0m
+  [4;36;1mIssueDetail Load (37.0ms)[0m   [0;1mSELECT * FROM mc$ma_issue_detail ORDER BY id[0m
+  [4;36;1mSQL (12.0ms)[0m   [0;1m SELECT trigger_name
+ FROM all_triggers
+ WHERE owner = 'COLIN_TEST'
+ AND trigger_name = 'MC$MA_ISSUE_DETAIL_PKT'
+ AND table_owner = 'COLIN_TEST'
+ AND table_name = 'MC$MA_ISSUE_DETAIL'
+ AND status = 'ENABLED'
+[0m
+  [4;35;1mIssueDetail Columns (43.0ms)[0m   [0m select column_name as name, data_type as sql_type, data_default, nullable,
+ decode(data_type, 'NUMBER', data_precision,
+ 'FLOAT', data_precision,
+ 'VARCHAR2', decode(char_used, 'C', char_length, data_length),
+ 'CHAR', decode(char_used, 'C', char_length, data_length),
+ null) as limit,
+ decode(data_type, 'NUMBER', data_scale, null) as scale
+ from all_tab_columns
+ where owner = 'COLIN_TEST'
+ and table_name = 'MC$MA_ISSUE_DETAIL'
+ order by column_id
+[0m
+  [4;36;1mIssueDetail Load (34.0ms)[0m   [0;1mSELECT * FROM mc$ma_issue_detail ORDER BY id[0m
+  [4;36;1mSQL (7.0ms)[0m   [0;1m SELECT trigger_name
+ FROM all_triggers
+ WHERE owner = 'COLIN_TEST'
+ AND trigger_name = 'MC$MA_ISSUE_DETAIL_PKT'
+ AND table_owner = 'COLIN_TEST'
+ AND table_name = 'MC$MA_ISSUE_DETAIL'
+ AND status = 'ENABLED'
+[0m
+  [4;35;1mIssueDetail Columns (73.0ms)[0m   [0m select column_name as name, data_type as sql_type, data_default, nullable,
+ decode(data_type, 'NUMBER', data_precision,
+ 'FLOAT', data_precision,
+ 'VARCHAR2', decode(char_used, 'C', char_length, data_length),
+ 'CHAR', decode(char_used, 'C', char_length, data_length),
+ null) as limit,
+ decode(data_type, 'NUMBER', data_scale, null) as scale
+ from all_tab_columns
+ where owner = 'COLIN_TEST'
+ and table_name = 'MC$MA_ISSUE_DETAIL'
+ order by column_id
+[0m
+  [4;36;1mIssueDetail Load (46.0ms)[0m   [0;1mSELECT * FROM mc$ma_issue_detail ORDER BY id[0m

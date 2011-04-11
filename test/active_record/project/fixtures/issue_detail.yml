@@ -1,0 +1,5 @@
+issue_detail12087:
+  id: 12087
+  issue_id: 12087
+  detail: "Mon Nov 23 20:59:17 2009\nalter tablespace TS_OSS_UCS_BASE_1M_IDX_02 add datafile '/dev/rcrm2_lv095_4G' size 8191M autoextend off \nORA-1119 signalled during: alter tablespace TS_OSS_UCS_BASE_1M_IDX_02 add datafile '/dev/rcrm2_lv095_4G' size 8191M autoextend off...\n"
+

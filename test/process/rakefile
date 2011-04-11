@@ -1,0 +1,37 @@
+task :default => [ :ssh_session_wait]
+
+desc "Ftp files"
+task :ftp do
+  ftp_files(["simple.rb"], '/home/colin/test', '172.16.4.28', 'dbra10g', 'mcdbra')
+end
+
+desc "ssh session wait"
+task :ssh_session_wait=> :ftp  do
+  require 'net/ssh'
+  Net::SSH.start('172.16.4.28', 'dbra10g', :password => "mcdbra") do |ssh|
+    oname = "/home/colin/test"
+    puts ssh.exec!("cd /home/colin/test")
+    p "test"
+    puts ssh.exec!("ls")
+    puts ssh.exec!("ruby test/simple.rb")
+#    puts ssh.exec!("id")
+#    puts ssh.exec!("#{oname} 1835011")
+  end
+end
+
+# if the file exist, this will fresh it.
+def ftp_files(sourceFileList, targetDir, hostname, username, password)
+  require 'net/ftp'
+  Net::FTP.open(hostname, username, password) do |ftp|
+    sourceFileList.each do |srcFile|    
+      targetFile = srcFile.pathmap("#{targetDir}/%f")
+      begin
+        ftp.putbinaryfile(srcFile, targetFile)
+        puts "Copying #{srcFile} -> #{targetFile}"
+      rescue 
+        puts $!
+      end
+    end
+  end
+end
+

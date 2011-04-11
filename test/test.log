@@ -1,0 +1,60 @@
+ INFO mylog: Time: Tue Aug 21 09:16:51 +0800 2007
+DEBUG mylog: This is message with level DEBUG
+ INFO mylog: This is message with level INFO
+ WARN mylog: This is message with level WARN
+ERROR mylog: This is message with level ERROR
+FATAL mylog: This is message with level FATAL
+ WARN mylog: This is message with level WARN
+ERROR mylog: This is message with level ERROR
+FATAL mylog: This is message with level FATAL
+ INFO mylog: Time: Tue Aug 21 09:17:34 +0800 2007
+DEBUG mylog: This is message with level DEBUG
+ INFO mylog: This is message with level INFO
+ WARN mylog: This is message with level WARN
+ERROR mylog: This is message with level ERROR
+FATAL mylog: This is message with level FATAL
+ WARN mylog: This is message with level WARN
+ERROR mylog: This is message with level ERROR
+FATAL mylog: This is message with level FATAL
+ INFO mylog: Time: Tue Aug 21 14:59:28 +0800 2007
+DEBUG mylog: This is message with level DEBUG
+ INFO mylog: This is message with level INFO
+ WARN mylog: This is message with level WARN
+ERROR mylog: This is message with level ERROR
+FATAL mylog: This is message with level FATAL
+ INFO mylog: Time: Tue Aug 21 14:59:43 +0800 2007
+DEBUG mylog: This is message with level DEBUG
+ INFO mylog: This is message with level INFO
+ WARN mylog: This is message with level WARN
+ERROR mylog: This is message with level ERROR
+FATAL mylog: This is message with level FATAL
+ WARN mylog: This is message with level WARN
+ERROR mylog: This is message with level ERROR
+FATAL mylog: This is message with level FATAL
+ INFO mylog: Time: Thu Aug 30 09:53:04 +0800 2007
+DEBUG mylog: This is message with level DEBUG
+ INFO mylog: This is message with level INFO
+ WARN mylog: This is message with level WARN
+ERROR mylog: This is message with level ERROR
+FATAL mylog: This is message with level FATAL
+ WARN mylog: This is message with level WARN
+ERROR mylog: This is message with level ERROR
+FATAL mylog: This is message with level FATAL
+ INFO mylog: Time: Thu Aug 30 10:45:01 +0800 2007
+DEBUG mylog: This is message with level DEBUG
+ INFO mylog: This is message with level INFO
+ WARN mylog: This is message with level WARN
+ERROR mylog: This is message with level ERROR
+FATAL mylog: This is message with level FATAL
+ WARN mylog: This is message with level WARN
+ERROR mylog: This is message with level ERROR
+FATAL mylog: This is message with level FATAL
+ INFO mylog: Time: Mon Jan 21 14:01:09 +0800 2008
+DEBUG mylog: This is message with level DEBUG
+ INFO mylog: This is message with level INFO
+ WARN mylog: This is message with level WARN
+ERROR mylog: This is message with level ERROR
+FATAL mylog: This is message with level FATAL
+ WARN mylog: This is message with level WARN
+ERROR mylog: This is message with level ERROR
+FATAL mylog: This is message with level FATAL

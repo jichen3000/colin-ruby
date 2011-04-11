@@ -1,0 +1,13 @@
+job1:
+  id: 1
+  name: job1
+  applied: 1
+job2:
+  id: 2
+  name: job2
+  applied: 0
+<% 3.upto(100) do |i| %>job<%= i %>:
+  id: <%= i %>
+  name: job<%= i %>
+  applied: 0
+<% end %>

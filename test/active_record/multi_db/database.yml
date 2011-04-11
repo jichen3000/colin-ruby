@@ -1,0 +1,25 @@
+database1:
+  adapter: oracle
+  encoding: utf-16
+  database: mc32
+  username: colin
+  password: colin
+  host: mc32
+  timeout: 5000
+database2:
+  adapter: oracle
+  encoding: utf-16
+  database: mc100
+  username: colin
+  password: colin
+  host: mc100
+  timeout: 5000
+database3:
+  adapter: oracle
+  encoding: utf-16
+  database: dbtest
+  username: drb
+  password: drbmc
+  host: dbtest
+  timeout: 5000
+  

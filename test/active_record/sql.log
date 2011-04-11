@@ -1,0 +1,178 @@
+  [4;36;1mSQL (10.0ms)[0m   [0;1m SELECT trigger_name
+ FROM all_triggers
+ WHERE owner = 'MEGATRUST_TEST'
+ AND trigger_name = 'MC$MA_OBSERVATION_PKT'
+ AND table_owner = 'MEGATRUST_TEST'
+ AND table_name = 'MC$MA_OBSERVATION'
+ AND status = 'ENABLED'
+[0m
+  [4;35;1mObservation Columns (35.0ms)[0m   [0m select column_name as name, data_type as sql_type, data_default, nullable,
+ decode(data_type, 'NUMBER', data_precision,
+ 'FLOAT', data_precision,
+ 'VARCHAR2', decode(char_used, 'C', char_length, data_length),
+ 'CHAR', decode(char_used, 'C', char_length, data_length),
+ null) as limit,
+ decode(data_type, 'NUMBER', data_scale, null) as scale
+ from all_tab_columns
+ where owner = 'MEGATRUST_TEST'
+ and table_name = 'MC$MA_OBSERVATION'
+ order by column_id
+[0m
+  [4;36;1mObservation Load (5.0ms)[0m   [0;1mselect * from (select raw_sql_.*, rownum raw_rnum_ from (SELECT * FROM mc$ma_observation WHERE (mc$ma_observation.observation_time = TO_TIMESTAMP('2010-04-02 10:34:12:572000','YYYY-MM-DD HH24:MI:SS:FF6')) ) raw_sql_ where rownum <= 1) where raw_rnum_ > 0[0m
+  [4;36;1mSQL (6.0ms)[0m   [0;1m SELECT trigger_name
+ FROM all_triggers
+ WHERE owner = 'MEGATRUST_TEST'
+ AND trigger_name = 'MC$MA_OBSERVATION_PKT'
+ AND table_owner = 'MEGATRUST_TEST'
+ AND table_name = 'MC$MA_OBSERVATION'
+ AND status = 'ENABLED'
+[0m
+  [4;35;1mObservation Columns (337.0ms)[0m   [0m select column_name as name, data_type as sql_type, data_default, nullable,
+ decode(data_type, 'NUMBER', data_precision,
+ 'FLOAT', data_precision,
+ 'VARCHAR2', decode(char_used, 'C', char_length, data_length),
+ 'CHAR', decode(char_used, 'C', char_length, data_length),
+ null) as limit,
+ decode(data_type, 'NUMBER', data_scale, null) as scale
+ from all_tab_columns
+ where owner = 'MEGATRUST_TEST'
+ and table_name = 'MC$MA_OBSERVATION'
+ order by column_id
+[0m
+  [4;36;1mObservation Load (309.0ms)[0m   [0;1mselect * from (select raw_sql_.*, rownum raw_rnum_ from (SELECT * FROM mc$ma_observation WHERE (mc$ma_observation.observation_time = TO_DATE('2010-04-02','YYYY-MM-DD HH24:MI:SS')) ) raw_sql_ where rownum <= 1) where raw_rnum_ > 0[0m
+  [4;36;1mSQL (5.0ms)[0m   [0;1m SELECT trigger_name
+ FROM all_triggers
+ WHERE owner = 'MEGATRUST_TEST'
+ AND trigger_name = 'MC$MA_OBSERVATION_PKT'
+ AND table_owner = 'MEGATRUST_TEST'
+ AND table_name = 'MC$MA_OBSERVATION'
+ AND status = 'ENABLED'
+[0m
+  [4;35;1mObservation Columns (51.0ms)[0m   [0m select column_name as name, data_type as sql_type, data_default, nullable,
+ decode(data_type, 'NUMBER', data_precision,
+ 'FLOAT', data_precision,
+ 'VARCHAR2', decode(char_used, 'C', char_length, data_length),
+ 'CHAR', decode(char_used, 'C', char_length, data_length),
+ null) as limit,
+ decode(data_type, 'NUMBER', data_scale, null) as scale
+ from all_tab_columns
+ where owner = 'MEGATRUST_TEST'
+ and table_name = 'MC$MA_OBSERVATION'
+ order by column_id
+[0m
+  [4;36;1mSQL (4.0ms)[0m   [0;1mSELECT mc$ma_observation_seq.NEXTVAL id FROM dual[0m
+  [4;35;1mObservation Create (7.0ms)[0m   [0mINSERT INTO mc$ma_observation (observation_time, created_at, target_id, updated_at, id, observation_config_id, target_type) VALUES(TO_DATE('2010-04-02 00:00:00','YYYY-MM-DD HH24:MI:SS'), TO_DATE('2010-04-02 10:38:33','YYYY-MM-DD HH24:MI:SS'), NULL, TO_DATE('2010-04-02 10:38:33','YYYY-MM-DD HH24:MI:SS'), 10003, NULL, NULL)[0m
+  [4;36;1mObservation Load (5.0ms)[0m   [0;1mselect * from (select raw_sql_.*, rownum raw_rnum_ from (SELECT * FROM mc$ma_observation WHERE (mc$ma_observation.observation_time = TO_DATE('2010-04-02','YYYY-MM-DD HH24:MI:SS')) ) raw_sql_ where rownum <= 1) where raw_rnum_ > 0[0m
+  [4;36;1mSQL (8.0ms)[0m   [0;1m SELECT trigger_name
+ FROM all_triggers
+ WHERE owner = 'MEGATRUST_TEST'
+ AND trigger_name = 'MC$MA_OBSERVATION_PKT'
+ AND table_owner = 'MEGATRUST_TEST'
+ AND table_name = 'MC$MA_OBSERVATION'
+ AND status = 'ENABLED'
+[0m
+  [4;35;1mObservation Columns (69.0ms)[0m   [0m select column_name as name, data_type as sql_type, data_default, nullable,
+ decode(data_type, 'NUMBER', data_precision,
+ 'FLOAT', data_precision,
+ 'VARCHAR2', decode(char_used, 'C', char_length, data_length),
+ 'CHAR', decode(char_used, 'C', char_length, data_length),
+ null) as limit,
+ decode(data_type, 'NUMBER', data_scale, null) as scale
+ from all_tab_columns
+ where owner = 'MEGATRUST_TEST'
+ and table_name = 'MC$MA_OBSERVATION'
+ order by column_id
+[0m
+  [4;36;1mSQL (9.0ms)[0m   [0;1mSELECT mc$ma_observation_seq.NEXTVAL id FROM dual[0m
+  [4;35;1mObservation Create (13.0ms)[0m   [0mINSERT INTO mc$ma_observation (observation_time, created_at, target_id, updated_at, id, observation_config_id, target_type) VALUES(TO_DATE('2010-04-02 00:00:00','YYYY-MM-DD HH24:MI:SS'), TO_DATE('2010-04-02 10:48:10','YYYY-MM-DD HH24:MI:SS'), NULL, TO_DATE('2010-04-02 10:48:10','YYYY-MM-DD HH24:MI:SS'), 10000, NULL, NULL)[0m
+  [4;36;1mObservation Load (8.0ms)[0m   [0;1mselect * from (select raw_sql_.*, rownum raw_rnum_ from (SELECT * FROM mc$ma_observation WHERE (mc$ma_observation.observation_time = TO_DATE('2010-04-02','YYYY-MM-DD HH24:MI:SS')) ) raw_sql_ where rownum <= 1) where raw_rnum_ > 0[0m
+  [4;36;1mSQL (10.0ms)[0m   [0;1m SELECT trigger_name
+ FROM all_triggers
+ WHERE owner = 'MEGATRUST_TEST'
+ AND trigger_name = 'MC$MA_OBSERVATION_PKT'
+ AND table_owner = 'MEGATRUST_TEST'
+ AND table_name = 'MC$MA_OBSERVATION'
+ AND status = 'ENABLED'
+[0m
+  [4;35;1mObservation Columns (48.0ms)[0m   [0m select column_name as name, data_type as sql_type, data_default, nullable,
+ decode(data_type, 'NUMBER', data_precision,
+ 'FLOAT', data_precision,
+ 'VARCHAR2', decode(char_used, 'C', char_length, data_length),
+ 'CHAR', decode(char_used, 'C', char_length, data_length),
+ null) as limit,
+ decode(data_type, 'NUMBER', data_scale, null) as scale
+ from all_tab_columns
+ where owner = 'MEGATRUST_TEST'
+ and table_name = 'MC$MA_OBSERVATION'
+ order by column_id
+[0m
+  [4;36;1mSQL (7.0ms)[0m   [0;1mSELECT mc$ma_observation_seq.NEXTVAL id FROM dual[0m
+  [4;35;1mObservation Create (5.0ms)[0m   [0mINSERT INTO mc$ma_observation (observation_time, created_at, target_id, updated_at, id, observation_config_id, target_type) VALUES(TO_DATE('2010-04-02 00:00:00','YYYY-MM-DD HH24:MI:SS'), TO_DATE('2010-04-02 10:49:19','YYYY-MM-DD HH24:MI:SS'), NULL, TO_DATE('2010-04-02 10:49:19','YYYY-MM-DD HH24:MI:SS'), 10001, NULL, NULL)[0m
+  [4;36;1mObservation Load (7.0ms)[0m   [0;1mselect * from (select raw_sql_.*, rownum raw_rnum_ from (SELECT * FROM mc$ma_observation WHERE (mc$ma_observation.observation_time = TO_DATE('2010-04-02','YYYY-MM-DD HH24:MI:SS')) ) raw_sql_ where rownum <= 1) where raw_rnum_ > 0[0m
+  [4;36;1mIssueDetail Load (44.0ms)[0m   [0;1mselect * from (select raw_sql_.*, rownum raw_rnum_ from (SELECT * FROM mc$ma_issue_detail ) raw_sql_ where rownum <= 1) where raw_rnum_ > 0[0m
+  [4;35;1mSQL (8.0ms)[0m   [0m SELECT trigger_name
+ FROM all_triggers
+ WHERE owner = 'MEGATRUST_TEST'
+ AND trigger_name = 'MC$MA_ISSUE_DETAIL_PKT'
+ AND table_owner = 'MEGATRUST_TEST'
+ AND table_name = 'MC$MA_ISSUE_DETAIL'
+ AND status = 'ENABLED'
+[0m
+  [4;36;1mIssueDetail Columns (38.0ms)[0m   [0;1m select column_name as name, data_type as sql_type, data_default, nullable,
+ decode(data_type, 'NUMBER', data_precision,
+ 'FLOAT', data_precision,
+ 'VARCHAR2', decode(char_used, 'C', char_length, data_length),
+ 'CHAR', decode(char_used, 'C', char_length, data_length),
+ null) as limit,
+ decode(data_type, 'NUMBER', data_scale, null) as scale
+ from all_tab_columns
+ where owner = 'MEGATRUST_TEST'
+ and table_name = 'MC$MA_ISSUE_DETAIL'
+ order by column_id
+[0m
+  [4;36;1mIssueDetail Load (29.0ms)[0m   [0;1mselect * from (select raw_sql_.*, rownum raw_rnum_ from (SELECT * FROM mc$ma_issue_detail ) raw_sql_ where rownum <= 1) where raw_rnum_ > 0[0m
+  [4;35;1mSQL (6.0ms)[0m   [0m SELECT trigger_name
+ FROM all_triggers
+ WHERE owner = 'MEGATRUST_TEST'
+ AND trigger_name = 'MC$MA_ISSUE_DETAIL_PKT'
+ AND table_owner = 'MEGATRUST_TEST'
+ AND table_name = 'MC$MA_ISSUE_DETAIL'
+ AND status = 'ENABLED'
+[0m
+  [4;36;1mIssueDetail Columns (72.0ms)[0m   [0;1m select column_name as name, data_type as sql_type, data_default, nullable,
+ decode(data_type, 'NUMBER', data_precision,
+ 'FLOAT', data_precision,
+ 'VARCHAR2', decode(char_used, 'C', char_length, data_length),
+ 'CHAR', decode(char_used, 'C', char_length, data_length),
+ null) as limit,
+ decode(data_type, 'NUMBER', data_scale, null) as scale
+ from all_tab_columns
+ where owner = 'MEGATRUST_TEST'
+ and table_name = 'MC$MA_ISSUE_DETAIL'
+ order by column_id
+[0m
+  [4;35;1mIssueDetail Update (32.0ms)[0m   [0mUPDATE mc$ma_issue_detail SET updated_at = TO_DATE('2010-04-02 11:21:05','YYYY-MM-DD HH24:MI:SS'), detail = NULL WHERE id = 10[0m
+  [4;36;1mIssueDetail Load (21.0ms)[0m   [0;1mselect * from (select raw_sql_.*, rownum raw_rnum_ from (SELECT * FROM mc$ma_issue_detail ) raw_sql_ where rownum <= 1) where raw_rnum_ > 0[0m
+  [4;35;1mSQL (4.0ms)[0m   [0m SELECT trigger_name
+ FROM all_triggers
+ WHERE owner = 'MEGATRUST_TEST'
+ AND trigger_name = 'MC$MA_ISSUE_DETAIL_PKT'
+ AND table_owner = 'MEGATRUST_TEST'
+ AND table_name = 'MC$MA_ISSUE_DETAIL'
+ AND status = 'ENABLED'
+[0m
+  [4;36;1mIssueDetail Columns (334.0ms)[0m   [0;1m select column_name as name, data_type as sql_type, data_default, nullable,
+ decode(data_type, 'NUMBER', data_precision,
+ 'FLOAT', data_precision,
+ 'VARCHAR2', decode(char_used, 'C', char_length, data_length),
+ 'CHAR', decode(char_used, 'C', char_length, data_length),
+ null) as limit,
+ decode(data_type, 'NUMBER', data_scale, null) as scale
+ from all_tab_columns
+ where owner = 'MEGATRUST_TEST'
+ and table_name = 'MC$MA_ISSUE_DETAIL'
+ order by column_id
+[0m
+  [4;35;1mIssueDetail Update (4.0ms)[0m   [0mUPDATE mc$ma_issue_detail SET updated_at = TO_DATE('2010-04-02 11:22:05','YYYY-MM-DD HH24:MI:SS'), detail = empty_clob() WHERE id = 10[0m
+  [4;36;1mWritable Large Object (13.0ms)[0m   [0;1mSELECT detail FROM mc$ma_issue_detail WHERE id = 10 FOR UPDATE[0m
+  [4;35;1mIssueDetail Load (0.0ms)[0m   [0mOCIError: ORA-00932: inconsistent datatypes: expected - got CLOB: select * from (select raw_sql_.*, rownum raw_rnum_ from (SELECT * FROM mc$ma_issue_detail WHERE (mc$ma_issue_detail.detail = 'issue_detail20') ) raw_sql_ where rownum <= 1) where raw_rnum_ > 0[0m

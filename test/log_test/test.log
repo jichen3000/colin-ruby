@@ -1,0 +1,18 @@
+ INFO mylog: Time: Tue Jan 06 10:14:37 +0800 2009
+DEBUG mylog: This is message with level DEBUG
+ INFO mylog: This is message with level INFO
+ WARN mylog: This is message with level WARN
+ERROR mylog: This is message with level ERROR
+FATAL mylog: This is message with level FATAL
+ WARN mylog: This is message with level WARN
+ERROR mylog: This is message with level ERROR
+FATAL mylog: This is message with level FATAL
+ INFO mylog: Time: Thu Sep 17 15:08:26 +0800 2009
+DEBUG mylog: This is message with level DEBUG
+ INFO mylog: This is message with level INFO
+ WARN mylog: This is message with level WARN
+ERROR mylog: This is message with level ERROR
+FATAL mylog: This is message with level FATAL
+ WARN mylog: This is message with level WARN
+ERROR mylog: This is message with level ERROR
+FATAL mylog: This is message with level FATAL

@@ -1,0 +1,13 @@
+--- !ruby/object:System 
+attributes: 
+  bs_level: 0
+  status: 
+  bs_desc: 
+  rto: 30
+  bs_name: "DBRA3\xD6\xD0\xCE\xC4"
+  rpo: 300
+  bs_type: 
+  bs_id: 1
+  slasize: 100
+attributes_cache: {}
+

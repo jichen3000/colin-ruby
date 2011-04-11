@@ -1,0 +1,32 @@
+task :default => [:ssh_gcc_file]
+
+# if the file exist, this will fresh it.
+# if the file exist, this will fresh it.
+def ftp_files(sourceFileList, targetDir, hostname, username, password)
+  require 'net/ftp'
+  Net::FTP.open(hostname, username, password) do |ftp|
+    sourceFileList.each do |srcFile|    
+      targetFile = srcFile.pathmap("#{targetDir}/%f")
+      begin
+        ftp.putbinaryfile(srcFile, targetFile)
+        puts "Copying #{srcFile} -> #{targetFile}"
+      rescue 
+        puts $!
+      end
+    end
+  end
+end
+desc "Ftp file 1.txt"
+task :ftp do
+  require 'net/ftp'
+  ftp_files( ["sqlplus.sh"], '/home/colin', '172.16.4.28', 'ora10g', 'oracle')
+end
+
+task :ssh_gcc_file=> :ftp  do
+  require 'net/ssh'
+  Net::SSH.start('172.16.4.28', 'dbra10g', :password => "mcdbra") do |ssh|
+    ssh.exec!("LANG=C")
+    oname = "/home/colin"
+    puts ssh.exec!("/home/colin/sqlplus.sh")
+  end
+end

@@ -1,0 +1,2 @@
+# Logfile created on Fri Aug 15 15:49:45 +0800 2008 by /
+  [4;36;1mJobInfo Load (0.000000)[0m   [0;1mSELECT * FROM job_infos [0m

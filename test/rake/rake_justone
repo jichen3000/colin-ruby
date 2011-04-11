@@ -1,0 +1,20 @@
+# 显示，只会调用前面的方法一次
+task :default => [:main1,:main2]
+
+task :pre do
+  puts "pre"
+end
+
+task :main1 => :pre do
+  puts "main1"
+  puts_one
+end
+
+task :main2 => :pre do
+  puts "main2"
+  puts_one
+end
+
+def puts_one
+  puts "one"
+end

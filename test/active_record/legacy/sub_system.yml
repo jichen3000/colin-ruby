@@ -1,0 +1,6 @@
+<% 1.upto(10) do |i| %>sub_system<%= i %>:
+  sub_id: <%= i %>
+  name: s<%= i %>
+  status: A
+<% end %>
+

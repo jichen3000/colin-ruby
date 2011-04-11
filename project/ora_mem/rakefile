@@ -1,0 +1,46 @@
+task :default => [ :ssh_session_wait]
+
+desc "Ftp files"
+task :ftp do
+  ftp_files(["events.sql","session_wait.c","xksuse.sql","xksuse.c","sgaid.sh"], '/home/colin/memory', '172.16.4.200', 'root', 'root')
+end
+
+desc "ssh session wait"
+task :ssh_session_wait=> :ftp  do
+  require 'net/ssh'
+  Net::SSH.start('172.16.4.200', 'ora10g', :password => "oracle") do |ssh|
+    ssh.exec!("LANG=C")
+    oname = "/home/colin/memory/sw"
+    puts ssh.exec!("gcc -o #{oname} /home/colin/memory/session_wait.c")
+    puts ssh.exec!("id")
+    puts ssh.exec!("#{oname} 1835011")
+  end
+end
+desc "ssh full"
+task :ssh_full=> :ftp  do
+  require 'net/ssh'
+  Net::SSH.start('172.16.4.200', 'ora10g', :password => "oracle") do |ssh|
+    ssh.exec!("LANG=C")
+    oname = "/home/colin/memory/sw"
+    puts ssh.exec!("gcc -o #{oname} /home/colin/memory/session_wait.c")
+    puts ssh.exec!("id")
+    puts ssh.exec!("#{oname} 1835011")
+  end
+end
+
+# if the file exist, this will fresh it.
+def ftp_files(sourceFileList, targetDir, hostname, username, password)
+  require 'net/ftp'
+  Net::FTP.open(hostname, username, password) do |ftp|
+    sourceFileList.each do |srcFile|    
+      targetFile = srcFile.pathmap("#{targetDir}/%f")
+      begin
+        ftp.putbinaryfile(srcFile, targetFile)
+        puts "Copying #{srcFile} -> #{targetFile}"
+      rescue 
+        puts $!
+      end
+    end
+  end
+end
+

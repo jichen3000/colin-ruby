@@ -1,0 +1,1262 @@
+id: 654
+subject: TNS-12518
+description:
+CT:
+10.2.0.1 RAC for win32, 连接经常报
+TNS-12518: TNS:listener could not hand off client connection
+TNS-12560: TNS:protocol adapter error
+TNS-00530: Protocol adapter error
+32-bit Windows Error: 233: Unknown error
+
+====
+A：32位系统由于内存不足引起，连接出错。
+建议：打开大内存开关 boot.ini /3GB /PEA
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+id: 751
+subject: 高可用性测试
+description:
+CT：RAC环境 对一台主机的 PUBLIC 网卡拔去网线。
+    TAF不能发挥作用。
+===========
+A：TAF在节点宕机或者instance宕掉，能顺利接管。
+   PUBLIC 网卡拔去网线，需要再进行测试。
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+id: 752
+subject: 数据库重起及归档
+description:
+CT：数据库重起后，归档是否依旧打开。需不需要重新开归档。
+======
+A：不需要。
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+id: 753
+subject: 临时段清理
+description:
+CT：在表空间上看到大量的临时段，占用空间，怎么清理临时段。
+=================
+A：正常情况下，临时段不需要干预，SMON能自动清理。
+   强制清理临时段可以  alter session set events 'immediate trace name drop_segments level TS#+1'; TS# is the tablespace number
+
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+id: 941
+subject: sqlplus 连接出错
+description:
+sqlplus 连接出错。
+系统空间满，没有剩余空间。
+删除归档日志。
+关闭归档日志，测试系统没有备份。
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+id: 942
+subject: 文件系统扩容
+description:
+HP主机用于存放逻辑备份文件系统扩容。
+已经完成
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+id: 943
+subject: ERP验收流程
+description:
+裘勇已签字。
+部分文档还需要修改
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+id: 963
+subject: ORA-4030
+description:
+客户增加PGA到800M，原先25M。
+PGA增加后部分业务出错，报ORA-4030错误。
+ORA-4030错误是由于系统内存不足引起 程序不能从操作系统分配内存引起。
+建议：减低PGA，检查操作系统内存，SGA分配
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+id: 1755
+subject: 客服系统加logfile member
+description:
+Justin 说:
+alter database add logfile member
+'/oracle/oradata/caller/oradata1/redo12.log' to group 1;
+alter database add logfile member
+'/oracle/oradata/caller/oradata2/redo22.log' to group 2;
+alter database add logfile member
+'/oracle/oradata/caller/oradata1/redo32.log' to  group 3;
+~
+
+Justin 说:
+我想加的化，要做什么操作
+===
+增加前，先检查v$log,先增加非CURRENT的GROUP。
+对CURRENT的GROUP先做SWITCH LOGFILE，然后在操作
+
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+id: 2103
+subject: 公交公司性能业务慢
+description:
+CT：前台反映，有时突然变慢。
+==
+A：电话支持。vmstat 显示正常。iostat显示正常。
+   v$session_wait 没有异常EVENT。
+   偶尔出现lgwr_lnr等待。
+检查容灾主机发现，IO wait比较高。怀疑存储性能下降引起，LGWR日志同步影响生产系统。
+暂时把日志传输给DEFER掉
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+id: 2110
+subject: SQL慢
+description:
+CT：insert into xx select xxx .
+    语句很慢在9i环境下
+    但同一条语句在10G下跑得很块。
+====
+A：9i 和 10g 表格大小是否相同。
+CT：一样的
+A：你在9i下就把select语句拿出来执行一下，并且看一下执行计划。
+  把SQL语句以及 PLAN发过来。
+交李岩通过QQ联系处理
+
+   
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+id: 2111
+subject: DBRA现场演示
+description:
+宁波公安DBRA现场培训。并现场进行切换测试。
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+id: 2127
+subject: how to grant sequence privs?
+description:
+how to grant sequence to another schema?
+===
+grant select on xx to user.
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+id: 2128
+subject: stream 库创建临时表格
+description:
+CT：stream同步库能否创建表格？
+===
+A：同步库可以创建表格，目前是采用单向复制，不会对生产库产生影响；
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+id: 2156
+subject: 宁波公安Dbra全业务切换演示
+description:
+1.	同步weblogic8.1到容灾端
+2.	部署APP切换相关SHELL脚本
+3.	部署应用（由局方完成）
+4.	更改weblogic的端口到8001
+5.	测试weblogic应用切换成功。
+6.	全业务切换（数据库，weblogic）切换到31节点，成功。
+7.	全业务切换（数据库，weblogic）切换到17节点，成功。
+8.	关闭17主机，执行灾难切换，31节点（数据库，weblogic）启动成功。
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+id: 2374
+subject: 自行车系统挂起
+description:
+1月17日，公交公司自行车系统挂起，查询缓慢。
+10点20分赶到现场，检查数据库状态正常运行，statspack显示主机内存，IO，CPU等指标都正常。
+检查业务程序，发现业务程序的CPU占用率比较高，达60%左右。
+咨询业务厂商，属于正常，一直属于怎么高。
+检查监听程序，发现有两个监听启动。
+监听程序地址及端口不一致，咨询后发现只使用其中一个地址和断口。
+中断另一个监听程序后，数据库连接正常。
+但前台挂失业务读卡比较慢，原因是需要到自行车系统进行查询是否有还车记录。
+分析语句发现没有走索引机制。
+根据SQL语句创建了一个索引后，前台反映正常。
+整个系统恢复
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+id: 2375
+subject: 宁波妇幼医院数据库安装
+description:
+安装平台HP-UX11.31 
+数据库版本ORACLE10GR2主备模式。
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+id: 2381
+subject: 新华书店节前检查
+description:
+信息系统，博库系统数据库检查，运行正常
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+id: 2395
+subject: filesystem check
+description:
+由于存储交换机意外宕机，当心文件系统有问题，需要对文件系统进行fck检查。
+需要宕数据库。
+答：
+另约时间，由客户定时间
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+id: 2495
+subject: ORA-27086: unable to lock file - already in use
+description:
+Fri Feb 13 14:25:02 2009
+ORA-00202: control file: '/Tbackup/nbgs/oradata/dbracontrol01.ctl'
+ORA-27086: unable to lock file - already in use
+IBM AIX RISC System/6000 Error: 13: Permission denied
+Additional information: 8
+Additional information: 29462700
+Fri Feb 13 14:25:05 2009
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+id: 2503
+subject: 触发器误删处理
+description:
+2月12日 16:02:
+   删除生产库DBO用户下,64个触发器.
+   drop trigger dbo.***;   
+
+   业务终止1小时.
+   从测试库上拷贝回来,业务正常。
+   但数据不一致.
+2月12日晚上至现场.
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+id: 2504
+subject: 触发器误删数据不一致
+description:
+ 问题详细描述:
+++++++++++++++++++++++++++++++++++++++++++++++++++++++
+2009年2月12日16:02，在生产数据库进行远程检查时，因数据库操作失误，删除DBO
+用户下的触发器对象，触发器是数据库内一段PL/SQL代码，可以在数据之间进行相
+互关联，因触发器的缺失引起业务无法正常开展。
+删除脚本如下：
+drop trigger dbo.TR_$S_SUSERRECORD;
+drop trigger dbo.TR_EIR_U;
+drop trigger dbo.TR_YARDLOCKLOG_IU;
+drop trigger dbo.TR_VESSELQUEUENAME_U;
+drop trigger dbo.TR_SMENU_I;
+drop trigger dbo.TR_SYS_PROCS;
+drop trigger dbo.TR_SYSPARASET_ID_N;
+drop trigger dbo.TR_PREEIR_D;
+drop trigger dbo.TR_PREEIR_U;
+drop trigger dbo.TR_FDEBITINVOICE;
+drop trigger dbo.TR_WORKQUEUE_U;
+drop trigger dbo.TR_CONTAINEROTHERJOBREG_U;
+drop trigger dbo.TR_EDICUSTTRPT_I;
+drop trigger dbo.TR_YARDROW_U;
+drop trigger dbo.TR_STAT_HISCONTAINERREC;
+drop trigger dbo.TR_WORKITEM_U;
+drop trigger dbo.TR_EDICIQRESPT_U;
+drop trigger dbo.TR_CONTAINEROTHERJOBREG_I;
+drop trigger dbo.TR_EDICIQRESPT_I;
+drop trigger dbo.TR_STAT_VESSELBERTHPLAN;
+drop trigger dbo.TR_CONTAINERONSHIP_U;
+drop trigger dbo.TR_VESSELBERTHPLAN_IUD;
+drop trigger dbo.TR_VESSELBERTHPLAN_U;
+drop trigger dbo.TR_YARDPLANMONITOR_IUD;
+drop trigger dbo.TR_STAT_CTNDYNAMICSTATION;
+drop trigger dbo.TR_YARDRANGEDETAIL_U;
+drop trigger dbo.TR_TERMINALWORKLOG_UD;
+drop trigger dbo.TR_S_PROCS;
+drop trigger dbo.TR_BCONTRACT_U;
+drop trigger dbo.TR_PREEIR_I;
+drop trigger dbo.TR_YARDGROUPRANGE_U;
+drop trigger dbo.TR_BPAYDEVOLESET_LOG;
+drop trigger dbo.TR_SYSLOGINUSER_I;
+drop trigger dbo.TR_WORKITEMHIS_I;
+drop trigger dbo.TR_V_CONTAINERONYARD_I;
+drop trigger dbo.TR_CONTAINERONCELL_IUD;
+drop trigger dbo.TR_V_CONTAINERONYARD_D;
+drop trigger dbo.TR_FDEBITINVOICEDETAIL_I;
+drop trigger dbo.TR_EIR_I;
+drop trigger dbo.TR_EDICIQRESPT_D;
+drop trigger dbo.TR_EIR_D;
+drop trigger dbo.TR_CONTAINEROTHERJOBREG_D;
+drop trigger dbo.TR_SYSPARASET_U;
+drop trigger dbo.TR_BCHARGERULE_U;
+drop trigger dbo.TR_V_CONTAINERONYARD_AU;
+drop trigger dbo.TR_CONTAINERRFREC_IU;
+drop trigger dbo.TR_V_CONTAINERONYARD_U;
+drop trigger dbo.TR_COVCOD_U;
+drop trigger dbo.TR_BCHARGERULE_LOG;
+drop trigger dbo.TR_VESSELBERTHPLAN_IU;
+drop trigger dbo.TR_WORKITEM_IUD;
+drop trigger dbo.TR_CONTAINERONSHIP_I;
+drop trigger dbo.TR_EIRBATDELETY_D;
+drop trigger dbo.TR_EIRBATDELETY_I;
+drop trigger dbo.TR_BCONTRACTFEERATE_U;
+drop trigger dbo.TR_CONTAINERRFOPERATION_U;
+drop trigger dbo.TR_SHIFTGROUP_IUD;
+drop trigger dbo.TR_TERMINALDEVICE_U;
+drop trigger dbo.TR_BCHARGERULEINFO_LOG;
+drop trigger dbo.TR_CONTAINERONCELL_IU_N;
+drop trigger dbo.TR_EIRBATDELETY_U;
+drop trigger dbo.TR_$S_LOGON;
+drop trigger dbo.TR_$S_LOGOUT;
+drop trigger dbo.TR_$S_SERVERERROR;
+17:00左右，触发器从最近的（最近2天内）一个测试库上把代码拷贝出来，并在业
+务库上创建，后恢复业务。
+21：30左右，美创工程师赶至现场。
+22：00左右，开始对16:00至17:30之间的所有数据变化操作进行了获取，并针对与触
+发器相关的表格的SQL进行了统计，共获得了863条SQL语句，863条SQL语句来自共553
+个事务。
+2009年2月13日 由港航和业务部门人员协助进行数据校验。
+
+ 事故总结:
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+从这次数据库检查失误总结而得出以下几点：
+1． 远程检查尽可能提交脚本，让客户自己来操作；工程师的操作需要更慎重和仔细。
+2． 打开数据库闪回功能，满足特殊条件下的全库闪回功能；如本次事件中因无法闪回，
+所以对数据的校验要花费很大的时间。
+3． 常用对象定义需要定期的及时的备份，满足特殊条件下的重建需要。
+4． 有必要每天完成一个逻辑备份。
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+id: 2515
+subject: HP v2启动ftp telnet
+description:
+1.vi /etc/inetd.conf
+把ftp 和telnet前面的#号取消掉 
+2./etc/inet/services
+把ftp 和telnet前面的#号取消掉
+3.inetd -c
+或
+/sbin/init.d/inetd stop
+/sbin/init.d/inetd start
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+id: 2519
+subject: 2009年ORACLE服务任务列表
+description:
+各客户服务执行计划
+请各位同事完成一项后，到徐荣星这里说明一下，以便更新
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+id: 2895
+subject: 新一代网络测速
+description:
+亚信测试两台主机网络传输速度只有10M左右。
+经过确认10M速度是由于传输文件在本地硬盘，受本地硬盘读写速度影响。
+旁路存储碰劲，单纯的网络传输速度经过测试可以达到105M/s.
+传输存储上的文件，网络传输速度也可以达到80M/s的速度。
+美创及IBM工程师都确认网络速度不存在性能问题。
+
+ 
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+id: 2969
+subject: udump trace文件
+description:
+udump目录产生大量的trace文件，是由于CAPAA的打开了SYS，SYSTEM用户的trace引起
+已经增加清理脚本定时清理。
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+id: 2973
+subject: 继续学习编程解决bulk update
+description:
+1.在plsql@oracle的数据库中
+  创建表clm_hdr 
+  创建表mcare_clm_hdr
+2.向以上两张表中分别批量插入将近5万行的数据
+3.成功设计出了（bulk update)批量更新程序代码及带计时功能的（bulk update)批量更新程序代码（两个表相关的）
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+id: 3079
+subject: 浙江联通NETAPP网络带宽扩容
+description:
+新扩容的NETAPP盘使用NAS结构。
+当前备份主机到NETAPP存储只有1G网络带宽
+为配合新一带综合备份，捆绑2个千兆网卡，以提供IO吞吐。
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+id: 3080
+subject: 浙江联通项目
+description:
+	1、当日工作情况：
+时间	工作内容	工作人员
+2009-4-9	
+1.	配置报表中心系统的ruby运行环境
+2.	配置帐务历史账单的ruby运行环境
+3.	配置报表中心系统的管理库信息
+4.	配置帐务历史账单的管理库信息
+5.	调整web端管理库信息
+6.	检查并确认7套系统的DBRA运行环境及部署情况
+7.	部署后台SHELL程序	美创科技：
+徐荣星，周亮,胡嘉伟
+
+	2、明日工作计划：
+起止时间	工作内容	工作人员
+2009-4-10	
+1.	开归档
+2.	启动copylog
+3.	启动5套系统的全库备份	美创科技：
+徐荣星，周亮，胡嘉伟
+
+
+	3、需要协调和解决的问题：
+无
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+id: 3179
+subject: MRP性能调整
+description:
+为优化NFS，做一下优化
+1、NFS datafile以 cio MOUNT
+从主机监视发现主机性能CPU使用明显改善
+vmstat显示
+b助塞进程从原先的几百降到现在的10以内。
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+id: 3180
+subject: NETAPP网络mtu调整
+description:
+为加快网络流，修改
+NETAPP网卡，网络交换机端口，主机网卡端口的MTU到9000
+Enable jumbo frames on the NIC:
+Aixhost>chdev -l 'ent2' -a jumbo_frames=’yes’
+Update the mtu size on the NIC:
+Aixhost>chdev -l 'en2' -a mtu='9000'
+Aixhost>lsattr -El en2 -a mtu
+mtu 9000 Maximum IP Packet Size for This Device True
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+id: 3181
+subject: MRP性能调整SAN-NAS分流
+description:
+经过一系列优化后，MRP性能有提高，但NETAPP网络压力依旧很大，为分当NAS网络压力
+迁移个系统的归档目录（原先在NAS存储上），迁移到（SAN）存储上。
+以分当网络流量。
+归档文件系统MOUNT OPIONS =rbrw
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+id: 3212
+subject: sudo aix hp平台安装
+description:
+AIX：
+只要安装sudo-1.6.9p15-2noldap.aix5.2.ppc.rpm即可
+
+HP:
+安装sudo-1.6.9p17-hppa-11.11.depot
+
+swinstall -s /tmp/sudo-1.6.9p17-hppa-11.11.depot
+
+默认路径为：
+/usr/local/etc/sudoers
+/usr/local/sbin/visudo
+/usr/local/bin/sudo
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+id: 3213
+subject: AIX 配置ssh
+description:
+需要打的包
+openssl.9.8.600.tar.Z
+openssh-4.7_5301.tar.Z
+zlib-1.2.3-4.aix5.2.ppc.rpm(必须)
+zlib-1.2.3.tar.gz(可选)
+openssh-5.1p1.tar.gz（可选）
+
+
+一：客户端
+1。ssh-keygen -t dsa(linux:ssh-keygen -b 1024 -t dsa)
+2。ls -l ~/.ssh
+-rw-------   1 root     system          668 Jul 30 09:33 id_dsa
+-rw-r--r--   1 root     system          602 Jul 30 09:33 id_dsa.pub
+-rw-r--r--   1 root     system          402 Jul 30 09:21 known_hosts
+3。上传id_dsa.pub至服务端
+二：服务端：
+1。touch ~/.ssh/authorized_keys
+2。cat ~/.ssh/id_dsa.pub >> ~/.ssh/authorized_keys
+
+这样的话，就可以客户端向服务段登陆了
+注意：一：这样只能单向ssh，如果想双向ssh
+      二：上传前注意将各自的id_dsa.pub做备份
+
+
+启动命令
+startsrc -g ssh
+
+stopsrc -g ssh
+
+亦可用命令：
+
+/usr/local/sbin/sshd
+
+
+
+linux:
+/etc/ssh/ssh_config
+    RSAAuthentication yes
+    PasswordAuthentication yes
+#   HostbasedAuthentication no
+#   BatchMode no
+#   CheckHostIP yes
+#   AddressFamily any
+#   ConnectTimeout 0
+#   StrictHostKeyChecking ask
+    IdentityFile ~/.ssh/identity
+    IdentityFile ~/.ssh/id_rsa
+    IdentityFile ~/.ssh/id_dsa
+
+[dbra@mcdrb .ssh]$ ls -rtl
+total 16
+-rw------- 1 dbra dbra  668 Aug  4 16:57 identity
+-rw-r--r-- 1 dbra dbra 1021 Aug  4 17:59 known_hosts
+-rw-r--r-- 1 dbra dbra  604 Aug  8 09:39 id_dsa.pub.olm
+-rw-r--r-- 1 dbra dbra 3002 Aug  8 09:42 authorized_keys
+
+也可以用ssh-keygen -t rsa配置，注意authorized_keys的权限,dbra和远程主机root用户进行互配。即只要将dbra用户的公钥传到远程root用户下.ssh目录下即可。
+
+
+
+切记：需要安装sshd用户和属主
+$ id sshd
+uid=202(sshd) gid=203(sshd) groups=1(staff)
+问题：
+exec(): 0509-036 Cannot load program ./ssh-keygen because of the following errors:
+        0509-150   Dependent module /usr/lib/libcrypto.a(libcrypto.so.0.9.7) could not be loaded.
+        0509-152   Member libcrypto.so.0.9.7 is not found in archive 
+make: 1254-004 The error code from the last command is 255.
+./configure --prefix=/archlog/app/lib/openssh --with-ssl-dir=/archlog/app/lib/openssl --with-zlib=/archlog/app/lib/zlib
+
+
+启动ssh
+/usr/local/sbin/sshd
+
+安装openssl
+./config --prefix=/archlog/app/lib/openssl
+
+修改服务端的passwd文件权限
+chmod 4555 /usr/bin/passwd
+
+WARNING: Your password has expired.
+You must change your password now and login again!
+Changing password for "dbra"
+3004-616 User "dbra" does not exist.
+3004-709 Error changing password for "dbra".
+Connection to 130.36.21.39 closed.
+
+
+
+
+
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+id: 3220
+subject: MRP性能优化 flashback
+description:
+联通新一代备份上线以来，经过一系列存储级别调整后，MRP速度基本稳定在8-9M/S
+但是一启动FLASHBACK后，MRP速度明显下降，降到不可接受的速度，经过几次的观察，只有1-3M/S速度。
+从ORACLE 官方讲，FLASHBACK针对 OLTP系统只有2%左右的影响，大批量数据插入影响在30%左右。
+
+但从实际的项目上，影响远远大于ORACLE 官方所说。
+
+Flashback Database Best Practices
+
+    * Know your baseline prior to enabling flashback for determining the overhead and assess the application workload implications of turning on flashback database.  See "Analyzing the Performance Impact" below.
+
+    * Ensure the flash recovery area space is sufficient to hold the flashback database flashback logs.  Sizing the flash recovery area is described in detail in the 10g Database Backup and Recovery Basics guide or the 11g Backup and Recovery User's Guide.  A general rule of thumb is to note that the volume of flashback log generation is approximately the same order of magnitude as redo log generation.  For example, if you intend to set DB_FLASHBACK_RETENTION_TARGET to 24 hours, and if the database generates 20 GB of redo in a day, then a rule of thumb is to allow 20 GB to 30 GB disk space for the flashback logs.  The same rule applies for guaranteed restore points. For example, if the database generates 20 GB redo every day, and if the guaranteed restore point will be kept for a day, then plan to allocate 20 to 30 GB.  Note that the DB_FLASHBACK_RETENTION_TARGET is a target and there is no guarantee that you can flashback the database that far.  In some cases if there is space pressure in the flash recovery area where the flashback logs are stored then the oldest flashback logs may be deleted.  For a detailed explanation of the flash recovery area deletion rules see the "11g Backup and Recovery User's Guide, Maintaining the Flash Recovery Area section.  To guarantee a flashback point-in-time you must use guaranteed restore points.
+
+    * Set the Enterprise Manager monitoring metric, "Recovery Area Free Space (%)" for proactive alerts of space issues with the flash recovery area.
+
+    * Ensure there is sufficient I/O bandwidth to the flash recovery area.  Insufficient I/O bandwidth with flashback database on is usually indicated by a high occurrence of the "FLASHBACK BUF FREE BY RVWR" wait event in an Automatic Workload Repository (AWR) report.
+
+    * Set LOG_BUFFER to at least 8 MB to give flashback database more buffer space in memory.  For large 11.1.0.7+ databases with more than a 4GB SGA, you may consider setting LOG_BUFFER to values in the range of 32-64 MB.
+
+    * Follow the media recovery best practice from the "Data Guard Redo Apply & Media Recovery" paper of setting PARALLEL_EXECUTION_MESSAGE_SIZE to at least 8192.  This will improve the media recovery phase of any flashback database operation.
+
+    * If you have a standby database then set DB_FLASHBACK_RETENTION_TARGET the same value on the standby database(s) as the primary.  When using Fast-start Failover, ensure the UNDO_RETENTION and DB_FLASHBACK_RETENTION_TARGET initialization parameters are set to a minimum of 120 so that reinstatement is still possible after a prolonged outage.  On a standby the flashback barrier cannot be guaranteed to be published every 30 minutes as it is on a primary.  Thus, when enabling flashback database on a standby, the DB_FLASHBACK_RETENTION_TARGET should be a minimum of 120.  Since the primary and standby should match, this implies the same for the primary.
+
+    * Also review the 10g Database Backup and Recovery Basics guide or the 11g Backup and Recovery User's Guide.
+
+    * For optimal performance when enabling flashback database on a database with the LOB data type in use, use the CACHE setting for LOBs.
+
+
+Analyzing the Performance Impact
+When enabling flashback database or using guaranteed restore points you should follow these steps to analyze the performance impact of turning on flashback database:
+
+   1. Capture a performance baseline using the Automatic Workload Repository (AWR) in test and production during a peak workload period.  If you do not have a Diagnostics Pack license which is required to use AWR then you can alternatively use Statspack, see Note 94224.1 "FAQ- Statspack Complete Reference".  A baseline contains performance data from a specific time period that is preserved for comparison with other similar workload periods.  Before creating a fixed baseline, carefully consider the time period you choose as a baseline, because the baseline should represent the system operating at an optimal level.  This baseline (with flashback database off) will be used to assess the impact of flashback database to your application.  See Chapter 5 in the Oracle Performance Tuning guide (10g or 11g) for technical details on using AWR and capturing a baseline.  Note that if you have any large periodic batch jobs you should also capture an AWR snapshot for them.
+
+   2. Turn on flashback database in your test environment or if you're on RDBMS release 11g and have a physical standby, then you can enable flashback database on your physical standby and then convert it to a snapshot standby (this can also be done in 10.2 with a manual snapshot standby, but no redo is received and applied as in the 11g Snapshot Standby.  See Dell 10g Snapshot Standby). Then when you run a workload against the snapshot standby it will be with flashback database logging enabled.
+
+   3. During a peak workload test run capture AWR snapshots.  Do this for any large batch jobs as well. 
+      If you are using a snapshot standby from production then run a realistic workload against the snapshot standby, capturing the same AWR snapshot to compare against the non-flashback performance baseline.
+
+   4. Run an AWR comparison report ($ORACLE_HOME/rdbms/admin/awrddrpt.sql) to compare the baseline snapshot to the snapshot with flashback database on.  This report will have a "% Diff" column for each statistic, metric, and wait event.  Review the differences and assess if the impact is acceptable.  Generally start with looking at the redo generation rate (Redo size) and transactions per second (TPS, Transactions on the report).  If you are seeing a high occurrence of the "FLASHBACK BUF FREE BY RVWR" wait event then this may indicate an insufficient disk subsystem for the flash recovery area.  You can also use non-AWR metrics such as response time for OLTP and job run time for batch profiles.
+
+   5. While executing this in a production-like test environment should be a good indicator of the flashback database performance impact to production, the production snapshot standby is a more accurate assessment.  If feasible, you should repeat the test in production.
+
+Known High Performance Impacts
+Enabling Flashback Database on a primary database usually causes less than 2% overhead for an OLTP type workload.  But the overhead for insert-intensive LOB workloads and direct load type of workloads can be as high as 30%.
+
+   1. For a LOB insert intensive application the impact of turning on flashback database may be unacceptable.  The above analysis should be done taking special note of the impact to Physical Reads per transaction and the redo generation rate per second.
+
+   2. Insert intensive batch jobs may be impacted by as much as 30% with flashback database on.  In general, RDBMS release 11.1.0.6 improves batch performance when flashback database is on.  The performance impact was negligible once the DB_FLASHBACK_RETENTION_TARGET was met.  This improvement is not supported in a RAC environment.
+
+   3. SQL*Loader parallel direct path loads prior to 11.1.0.7 can have a continual performance degradation when flashback database is on due to implicit segment shrinking that occurs.  This is fixed in 11.1.0.7.
+
+   4. Insert intensive applications following a truncate table can incur high overhead when flashback database is on until the DB_FLASHBACK_RETENTION_TARGET time has passed.  For example, if  DB_FLASHBACK_RETENTION_TARGET=240 (4 hours), then following a truncate table, any inserts to that table may incur more than a 20% reduction in database performance for 4 hours after the truncate.  This performance impact is expected to be reduced to less than 2% after the 4 hrs period has passed.
+
+   5. There may be a case where there is a high occurrence of the "FLASHBACK BUF FREE BY RVWR" wait event even with a well-tuned flash recovery area.  See Bug 6168063.  This issue is fixed in RDBMS releases 11.1.0.7 and 10.2.0.4.  There is also a patch available in 10.2.0.3 for most platforms.
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+id: 3221
+subject: FLASHBACK BUG
+description:
+Poor performance may be seen when flashback database is enabled
+if the init.ora PROCESSES parameter is defined to be a large value,
+such as several thousand.
+
+Workaround:
+  Reduce the init.ora PROCESSES if possible.
+
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+id: 3222
+subject: 浙江联通生产库宕机短信告警
+description:
+已实现数据库宕机，短信告警功能
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+id: 3237
+subject: 密码文件使用
+description:
+同一台主机搭建两个实例，需要将监听文件GLOBAL_DBNAME和SID_NAME都设成相同，否则识别不到密码文件
+    (SID_DESC =
+      (GLOBAL_DBNAME = ctcbak)
+      (ORACLE_HOME = /oracle/app/oracle/product/9.2)
+      (SID_NAME = ctcbak)
+    )
+报如下错误
+$ sqlplus "drb/drbmc@dbra_ctcbak as sysdba"
+
+SQL*Plus: Release 9.2.0.8.0 - Production on Fri Apr 24 13:16:25 2009
+
+Copyright (c) 1982, 2002, Oracle Corporation.  All rights reserved.
+
+ERROR:
+ORA-01031: insufficient privileges
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+id: 3251
+subject: 浙江联通综合备份整合进展
+description:
+1、完成老系统数据迁移
+   综合结算，综合采集，缴费卡，客服，乡镇支撑。
+   数据都已迁移到新磁盘上。
+   以MRP进程在合成。
+  
+2、完成静态数据备份。
+   完成客挽，佣金，连机指令 ，物品管理 备份到绍兴。
+   遗留
+    数据营帐
+
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+id: 3256
+subject: 宁波电信114，计费出错
+description:
+114系统，由于DBRA程序发布shutdown immediate，引起容灾库挂起。
+生产系统归档空间满掉。
+114数据库重拉
+
+计费系统，由于DBRA程序发布shutdown immediate，引起容灾库挂起。
+生产系统归档空间满掉。
+计费数据库重拉
+
+第一版本DBRA软件在检查数据库状态时重起数据库过程中，由于使用shutdown immediate导致数据库不能关闭，引起挂起
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+id: 3271
+subject: DBRA RECOVER bug
+description:
+Attempting to recover lost datafiles from standby can fail with ORA-1207.
+(eg: if the datafile is moved from standby to primary using 'backup as copy'
+     and then recovered).
+
+
+Workaround:
+  Recreate controlfile on primary
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+id: 3272
+subject: 宕机告警系统
+description:
+浙江联通缴费卡 重复性 抱CTC is down ,ctc is open.
+拨号检查，发现ctc 的进程数已达到，导致连接间接 连接失败。
+建议：增加CTC的process
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+id: 3373
+subject: 萧山社保系统异常说明
+description:
+萧山社保系统异常说明
+
+P1．技术分析  
+    萧山社保数据库在5月4日、5日两天下午15点20分左右，出现登录连接超时，系统反应缓慢的异常现象，导致业务系统在一段时间内无法正常使用。
+我们在5月5、6日，通过对主机系统、ORACLE数据库的多方面分析，认为导致系统异常的原因主要由以下几个方面构成：
+1：主机内存耗光，导致系统资源紧张
+   我们通过对主机系统交换空间的检测时候发现，系统有15%的交换产生，对于拥有32G系统内存的系统来说，系统产生大量的交换被认为是一种异常的表现。主要是由于ORACLE被分配了22G的内存空间，而操作系统文件预留了20%上限的内存，在操作系统内存资源紧张，磁盘大量交换数据产生，这种情况下，导致系统ＩＯ繁忙，系统资源在在某一时刻内导致临界值。
+2：容灾系统临时文件读写占用部分IO资源
+   容灾系统在本地磁盘进行读写临时文件操作，大量的临时文件写操作，导致IO在一定程度上写较多，当然，在主机资源被耗光以后，占用IO资源同时也无疑加重了系统负担，导致问题发生。
+3：ORACLE 监听限制
+   在ORACLE 10版本中，通过监听连接的会话默认方式是60秒的响应，在60秒内，ORACLE验证通过，会话才能正确连入数据库，否则，在60秒内，如果验证没有通过，一直处于等待状态。
+   在系统资源繁忙的情况下，如果验证响应比较慢，那么就会导致远程连接没有响应，而频繁的连接，就会加重系统负荷，ORACLE内部负荷也会加重，造成恶性循环，最终hung机。
+在上述的情况下，CAPAA后台监控进程在频繁启动进行检测的时候，导致问题加剧。IO繁忙，数据库负荷加重。
+
+p2．解决方法：
+Capaa运行挂住系统的问题只是个表象，究其原因主要集中在两点：
+•	内存资源耗尽，整个系统，包括oracle都出现短暂挂起；
+解决内存问题，可以通过第1，2，3步骤来处理，然后启动capaa，若运行24小时正常，我们就认为系统异常问题就是由于内存问题引起。
+•	本地磁盘IO问题；
+调整了内存资源开销，仍无法解决问题，实施第4步骤，把DBRA的整个文件系统迁移出来，彻底排除本地IO问题，这一步骤工作量相对较大，建议放最后一步才实施。
+p3．具体步骤：
+1：减少ORACLE 内存分配
+通过性能分析报告的评估以及系统表现的状况来看，把SGA内存由原来的18G调整到12G，用来缓解系统内存不足，避免交换产生。调整完成以后，通过观察，系统交换由原来的15%下降到2%，表现比较理想。
+2：调整AIX的部分系统参数
+   1) 增加一个环境变量：AIXTHREAD_SCOPE=S; export AIXTHREAD_SCOPE
+ 2) 利用vmo调整虚拟内存系统参数：minperm从10%小调到3%，以降低虚拟内存页交换的临界值，减少交换的可能。
+命令： vmo -p -o minperm%=3
+   3) 利用ioo调整IO缓存系统参数： 
+调整文件系统缓存参数，但必须把文件系统重新挂载才能生效，或重启AIX。
+命令： ioo –o –p j2_nBufferPerPagerDevice=2048
+            ioo –o -p  j2_dynamicBufferpreallocation=?     扩到原来的2倍
+            ioo –o –p  numfsbufs =1568         
+            ioo –o -p pv_min_pbuf =?           扩展到原来的2倍
+3：设置ORACLE监听参数
+  在listener.ora文件中添加INBOUND_CONNECT_TIMEOUT_<listener_name>=0
+追加一个sqlnet.ora文件，并追加SQLNET.INBOUND_CONNECT_TIMEOUT=0
+  减少验证时间。
+4：容灾系统临时文件迁移出本地磁盘
+   把容灾系统产生的临时文件迁移出本地磁盘，彻底排除DBRA写本地磁盘致IO紧张的现象。
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+id: 3426
+subject: aix平台挂载nfs
+description:
+挂载时，服务ip不能挂载成功，需用启动ip，或者固定ip
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+id: 3484
+subject: 数据库启动报错
+description:
+SQL> startup ;
+ORACLE instance started.
+
+Total System Global Area  323976488 bytes
+Fixed Size                   740648 bytes
+Variable Size             285212672 bytes
+Database Buffers           33554432 bytes
+Redo Buffers                4468736 bytes
+Database mounted.
+ORA-00604: error occurred at recursive SQL level 1
+ORA-00942: table or view does not exist
+
+以上错误与环境变量有关
+正确的设置为：
+1.LIBPATH=$ORACLE_HOME/lib32:$ORACLE_HOME/lib;   export LIBPATH
+2.将XDB用户删除
+SQL> @catnoqm.sql
+
+PL/SQL procedure successfully completed.
+User dropped.
+
+数据库启动正常
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+id: 3520
+subject: rsync bug
+description:
+client log显示：
+rsync -av --log-file=/tmp/rsyn_run_test.369004.0 --port=2008 --remove-source-files /opt/ai_fs01/dbra/buffer/mcb_ORAPRM_20090519_786_
+1.bkp 130.36.21.87::mcdbra/Tbackup/oraprm/increment/bakset
+
+sending incremental file list
+mcb_ORAPRM_20090519_786_1.bkp
+channel ORA_DISK_1: finished piece 2 at 19-MAY-09
+piece handle=/opt/ai_fs01/dbra/buffer/mcb_ORAPRM_20090519_786_2.bkp tag=FASTBACKUP comment=NONE
+channel ORA_DISK_1: starting piece 3 at 19-MAY-09
+rsync error: received SIGINT, SIGTERM, or SIGHUP (code 20) at rsync.c(544) [sender=3.0.5]
+
+server log中显示：
+2009/05/19 18:12:06 [3523610] rsync: connection unexpectedly closed (362851691 bytes received so far) [receiver]
+2009/05/19 18:12:06 [3523610] rsync error: error in rsync protocol data stream (code 12) at io.c(635) [receiver=3.0.2]
+2009/05/19 18:12:06 [3523610] rsync: writefd_unbuffered failed to write 93 bytes [generator]: Broken pipe (32)
+2009/05/19 18:12:06 [3523610] rsync error: error in rsync protocol data stream (code 12) at io.c(1543) [generator=3.0.2]
+
+
+
+
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+id: 3568
+subject: 查看AIX lv是否有4k偏移量
+description:
+1.主机级别（注意黑体部分）
+有4k偏移量
+[root@jfk_p560q /]# lslv jfkdb_2G_044
+LOGICAL VOLUME:     jfkdb_2G_044           VOLUME GROUP:   jfk_db_vg01
+LV IDENTIFIER:      00ce76de00004c00000001134ee6bc51.84 PERMISSION:     read/write
+VG STATE:           active/complete        LV STATE:       opened/syncd
+TYPE:               raw                    WRITE VERIFY:   off
+MAX LPs:            1024                   PP SIZE:        32 megabyte(s)
+COPIES:             1                      SCHED POLICY:   parallel
+LPs:                64                     PPs:            64
+STALE PPs:          0                      BB POLICY:      relocatable
+INTER-POLICY:       maximum                RELOCATABLE:    yes
+INTRA-POLICY:       middle                 UPPER BOUND:    16
+MOUNT POINT:        N/A                    LABEL:          None
+MIRROR WRITE CONSISTENCY: on/ACTIVE                              
+EACH LP COPY ON A SEPARATE PV ?: yes                                    
+Serialize IO ?:     NO
+
+没有4k偏移量：
+[root@jfk_p560q /]# lslv jfkdb_2G_044
+LOGICAL VOLUME:     jfkdb_2G_044           VOLUME GROUP:   jfk_dbvg_01
+LV IDENTIFIER:      00c3dff400004c00000001217a9d839e.84 PERMISSION:     read/write
+VG STATE:           active/complete        LV STATE:       closed/syncd
+TYPE:               raw                    WRITE VERIFY:   off
+MAX LPs:            1024                   PP SIZE:        32 megabyte(s)
+COPIES:             1                      SCHED POLICY:   parallel
+LPs:                64                     PPs:            64
+STALE PPs:          0                      BB POLICY:      relocatable
+INTER-POLICY:       maximum                RELOCATABLE:    yes
+INTRA-POLICY:       middle                 UPPER BOUND:    1024
+MOUNT POINT:        N/A                    LABEL:          None
+MIRROR WRITE CONSISTENCY: on/ACTIVE                              
+EACH LP COPY ON A SEPARATE PV ?: yes                                    
+Serialize IO ?:     NO                                     
+*DEVICESUBTYPE : DS_LVZ*
+
+数据库级别：
+有偏移量
+[oracle@jfk_p560q /dev]$ dbfsize /dev/rjfkdb_2G_054
+
+Database file: /dev/rjfkdb_2G_054
+Database file type: raw device
+Database file size: 262016 8192 byte blocks
+
+没有偏移量
+[oracle@jfk_p560q /dev]$ dbfsize /dev/rlvsysaux_1g
+
+Database file: /dev/rlvsysaux_1g
+Database file type: raw device without 4K starting offset
+Database file size: 40960 8192 byte blocks
+
+
+
+1、对于Big VG，是唯一允许同时存在这两种LV类型的VG，如果我们指定-T O（注意，这里是大写的字母O），则创建DS_LVZ类型的LV，否则，创建普通类型的LV。如
+
+#mklv -y’lv_test’ -t’raw’ -T O testvg 8 hdisk3
+
+2、对于普通的VG，不管你使用什么命令创建lv，都是普通的DS_LV类型的LV
+
+3、对于Scalable-type VG类型的VG，不管你使用什么方式的命令创建lv，都是扩展的DS_LVZ类型的LV
+
+
+IBM有个BUG，有可能导致DS_LVZ类开型的LV的LVCB信息丢失，从而导致数据库无法启动
+[oracle@jfk_p560q /dev]# instfix -a -k IY94343
+IY94343 Abstract: MKLV -TO ON BIG VOLUME GROUPS FAILS TO PUT SOME LV INFORMAT 
+
+IY94343 Symptom Text: 
+ The lslv command will fail to show the DEVICESUBTYPE : DS_LVZ
+ entry for LVs created as DS_LVZ.
+ Some applications depending on the subtype, like Oracle, may
+ fail to start.
+ 
+[oracle@jfk_p560q /dev]# /usr/sbin/instfix -a -ivk IY94343
+IY94343 Abstract: MKLV -TO ON BIG VOLUME GROUPS FAILS TO PUT SOME LV INFORMAT 
+
+IY94343 Symptom Text: 
+ The lslv command will fail to show the DEVICESUBTYPE : DS_LVZ
+ entry for LVs created as DS_LVZ.
+ Some applications depending on the subtype, like Oracle, may
+ fail to start.
+ 
+
+----------------------------
+    Fileset bos.rte.lvm:5.3.0.55 is applied on the system.
+    All filesets for IY94343 were found.
+
+进一步查看
+[oracle@jfk_p560q /dev]#od -c  /dev/jfkdb_1G_012 |head
+0000000    A   I   X       L   V   C   B  \0  \0   r   a   w  \0  \0  \0
+0000020   \0  \0  \0  \0  \0  \0  \0  \0  \0  \0  \0  \0  \0  \0  \0  \0
+0000040   \0  \0  \0  \0  \0  \0  \0  \0  \0  \0   0   0   0   2   3   c
+0000060    f   7   0   0   0   0   d   6   0   0   0   0   0   0   0   1
+0000100    1   f  \0   o   c   s   _   t   b   s   _   t   e   s   t   0
+0000120    1  \0  \0  \0  \0  \0  \0  \0  \0  \0  \0  \0  \0  \0  \0  \0
+0000140   \0  \0  \0  \0  \0  \0  \0  \0  \0  \0  \0  \0  \0  \0  \0  \0
+*
+0000200   \0  \0  \0   M   o   n       A   p   r       2   0       1   4
+0000220    :   5   3   :   2   8       2   0   0   9  \n  \0  \0  \0  \0
+
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+id: 3571
+subject: oracle 9i install for aix 5309.doc
+description:
+见附件
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+id: 3613
+subject: 2005年IBM原厂的AIX培训资料
+description:
+2005年IBM原厂的AIX培训资料
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+id: 3628
+subject: dbra9i mrp合成
+description:
+ORA-00283: recovery session canceled due to errors
+ORA-10562: Error occurred while applying redo to data block (file# 6, block#
+200415)
+ORA-10564: tablespace JFK_DATA02
+ORA-01110: data file 6: '/Tbackup/ctc2/oradata/rjfkdb_4G_002'
+ORA-00600: internal error code, arguments: [4553], [2], [0], [], [], [], [], []
+
+
+ORA-01112: media recovery not started
+
+
+相应trc文件显示
+Error 600 in redo application callback
+TYP:2 CLS: 1 AFN:6 DBA:0x01830edf SCN:0x09c9.b8d79a86 SEQ:  1 OP:11.4
+KTB Redo 
+op: 0x01  ver: 0x01  
+op: F  xid:  0x0002.00c.001fbc39    uba: 0x00c3a8d9.bd0b.29
+KDO Op code: LKR row dependencies Disabled
+  xtype: XA  bdba: 0x01830edf  hdba: 0x01800009
+itli: 2  ispac: 0  maxfr: 4863
+tabn: 0 slot: 37 to: 2
+*Dump of block after image: 
+buffer tsn: 26 rdba: 0x01830edf (6/200415)
+scn: 0x0000.00000000 seq: 0x01 flg: 0x01 tail: 0x00000001
+frmt: 0x02 chkval: 0x0000 type: 0x00=unknown
+Dump of memory from 0x07000000034B8014 to 0x07000000034B9FFC*
+7000000034B8010          00000000 00000000 00000000      [............]
+7000000034B8020 00000000 00000000 00000000 00000000  [................]
+        Repeat 508 times
+7000000034B9FF0 00000000 00000000 00000000           [............]    
+Dumping current redo log in thread 1
+Error occurred while dumping log
+ORA-00308: cannot open archived log '/Tbackup/ctc2/oradata/rjfkdb_1G_002'
+ORA-27037: unable to obtain file status
+IBM AIX RISC System/6000 Error: 2: No such file or directory
+Additional information: 3
+ORA-00600: internal error code, arguments: [4553], [2], [0], [], [], [], [], []
+----- Redo read statistics for thread 1 -----
+Read rate (ASYNC): 16418Kb in 9.59s => 1.67 Mb/sec
+Longest record: 9Kb, moves: 9/36946 (0%)
+Change moves: 17735/79748 (22%), moved: 4Mb
+----------------------------------------------
+
+已解决，3020问题变种，黑体部分是我们程序引起的
+metalink：
+The ora-600 argument indicates that Oracle found an
+invalid block type in the data block. 
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+id: 3629
+subject: dbra 10g 闪回打开 alert日志报错
+description:
+ksvcreate: Process(m000) creation failed
+Tue Jun  2 13:25:39 2009
+ksvcreate: Process(m000) creation failed
+Tue Jun  2 13:26:39 2009
+ksvcreate: Process(m000) creation failed
+Tue Jun  2 13:27:39 2009
+ksvcreate: Process(m000) creation failed
+Tue Jun  2 13:28:42 2009
+ksvcreate: Process(m000) creation failed
+Tue Jun  2 13:29:42 2009
+ksvcreate: Process(m000) creation failed
+Tue Jun  2 13:30:42 2009
+ksvcreate: Process(m000) creation failed
+Tue Jun  2 13:31:42 2009
+ksvcreate: Process(m000) creation failed
+Tue Jun  2 13:32:42 2009
+ksvcreate: Process(m000) creation failed
+Tue Jun  2 13:33:42 2009
+ksvcreate: Process(m000) creation failed
+Tue Jun  2 13:34:42 2009
+ksvcreate: Process(m000) creation failed
+Tue Jun  2 13:35:42 2009
+ksvcreate: Process(m000) creation failed
+Tue Jun  2 13:36:42 2009
+ksvcreate: Process(m000) creation failed
+Tue Jun  2 13:37:42 2009
+ksvcreate: Process(m000) creation failed
+
+
+=============
+原因
+There are two Workarounds available:
+
+    * Restart the Instance..
+
+or
+
+    *  Disable ADDM - Should be re-enabled if Standby takes up the Primary Role
+
+          * Set SGA_TARGET=0 and set shared_pool_size, db_cache_size, etc if using
+            Automatic SGA Memory Management (ASMM)
+
+          * Set STATISTICS_LEVEL=BASIC to disable statistics gathering
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+id: 3682
+subject: 介绍AIX性能调优的红皮书
+description:
+介绍AIX性能调优的红皮书
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+id: 3700
+subject: rsync bug（copy log）
+description:
+./ora_copylog_service.rb:83: warning: Insecure world writable dir /jsapp in PATH, mode 0640777
+rsync -av --log-file=/tmp/rsyn_run_test.569580.0 --port=2008 /jsapp/archlog/arc_1_121513.dbf 130.36.21.87::mcdbra/Tbackup/archsum/zh
+js/archlog
+
+sending incremental file list
+arc_1_121513.dbf
+rsync error: received SIGINT, SIGTERM, or SIGHUP (code 20) at rsync.c(541) [sender=3.0.4]
+error_str:2009/06/10 13:47:30 [1298590] 
+2009/06/10 13:47:30 [1298590] building file list
+2009/06/10 13:47:46 [1298590] rsync error: received SIGINT, SIGTERM, or SIGHUP (code 20) at rsync.c(541) [sender=3.0.4]
+
+mc-error message:
+copy_log_rsync has something wrong,please check:false
+#<ColinError: copy_log_rsync has something wrong,please check:false>
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+id: 3788
+subject: dbra 1期省工商重新部署
+description:
+dbra 1期省工商重新部署
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+id: 3815
+subject: active standby [kcbz_check_objd_typ_1]
+description:
+SQL> select * from dbraactive;
+select * from dbraactive
+              *
+ERROR at line 1:
+ORA-00600: internal error code, arguments: [kcbz_check_objd_typ_1], [0], [0],
+[1], [], [], [], []
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+id: 3816
+subject: active standby [kcbz_check_objd_typ_3]
+description:
+select * from dbraactive
+              *
+ERROR at line 1:
+ORA-00600: internal error code, arguments: [kcbz_check_objd_typ_3], [0], [0],
+[1], [], [], [], []
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+id: 3820
+subject: 宁波电信TCARD容灾挂起
+description:
+TCARD容灾库由于程序BUG 数据库处于shutdown immediate状态
+TCARD容灾库挂起。
+通过恢复归档日志，恢复TCARD容灾库
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+id: 3910
+subject: 联通值班一天
+description:
+联通值班一天
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+id: 3924
+subject: ORA-4031 and ORA-600 [Krff_create_fb_log-4]
+description:
+Applies to:
+Oracle Server - Enterprise Edition - Version: 10.2.0.3
+This problem can occur on any platform.
+Symptoms
+When attempting to startup a standby database and enable flashback, the following errors are encountered:
+
+ORA-04031: unable to allocate 3981220 bytes of shared memory ("shared pool",
+"unknown object","sga heap(1,0)","flashback generation buffer").
+
+ORA-00600: internal error code, arguments: [krff_create_fb_log-4], [], [], [], [], [], [], []
+
+Cause
+
+Insufficient memory available for the flashback generation buffer causes the ORA-4031 error.
+The ORA-600 [krff_create_fb_log-4] is caused by unpublished Bug 3600284.
+
+When the database start, the RDBMS uses the shared pool to pin many of its objects into memory.
+
+However, with that said, the flashback buffers seem to be outside the shared pool and their size depends
+on the '_flashback_generation_buffer_size' parameter. By default this parameter is twice as big as log_buffers.
+
+The cause of the ORA-00600 [krff_create_fb_log-4] problem is due to the first error that failed to
+enable flashback, which in this case is the ORA-4031 error.
+
+Solution
+
+To implement the solution, please execute the following steps:
+
+1.  To address the ORA-4031 error, we need to set the parameter "_flashback_generation_buffer_size" to  2MB in either the Pfile or Spfile:
+
+    _flashback_generation_buffer_size=2097152
+
+    EXAMPLE
+    ========
+    SQL>alter system set "_flashback_generation_buffer_size"=2097152 scope=SPFILE;
+
+2. To address the ORA-600 [krff_create_fb_log-4] we need to disable and restart the flashback:
+
+    a.  shutdown and mount the database
+
+        shutdown immediate;
+        startup mount;
+        alter database flashback off;
+        alter database flashback on;
+        alter database open;
+
+
+
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+id: 4144
+subject: 无锡广电性能优化建议
+description:
+无锡广电性能优化建议
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+id: 4220
+subject: 玉环社保数据库大致情况
+description:
+操作系统为5300-05
+数据库版本为RAC 9208
+数据库大小为120G，每天归档量为5-10G。每天往磁带库和虚拟带库上各做一次全备，采用百兆网卡
+web service为iss 6.0，操作系统为Microsoft(R) Windows(R) Server 2003, Enterprise Edition
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+id: 4221
+subject: 宁波港三期巡检
+description:
+宁波港三期数据库巡检
+联系人：蒋浩，孙军
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+id: 4225
+subject: 玉环社保数据库备份&空间检查报告
+description:
+玉环社保数据库备份&空间检查报告
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+id: 4333
+subject: 审计咨询
+description:
+潘佰林 说:
+闻工,在ORACLE数据中,通过用户名和密码SQLPLUS到数据库,做一个UPDATE操作,在数据库里有没有审计的?
+A:
+如需要使用ORACLE本身的审计功能的话,需要先打开审计,针对特定的UPDATE操作进行审计,然后才有这个功能.
+否则,缺省情况下是没有审计功能的.
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+id: 4563
+subject: 新华书店RAC出现卡现象
+description:
+新华书店RAC数据库运行大概一周后出现卡的现象。
+出现卡的时候
+          Avg global cache cr block receive time (ms):    37.2
+     Avg global cache current block receive time (ms):    42.9
+
+                                                                    Avg
+                                                %Time Total Wait   wait    Waits
+Event                                    Waits  -outs   Time (s)   (ms)     /txn
+--------------------------------- ------------ ------ ---------- ------ --------
+gc current grant busy                    6,240     15      1,120    180      0.9
+gc cr block 2-way                       33,788      2        899     27      4.9
+gc buffer busy                           3,626     46        770    212      0.5
+gc cr multi block request               37,800      1        579     15      5.4
+gc current block congested                 468     90        534   1140      0.1
+gc current block 2-way                  23,343      2        532     23      3.4
+gc cr block busy                         2,002     17        418    209      0.3
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+id: 4754
+subject: 镇江国土现场
+description:
+解决数据库不能归档，导致实例频繁重启。主要由log_archive_start设为false引起
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+id: 4796
+subject: 德清社保备份情况查看
+description:
+德清社保备份情况查看
+查看数据库备份日志步骤
+
+说明：红色表示需要操作的命令
+一、登陆到生产机（10.80.144.6）,用户名为root，密码为xjzjxwk767380
+telnet 10.80.144.6
+
+二、root用户切换至oracle用户
+$su – oracle
+
+三、收集备份日志
+$rman target / nocatalog msglog /tmp/rmanbackup.log
+rman>list backup;
+rman>exit
+
+四、用ftp将/tmp/rmanbackup.log下载过来
+
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+id: 4815
+subject: 玉环社保dbra实施
+description:
+玉环社保dbra v.25版实施，不包括app
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+id: 4817
+subject: 玉环社保Dbra项目实施总结
+description:
+2009年11月25日至2009年11月27日，于玉环社保实施Dbra v2.5，实施人员周亮，胡嘉伟，Dbra v2.5软件优缺点及实施过程中碰到的问题总结如下：
+
+优点：
+1、	web界面显示数据库状态直观易懂，从首页即可看到数据库的大致状况，数据库出现异常能在首页上能较迅速的反应，客户比较满意。
+2、	web业务系统展示一栏比较直观的显示了数据库表空间、数据文件，归档日志的详细信息。
+3、	客户对Dbra v2.5版本进行了全面的测试，如关主机，关数据库，拔网线，Dbra软件完成了切换和灾难切换，尤其在web首页快速反映出了数据库的状态，并保证了零数据丢失。客户提出的测试任务，一一得到了满足。
+4、	向客户演示了各种日志传输模式的切换，客户对copyonlog和frp合成表现出了较大兴趣，模式之间的灵活性的切换得到了客户的肯定。
+
+缺点：
+1、	Dbra v2.5实施之前，实施计划没有以书面形式提交给客户，相比较DSG，则提交了详细的测试计划，每一个功能点测试都列出了详细的实施计划和实施时刻表。
+2、	据客户现场反馈，Dbra v2.5实施步骤相对比较繁琐，在数据库已经建好的前提下，正常情况下整个Dbra软件部署（没有包括app）需要耗时7到8个工作时。
+3、	Active standby 查询小表时没有任何问题，查询一大表时报Oracle 内部错误，Dbra这一特性没有得到很好的展示。Active standby web易用性需要改进。
+4、	和DSG相比较，Ddra软件包括了ruby，shell，web，目录结构显得比较凌乱，dbra进程显示比较杂，从后台易用性方面来看，客户接受起来比较困难。
+5、	备份端备份功能需要加快开发，提高产品竞争力有很大的帮助。
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+

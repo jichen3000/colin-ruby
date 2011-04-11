@@ -1,0 +1,23 @@
+# 是否会同时调用
+task :default => [:main1,:main2]
+
+task :pre do
+  puts "pre"
+end
+
+task :main1 => :pre do
+  puts "main1"
+  puts_one("main1")
+end
+
+task :main2 => :pre do
+  puts "main2"
+  puts_one("main2")
+end
+
+def puts_one(title)
+  100.times do |index|
+    puts "#{title}:#{index}"
+    sleep(1)
+  end
+end

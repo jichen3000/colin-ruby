@@ -1,0 +1,539 @@
+proddb   14360778  0.0  0.0  236  252  pts/2 A    10:16:05  0:00 grep ruby 
+proddb     446554  0.0  0.0 1584 1772  pts/2 A    10:16:05  0:00 ruby system_te
+proddb   14360782  0.0  0.0  236  252  pts/2 A    10:16:10  0:00 grep ruby 
+proddb     446554  0.0  0.0 1588 1776  pts/2 A    10:16:05  0:00 ruby system_te
+proddb   14360784  0.0  0.0  236  252  pts/2 A    10:16:16  0:00 grep ruby 
+proddb     446554  0.0  0.0 1588 1776  pts/2 A    10:16:05  0:00 ruby system_te
+proddb   14360786  0.0  0.0  236  252  pts/2 A    10:16:21  0:00 grep ruby 
+proddb     446554  0.0  0.0 1588 1776  pts/2 A    10:16:05  0:00 ruby system_te
+proddb   14434420  0.0  0.0  236  252  pts/2 A    10:16:26  0:00 grep ruby 
+proddb     446554  0.0  0.0 1588 1776  pts/2 A    10:16:05  0:00 ruby system_te
+proddb   14434422  0.0  0.0  236  252  pts/2 A    10:16:32  0:00 grep ruby 
+proddb     446554  0.0  0.0 1588 1776  pts/2 A    10:16:05  0:00 ruby system_te
+ INFO obs: App Start! time: 2008-01-11 10:16:33  630
+ INFO obs: log info file name : /Tbackup/erp/incbackup/logmbak/mcb_20080104_112106.loit
+ INFO obs: mass_line_count : 150000
+ INFO obs:   sort_uniq_all start!
+ INFO obs: estimate total row count : 958668
+ INFO obs: FINAL_RATE : 0.8
+ INFO obs: DEL_RATE : 0.2
+ INFO obs: The (0 start!)
+ INFO obs: tmp_file_count : 5
+ INFO obs: Start mass (0 !!)
+proddb   14434424  9.4  1.0 58112 58300  pts/0 A    10:16:33  0:03 ruby ora_backu
+proddb   14360792  0.0  0.0  236  252  pts/2 A    10:16:37  0:00 grep ruby 
+proddb     446554  0.0  0.0 1588 1776  pts/2 A    10:16:05  0:00 ruby system_te
+proddb   14434424 11.1  1.0 111024 111212  pts/0 A    10:16:33  0:08 ruby ora_backu
+proddb   14418054  0.0  0.0  236  252  pts/2 A    10:16:42  0:00 grep ruby 
+proddb     446554  0.0  0.0 1588 1776  pts/2 A    10:16:05  0:00 ruby system_te
+ INFO obs:   Mass (0 get end!!)Through12.389012 seconds)
+proddb   14434424 10.0  1.0 154104 154292  pts/0 A    10:16:33  0:12 ruby ora_backu
+proddb   14409786  0.0  0.0  236  252  pts/2 A    10:16:48  0:00 grep ruby 
+proddb     446554  0.0  0.0 1588 1776  pts/2 A    10:16:05  0:00 ruby system_te
+proddb   14434424 10.6  1.0 154104 154292  pts/0 A    10:16:33  0:17 ruby ora_backu
+proddb   14418058  0.0  0.0  236  252  pts/2 A    10:16:53  0:00 grep ruby 
+proddb     446554  0.0  0.0 1588 1776  pts/2 A    10:16:05  0:00 ruby system_te
+proddb   14434424 11.5  1.0 154104 154292  pts/0 A    10:16:33  0:23 ruby ora_backu
+proddb   14409790  0.0  0.0  236  252  pts/2 A    10:16:58  0:00 grep ruby 
+proddb     446554  0.0  0.0 1588 1776  pts/2 A    10:16:05  0:00 ruby system_te
+ INFO obs:   Mass (0 sort end!!Through15.948723 seconds)
+ INFO obs:     data.size: (150000)
+proddb   14434424 11.3  1.0 154104 154292  pts/0 A    10:16:33  0:28 ruby ora_backu
+proddb   14418062  0.0  0.0  236  252  pts/2 A    10:17:03  0:00 grep ruby 
+proddb     446554  0.0  0.0 1588 1776  pts/2 A    10:16:05  0:00 ruby system_te
+proddb   14434424 11.8  1.0 154104 154292  pts/0 A    10:16:33  0:34 ruby ora_backu
+proddb   14409794  0.0  0.0  236  252  pts/2 A    10:17:09  0:00 grep ruby 
+proddb     446554  0.0  0.0 1588 1776  pts/2 A    10:16:05  0:00 ruby system_te
+ INFO obs:     data.size: (108981,del -41019)
+ INFO obs:   Mass (0 uniq end!!Through10.032599 seconds)
+proddb   14434424 11.6  2.0 162656 162844  pts/0 A    10:16:33  0:38 ruby ora_backu
+proddb   14401632  0.0  0.0  236  252  pts/2 A    10:17:14  0:00 grep ruby 
+proddb     446554  0.0  0.0 1588 1776  pts/2 A    10:16:05  0:00 ruby system_te
+proddb   14434424 11.4  2.0 162656 162844  pts/0 A    10:16:33  0:43 ruby ora_backu
+proddb   14401634  0.0  0.0  236  252  pts/2 A    10:17:19  0:00 grep ruby 
+proddb     446554  0.0  0.0 1588 1776  pts/2 A    10:16:05  0:00 ruby system_te
+ INFO obs:   Mass (0 put end!!Through11.356118 seconds)
+ INFO obs: End mass (0 !!Through49.727959 seconds)
+ INFO obs: Start mass (1 !!)
+proddb   14434424 11.5  2.0 162656 162844  pts/0 A    10:16:33  0:48 ruby ora_backu
+proddb   14401636  0.0  0.0  236  252  pts/2 A    10:17:25  0:00 grep ruby 
+proddb     446554  0.0  0.0 1588 1776  pts/2 A    10:16:05  0:00 ruby system_te
+proddb   14434424 11.4  2.0 162656 162844  pts/0 A    10:16:33  0:52 ruby ora_backu
+proddb   14401638  0.0  0.0  236  252  pts/2 A    10:17:30  0:00 grep ruby 
+proddb     446554  0.0  0.0 1588 1776  pts/2 A    10:16:05  0:00 ruby system_te
+proddb   14434424 11.5  2.0 162656 162844  pts/0 A    10:16:33  0:58 ruby ora_backu
+proddb   14409804  0.0  0.0  236  252  pts/2 A    10:17:35  0:00 grep ruby 
+proddb     446554  0.0  0.0 1588 1776  pts/2 A    10:16:05  0:00 ruby system_te
+ INFO obs:   Mass (1 get end!!)Through14.750943 seconds)
+proddb   14434424 11.6  2.0 162656 162844  pts/0 A    10:16:33  1:03 ruby ora_backu
+proddb   14401642  0.0  0.0  236  252  pts/2 A    10:17:41  0:00 grep ruby 
+proddb     446554  0.0  0.0 1588 1776  pts/2 A    10:16:05  0:00 ruby system_te
+proddb   14434424 11.6  2.0 162656 162844  pts/0 A    10:16:33  1:08 ruby ora_backu
+proddb   14401644  0.0  0.0  236  252  pts/2 A    10:17:46  0:00 grep ruby 
+proddb     446554  0.0  0.0 1588 1776  pts/2 A    10:16:05  0:00 ruby system_te
+proddb   14434424 11.7  2.0 162656 162844  pts/0 A    10:16:33  1:14 ruby ora_backu
+proddb   14409810  0.0  0.0  236  252  pts/2 A    10:17:51  0:00 grep ruby 
+proddb     446554  0.0  0.0 1588 1776  pts/2 A    10:16:05  0:00 ruby system_te
+ INFO obs:   Mass (1 sort end!!Through15.782512 seconds)
+ INFO obs:     data.size: (150000)
+proddb   14434424 11.8  2.0 162656 162844  pts/0 A    10:16:33  1:19 ruby ora_backu
+proddb   14401648  0.0  0.0  236  252  pts/2 A    10:17:57  0:00 grep ruby 
+proddb     446554  0.0  0.0 1588 1776  pts/2 A    10:16:05  0:00 ruby system_te
+proddb   14434424 11.8  2.0 162656 162844  pts/0 A    10:16:33  1:24 ruby ora_backu
+proddb   14409814  0.0  0.0  236  252  pts/2 A    10:18:02  0:00 grep ruby 
+proddb     446554  0.0  0.0 1588 1776  pts/2 A    10:16:05  0:00 ruby system_te
+ INFO obs:     data.size: (113364,del -36636)
+ INFO obs:   Mass (1 uniq end!!Through9.97452 seconds)
+proddb   14434424 11.8  2.0 162656 162844  pts/0 A    10:16:33  1:29 ruby ora_backu
+proddb   14401652  0.0  0.0  236  252  pts/2 A    10:18:07  0:00 grep ruby 
+proddb     446554  0.0  0.0 1588 1776  pts/2 A    10:16:05  0:00 ruby system_te
+proddb   14434424 11.8  2.0 162656 162844  pts/0 A    10:16:33  1:34 ruby ora_backu
+proddb   14401656  0.0  0.0  236  252  pts/2 A    10:18:13  0:00 grep ruby 
+proddb     446554  0.0  0.0 1588 1776  pts/2 A    10:16:05  0:00 ruby system_te
+ INFO obs:   Mass (1 put end!!Through11.312671 seconds)
+ INFO obs: End mass (1 !!Through51.822134 seconds)
+ INFO obs: Start mass (2 !!)
+proddb   14434424 11.8  2.0 162656 162844  pts/0 A    10:16:33  1:39 ruby ora_backu
+proddb   14409822  0.0  0.0  236  252  pts/2 A    10:18:18  0:00 grep ruby 
+proddb     446554  0.0  0.0 1588 1776  pts/2 A    10:16:05  0:00 ruby system_te
+proddb   14434424 11.9  2.0 162656 162844  pts/0 A    10:16:33  1:45 ruby ora_backu
+proddb   14401660  0.0  0.0  236  252  pts/2 A    10:18:23  0:00 grep ruby 
+proddb     446554  0.0  0.0 1588 1776  pts/2 A    10:16:05  0:00 ruby system_te
+proddb   14434424 11.9  2.0 162656 162844  pts/0 A    10:16:33  1:50 ruby ora_backu
+proddb   14409826  0.0  0.0  236  252  pts/2 A    10:18:29  0:00 grep ruby 
+proddb     446554  0.0  0.0 1588 1776  pts/2 A    10:16:05  0:00 ruby system_te
+ INFO obs:   Mass (2 get end!!)Through14.711135 seconds)
+proddb   14434424 11.9  2.0 162656 162844  pts/0 A    10:16:33  1:55 ruby ora_backu
+proddb   14401664  0.0  0.0  236  252  pts/2 A    10:18:34  0:00 grep ruby 
+proddb     446554  0.0  0.0 1588 1776  pts/2 A    10:16:05  0:00 ruby system_te
+proddb   14434424 11.9  2.0 162656 162844  pts/0 A    10:16:33  2:00 ruby ora_backu
+proddb   14409830  0.0  0.0  236  252  pts/2 A    10:18:39  0:00 grep ruby 
+proddb     446554  0.0  0.0 1588 1776  pts/2 A    10:16:05  0:00 ruby system_te
+proddb   14434424 11.8  2.0 162656 162844  pts/0 A    10:16:33  2:05 ruby ora_backu
+proddb   14401668  0.0  0.0  236  252  pts/2 A    10:18:44  0:00 grep ruby 
+proddb     446554  0.0  0.0 1588 1776  pts/2 A    10:16:05  0:00 ruby system_te
+ INFO obs:   Mass (2 sort end!!Through17.009789 seconds)
+ INFO obs:     data.size: (150000)
+proddb   14434424 12.0  2.0 162656 162844  pts/0 A    10:16:33  2:11 ruby ora_backu
+proddb   14409834  0.0  0.0  236  252  pts/2 A    10:18:50  0:00 grep ruby 
+proddb     446554  0.0  0.0 1588 1776  pts/2 A    10:16:05  0:00 ruby system_te
+ INFO obs:     data.size: (127724,del -22276)
+ INFO obs:   Mass (2 uniq end!!Through7.617379 seconds)
+proddb   14434424 12.0  2.0 162656 162844  pts/0 A    10:16:33  2:16 ruby ora_backu
+proddb   14409836  0.0  0.0  236  252  pts/2 A    10:18:55  0:00 grep ruby 
+proddb     446554  0.0  0.0 1588 1776  pts/2 A    10:16:05  0:00 ruby system_te
+proddb   14434424 11.9  2.0 162656 162844  pts/0 A    10:16:33  2:21 ruby ora_backu
+proddb   14401674  0.0  0.0  236  252  pts/2 A    10:19:00  0:00 grep ruby 
+proddb     446554  0.0  0.0 1588 1776  pts/2 A    10:16:05  0:00 ruby system_te
+proddb   14434424 11.9  2.0 162656 162844  pts/0 A    10:16:33  2:26 ruby ora_backu
+proddb   14409840  0.0  0.0  236  252  pts/2 A    10:19:06  0:00 grep ruby 
+proddb     446554  0.0  0.0 1588 1776  pts/2 A    10:16:05  0:00 ruby system_te
+ INFO obs:   Mass (2 put end!!Through13.882637 seconds)
+ INFO obs: End mass (2 !!Through53.222458 seconds)
+ INFO obs: Start mass (3 !!)
+proddb   14434424 11.9  2.0 162656 162844  pts/0 A    10:16:33  2:31 ruby ora_backu
+proddb   14401680  0.0  0.0  236  252  pts/2 A    10:19:11  0:00 grep ruby 
+proddb     446554  0.0  0.0 1588 1776  pts/2 A    10:16:05  0:00 ruby system_te
+proddb   14434424 11.9  2.0 162656 162844  pts/0 A    10:16:33  2:36 ruby ora_backu
+proddb   14409846  0.0  0.0  236  252  pts/2 A    10:19:16  0:00 grep ruby 
+proddb     446554  0.0  0.0 1592 1780  pts/2 A    10:16:05  0:00 ruby system_te
+proddb   14434424 11.9  2.0 162656 162844  pts/0 A    10:16:33  2:41 ruby ora_backu
+proddb   14372962  0.0  0.0  236  252  pts/2 A    10:19:22  0:00 grep ruby 
+proddb     446554  0.0  0.0 1592 1780  pts/2 A    10:16:05  0:00 ruby system_te
+ INFO obs:   Mass (3 get end!!)Through14.761012 seconds)
+proddb   14434424 11.9  2.0 162656 162844  pts/0 A    10:16:33  2:46 ruby ora_backu
+proddb   13627412  0.0  0.0  236  252  pts/2 A    10:19:27  0:00 grep ruby 
+proddb     446554  0.0  0.0 1592 1780  pts/2 A    10:16:05  0:00 ruby system_te
+proddb   14434424 11.9  2.0 162656 162844  pts/0 A    10:16:33  2:52 ruby ora_backu
+proddb   14409854  0.0  0.0  236  252  pts/2 A    10:19:32  0:00 grep ruby 
+proddb     446554  0.0  0.0 1592 1780  pts/2 A    10:16:05  0:00 ruby system_te
+proddb   14434424 12.0  2.0 162656 162844  pts/0 A    10:16:33  2:57 ruby ora_backu
+proddb   13627416  0.0  0.0  236  252  pts/2 A    10:19:38  0:00 grep ruby 
+proddb     446554  0.0  0.0 1592 1780  pts/2 A    10:16:05  0:00 ruby system_te
+ INFO obs:   Mass (3 sort end!!Through17.455617 seconds)
+ INFO obs:     data.size: (150000)
+proddb   14434424 12.0  2.0 162656 162844  pts/0 A    10:16:33  3:03 ruby ora_backu
+proddb   13627418  0.0  0.0  236  252  pts/2 A    10:19:43  0:00 grep ruby 
+proddb     446554  0.0  0.0 1592 1780  pts/2 A    10:16:05  0:00 ruby system_te
+proddb   14434424 11.9  2.0 162656 162844  pts/0 A    10:16:33  3:07 ruby ora_backu
+proddb   13627420  0.0  0.0  236  252  pts/2 A    10:19:48  0:00 grep ruby 
+proddb     446554  0.0  0.0 1592 1780  pts/2 A    10:16:05  0:00 ruby system_te
+ INFO obs:     data.size: (109334,del -40666)
+ INFO obs:   Mass (3 uniq end!!Through9.432909 seconds)
+proddb   14434424 12.0  2.0 162656 162844  pts/0 A    10:16:33  3:13 ruby ora_backu
+proddb   13627422  0.0  0.0  236  252  pts/2 A    10:19:54  0:00 grep ruby 
+proddb     446554  0.0  0.0 1592 1780  pts/2 A    10:16:05  0:00 ruby system_te
+proddb   14434424 12.0  2.0 162656 162844  pts/0 A    10:16:33  3:18 ruby ora_backu
+proddb   14409864  0.0  0.0  236  252  pts/2 A    10:19:59  0:00 grep ruby 
+proddb     446554  0.0  0.0 1592 1780  pts/2 A    10:16:05  0:00 ruby system_te
+ INFO obs:   Mass (3 put end!!Through13.605505 seconds)
+ INFO obs: End mass (3 !!Through55.256519 seconds)
+ INFO obs: Start mass (4 !!)
+proddb   14434424 12.0  2.0 162656 162844  pts/0 A    10:16:33  3:23 ruby ora_backu
+proddb   14385188  0.0  0.0  236  252  pts/2 A    10:20:04  0:00 grep ruby 
+proddb     446554  0.0  0.0 1592 1780  pts/2 A    10:16:05  0:00 ruby system_te
+proddb   14434424 12.0  2.0 162656 162844  pts/0 A    10:16:33  3:28 ruby ora_backu
+proddb   14393358  0.0  0.0  236  252  pts/2 A    10:20:10  0:00 grep ruby 
+proddb     446554  0.0  0.0 1592 1780  pts/2 A    10:16:05  0:00 ruby system_te
+proddb   14434424 12.1  2.0 162656 162844  pts/0 A    10:16:33  3:35 ruby ora_backu
+proddb   14381082  0.0  0.0  236  252  pts/2 A    10:20:15  0:00 grep ruby 
+proddb     446554  0.0  0.0 1592 1780  pts/2 A    10:16:05  0:00 ruby system_te
+ INFO obs:   Mass (4 get end!!)Through15.214511 seconds)
+proddb   14434424 12.1  2.0 162656 162844  pts/0 A    10:16:33  3:39 ruby ora_backu
+proddb   14393366  0.0  0.0  236  252  pts/2 A    10:20:20  0:00 grep ruby 
+proddb     446554  0.0  0.0 1592 1780  pts/2 A    10:16:05  0:00 ruby system_te
+proddb   14434424 12.0  2.0 162656 162844  pts/0 A    10:16:33  3:44 ruby ora_backu
+proddb   14405758  0.0  0.0  236  252  pts/2 A    10:20:25  0:00 grep ruby 
+proddb     446554  0.0  0.0 1592 1780  pts/2 A    10:16:05  0:00 ruby system_te
+proddb   14434424 12.1  2.0 162656 162844  pts/0 A    10:16:33  3:50 ruby ora_backu
+proddb   13295692  0.0  0.0  236  252  pts/2 A    10:20:31  0:00 grep ruby 
+proddb     446554  0.0  0.0 1592 1780  pts/2 A    10:16:05  0:00 ruby system_te
+ INFO obs:   Mass (4 sort end!!Through17.19272 seconds)
+ INFO obs:     data.size: (150000)
+proddb   14434424 12.1  2.0 162656 162844  pts/0 A    10:16:33  3:55 ruby ora_backu
+proddb   14405762  0.0  0.0  236  252  pts/2 A    10:20:36  0:00 grep ruby 
+proddb     446554  0.0  0.0 1592 1780  pts/2 A    10:16:05  0:00 ruby system_te
+proddb   14434424 12.1  2.0 162656 162844  pts/0 A    10:16:33  4:01 ruby ora_backu
+proddb   13295696  0.0  0.0  236  252  pts/2 A    10:20:41  0:00 grep ruby 
+proddb     446554  0.0  0.0 1592 1780  pts/2 A    10:16:05  0:00 ruby system_te
+ INFO obs:     data.size: (118788,del -31212)
+ INFO obs:   Mass (4 uniq end!!Through7.310772 seconds)
+proddb   14434424 12.1  2.0 164148 164336  pts/0 A    10:16:33  4:06 ruby ora_backu
+proddb   14405766  0.0  0.0  236  252  pts/2 A    10:20:47  0:00 grep ruby 
+proddb     446554  0.0  0.0 1592 1780  pts/2 A    10:16:05  0:00 ruby system_te
+proddb   14434424 12.1  2.0 164148 164336  pts/0 A    10:16:33  4:11 ruby ora_backu
+proddb   13295700  0.0  0.0  236  252  pts/2 A    10:20:52  0:00 grep ruby 
+proddb     446554  0.0  0.0 1592 1780  pts/2 A    10:16:05  0:00 ruby system_te
+ INFO obs:   Mass (4 put end!!Through12.98857 seconds)
+ INFO obs: End mass (4 !!Through52.708035 seconds)
+ INFO obs: Start mass (5 !!)
+proddb   14434424 12.0  2.0 164148 164336  pts/0 A    10:16:33  4:15 ruby ora_backu
+proddb   14405770  0.0  0.0  236  252  pts/2 A    10:20:57  0:00 grep ruby 
+proddb     446554  0.0  0.0 1592 1780  pts/2 A    10:16:05  0:00 ruby system_te
+proddb   14434424 12.0  2.0 164148 164336  pts/0 A    10:16:33  4:20 ruby ora_backu
+proddb   13295704  0.0  0.0  236  252  pts/2 A    10:21:03  0:00 grep ruby 
+proddb     446554  0.0  0.0 1592 1780  pts/2 A    10:16:05  0:00 ruby system_te
+proddb   14434424 12.1  2.0 164148 164336  pts/0 A    10:16:33  4:26 ruby ora_backu
+proddb   14405774  0.0  0.0  236  252  pts/2 A    10:21:08  0:00 grep ruby 
+proddb     446554  0.0  0.0 1592 1780  pts/2 A    10:16:05  0:00 ruby system_te
+ INFO obs:   Mass (5 get end!!)Through15.911849 seconds)
+proddb   14434424 12.1  2.0 164148 164336  pts/0 A    10:16:33  4:31 ruby ora_backu
+proddb   14393370  0.0  0.0  236  252  pts/2 A    10:21:13  0:00 grep ruby 
+proddb     446554  0.0  0.0 1592 1780  pts/2 A    10:16:05  0:00 ruby system_te
+proddb   14434424 12.1  2.0 164148 164336  pts/0 A    10:16:33  4:36 ruby ora_backu
+proddb   14409874  0.0  0.0  236  252  pts/2 A    10:21:19  0:00 grep ruby 
+proddb     446554  0.0  0.0 1592 1780  pts/2 A    10:16:05  0:00 ruby system_te
+proddb   14434424 12.1  2.0 164148 164336  pts/0 A    10:16:33  4:42 ruby ora_backu
+proddb   14393374  0.0  0.0  236  252  pts/2 A    10:21:24  0:00 grep ruby 
+proddb     446554  0.0  0.0 1592 1780  pts/2 A    10:16:05  0:00 ruby system_te
+ INFO obs:   Mass (5 sort end!!Through16.309633 seconds)
+ INFO obs:     data.size: (150000)
+proddb   14434424 12.1  2.0 164148 164336  pts/0 A    10:16:33  4:47 ruby ora_backu
+proddb   14409878  0.0  0.0  236  252  pts/2 A    10:21:29  0:00 grep ruby 
+proddb     446554  0.0  0.0 1596 1784  pts/2 A    10:16:05  0:00 ruby system_te
+proddb   14434424 12.1  2.0 164148 164336  pts/0 A    10:16:33  4:52 ruby ora_backu
+proddb   14393378  0.0  0.0  236  252  pts/2 A    10:21:35  0:00 grep ruby 
+proddb     446554  0.0  0.0 1596 1784  pts/2 A    10:16:05  0:00 ruby system_te
+ INFO obs:     data.size: (112258,del -37742)
+ INFO obs:   Mass (5 uniq end!!Through7.791112 seconds)
+proddb   14434424 12.1  2.0 164148 164336  pts/0 A    10:16:33  4:57 ruby ora_backu
+proddb   14364880  0.0  0.0  236  252  pts/2 A    10:21:40  0:00 grep ruby 
+proddb     446554  0.0  0.0 1596 1784  pts/2 A    10:16:05  0:00 ruby system_te
+proddb   14434424 12.1  2.0 164148 164336  pts/0 A    10:16:33  5:02 ruby ora_backu
+proddb   14409888  0.0  0.0  236  252  pts/2 A    10:21:45  0:00 grep ruby 
+proddb     446554  0.0  0.0 1596 1784  pts/2 A    10:16:05  0:00 ruby system_te
+ INFO obs:   Mass (5 put end!!Through13.293791 seconds)
+ INFO obs: End mass (5 !!Through53.307908 seconds)
+ INFO obs: Start mass (6 !!)
+proddb   14434424 12.1  2.0 164148 164336  pts/0 A    10:16:33  5:07 ruby ora_backu
+proddb   14385202  0.0  0.0  236  252  pts/2 A    10:21:51  0:00 grep ruby 
+proddb     446554  0.0  0.0 1596 1784  pts/2 A    10:16:05  0:00 ruby system_te
+ INFO obs:   Mass (6 get end!!)Through6.058478 seconds)
+proddb   14434424 12.1  2.0 164148 164336  pts/0 A    10:16:33  5:13 ruby ora_backu
+proddb   14409892  0.0  0.0  236  252  pts/2 A    10:21:56  0:00 grep ruby 
+proddb     446554  0.0  0.0 1596 1784  pts/2 A    10:16:05  0:00 ruby system_te
+ INFO obs:   Mass (6 sort end!!Through5.562365 seconds)
+ INFO obs:     data.size: (59030)
+proddb   14434424 12.1  2.0 164148 164336  pts/0 A    10:16:33  5:18 ruby ora_backu
+proddb   14409894  0.0  0.0  236  252  pts/2 A    10:22:01  0:00 grep ruby 
+proddb     446554  0.0  0.0 1596 1784  pts/2 A    10:16:05  0:00 ruby system_te
+ INFO obs:     data.size: (51549,del -7481)
+ INFO obs:   Mass (6 uniq end!!Through1.230841 seconds)
+proddb   14434424 12.1  2.0 164148 164336  pts/0 A    10:16:33  5:22 ruby ora_backu
+proddb   14409896  0.0  0.0  236  252  pts/2 A    10:22:06  0:00 grep ruby 
+proddb     446554  0.0  0.0 1596 1784  pts/2 A    10:16:05  0:00 ruby system_te
+ INFO obs:   Mass (6 put end!!Through7.783915 seconds)
+ INFO obs: End mass (6 !!Through20.637137 seconds)
+proddb   14434424 12.1  2.0 164148 164336  pts/0 A    10:16:33  5:27 ruby ora_backu
+proddb   14385212  0.0  0.0  236  252  pts/2 A    10:22:12  0:00 grep ruby 
+proddb     446554  0.0  0.0 1596 1784  pts/2 A    10:16:05  0:00 ruby system_te
+proddb   14434424 12.0  2.0 164148 164336  pts/0 A    10:16:33  5:31 ruby ora_backu
+proddb   14409902  0.0  0.0  236  252  pts/2 A    10:22:17  0:00 grep ruby 
+proddb     446554  0.0  0.0 1596 1784  pts/2 A    10:16:05  0:00 ruby system_te
+proddb   14434424 12.0  2.0 164148 164336  pts/0 A    10:16:33  5:36 ruby ora_backu
+proddb   14385216  0.0  0.0  236  252  pts/2 A    10:22:22  0:00 grep ruby 
+proddb     446554  0.0  0.0 1596 1784  pts/2 A    10:16:05  0:00 ruby system_te
+ INFO obs: The (0) through 353.524462 seconds!
+ INFO obs: The (1 start!)
+ INFO obs: del percent : 0.226011507633508
+ INFO obs: Start mass (0 !!)
+proddb   14434424 12.0  2.0 164148 164336  pts/0 A    10:16:33  5:40 ruby ora_backu
+proddb   14409906  0.0  0.0  236  252  pts/2 A    10:22:28  0:00 grep ruby 
+proddb     446554  0.0  0.0 1596 1784  pts/2 A    10:16:05  0:00 ruby system_te
+proddb   14434424 12.0  2.0 164148 164336  pts/0 A    10:16:33  5:45 ruby ora_backu
+proddb   14385220  0.0  0.0  236  252  pts/2 A    10:22:33  0:00 grep ruby 
+proddb     446554  0.0  0.0 1596 1784  pts/2 A    10:16:05  0:00 ruby system_te
+proddb   14434424 12.0  2.0 164148 164336  pts/0 A    10:16:33  5:50 ruby ora_backu
+proddb   14409910  0.0  0.0  236  252  pts/2 A    10:22:38  0:00 grep ruby 
+proddb     446554  0.0  0.0 1596 1784  pts/2 A    10:16:05  0:00 ruby system_te
+ INFO obs:   Mass (0 get end!!)Through13.801499 seconds)
+proddb   14434424 11.9  2.0 164148 164336  pts/0 A    10:16:33  5:54 ruby ora_backu
+proddb   14385224  0.0  0.0  236  252  pts/2 A    10:22:44  0:00 grep ruby 
+proddb     446554  0.0  0.0 1596 1784  pts/2 A    10:16:05  0:00 ruby system_te
+proddb   14434424 12.0  2.0 164148 164336  pts/0 A    10:16:33  6:00 ruby ora_backu
+proddb   14409914  0.0  0.0  236  252  pts/2 A    10:22:49  0:00 grep ruby 
+proddb     446554  0.0  0.0 1596 1784  pts/2 A    10:16:05  0:00 ruby system_te
+proddb   14434424 11.9  2.0 164148 164336  pts/0 A    10:16:33  6:05 ruby ora_backu
+proddb   14385228  0.0  0.0  236  252  pts/2 A    10:22:54  0:00 grep ruby 
+proddb     446554  0.0  0.0 1596 1784  pts/2 A    10:16:05  0:00 ruby system_te
+ INFO obs:   Mass (0 sort end!!Through17.884391 seconds)
+ INFO obs:     data.size: (150000)
+proddb   14434424 12.0  2.0 164148 164336  pts/0 A    10:16:33  6:11 ruby ora_backu
+proddb   14409918  0.0  0.0  236  252  pts/2 A    10:23:00  0:00 grep ruby 
+proddb     446554  0.0  0.0 1596 1784  pts/2 A    10:16:05  0:00 ruby system_te
+proddb   14434424 12.0  2.0 164148 164336  pts/0 A    10:16:33  6:16 ruby ora_backu
+proddb   14385232  0.0  0.0  236  252  pts/2 A    10:23:05  0:00 grep ruby 
+proddb     446554  0.0  0.0 1596 1784  pts/2 A    10:16:05  0:00 ruby system_te
+proddb   14434424 12.0  2.0 164148 164336  pts/0 A    10:16:33  6:22 ruby ora_backu
+proddb   14409924  0.0  0.0  236  252  pts/2 A    10:23:10  0:00 grep ruby 
+proddb     446554  0.0  0.0 1596 1784  pts/2 A    10:16:05  0:00 ruby system_te
+ INFO obs:     data.size: (91950,del -58050)
+ INFO obs:   Mass (0 uniq end!!Through12.306652 seconds)
+proddb   14434424 12.0  2.0 164148 164336  pts/0 A    10:16:33  6:26 ruby ora_backu
+proddb   14385240  0.0  0.0  236  252  pts/2 A    10:23:16  0:00 grep ruby 
+proddb     446554  0.0  0.0 1596 1784  pts/2 A    10:16:05  0:00 ruby system_te
+proddb   14434424 12.0  2.0 164148 164336  pts/0 A    10:16:33  6:31 ruby ora_backu
+proddb   14409928  0.0  0.0  236  252  pts/2 A    10:23:21  0:00 grep ruby 
+proddb     446554  0.0  0.0 1596 1784  pts/2 A    10:16:05  0:00 ruby system_te
+ INFO obs:   Mass (0 put end!!Through12.282763 seconds)
+ INFO obs: End mass (0 !!Through56.27684 seconds)
+ INFO obs: Start mass (1 !!)
+proddb   14434424 12.0  2.0 164148 164336  pts/0 A    10:16:33  6:37 ruby ora_backu
+proddb   14385244  0.0  0.0  236  252  pts/2 A    10:23:26  0:00 grep ruby 
+proddb     446554  0.0  0.0 1596 1784  pts/2 A    10:16:05  0:00 ruby system_te
+proddb   14434424 12.0  2.0 164148 164336  pts/0 A    10:16:33  6:42 ruby ora_backu
+proddb   14409932  0.0  0.0  236  252  pts/2 A    10:23:31  0:00 grep ruby 
+proddb     446554  0.0  0.0 1596 1784  pts/2 A    10:16:05  0:00 ruby system_te
+proddb   14434424 12.0  2.0 164148 164336  pts/0 A    10:16:33  6:47 ruby ora_backu
+proddb   14385248  0.0  0.0  236  252  pts/2 A    10:23:37  0:00 grep ruby 
+proddb     446554  0.0  0.0 1596 1784  pts/2 A    10:16:05  0:00 ruby system_te
+ INFO obs:   Mass (1 get end!!)Through15.088841 seconds)
+proddb   14434424 12.0  2.0 164148 164336  pts/0 A    10:16:33  6:52 ruby ora_backu
+proddb   14409936  0.0  0.0  236  252  pts/2 A    10:23:42  0:00 grep ruby 
+proddb     446554  0.0  0.0 1596 1784  pts/2 A    10:16:05  0:00 ruby system_te
+proddb   14434424 12.0  2.0 164148 164336  pts/0 A    10:16:33  6:57 ruby ora_backu
+proddb   14385252  0.0  0.0  236  252  pts/2 A    10:23:47  0:00 grep ruby 
+proddb     446554  0.0  0.0 1600 1788  pts/2 A    10:16:05  0:00 ruby system_te
+proddb   14434424 12.0  2.0 164148 164336  pts/0 A    10:16:33  7:02 ruby ora_backu
+proddb   14409940  0.0  0.0  236  252  pts/2 A    10:23:53  0:00 grep ruby 
+proddb     446554  0.0  0.0 1600 1788  pts/2 A    10:16:05  0:00 ruby system_te
+ INFO obs:   Mass (1 sort end!!Through19.176357 seconds)
+ INFO obs:     data.size: (150000)
+proddb   14434424 12.0  2.0 164148 164336  pts/0 A    10:16:33  7:08 ruby ora_backu
+proddb   14385256  0.0  0.0  236  252  pts/2 A    10:23:58  0:00 grep ruby 
+proddb     446554  0.0  0.0 1600 1788  pts/2 A    10:16:05  0:00 ruby system_te
+proddb   14434424 12.0  2.0 164148 164336  pts/0 A    10:16:33  7:13 ruby ora_backu
+proddb   14409944  0.0  0.0  236  252  pts/2 A    10:24:03  0:00 grep ruby 
+proddb     446554  0.0  0.0 1600 1788  pts/2 A    10:16:05  0:00 ruby system_te
+ INFO obs:     data.size: (118437,del -31563)
+ INFO obs:   Mass (1 uniq end!!Through8.580194 seconds)
+proddb   14434424 12.0  2.0 164148 164336  pts/0 A    10:16:33  7:19 ruby ora_backu
+proddb   14385260  0.0  0.0  236  252  pts/2 A    10:24:09  0:00 grep ruby 
+proddb     446554  0.0  0.0 1600 1788  pts/2 A    10:16:05  0:00 ruby system_te
+proddb   14434424 12.0  2.0 164148 164336  pts/0 A    10:16:33  7:24 ruby ora_backu
+proddb   14409948  0.0  0.0  236  252  pts/2 A    10:24:14  0:00 grep ruby 
+proddb     446554  0.0  0.0 1600 1788  pts/2 A    10:16:05  0:00 ruby system_te
+proddb   14434424 12.0  2.0 164148 164336  pts/0 A    10:16:33  7:29 ruby ora_backu
+proddb   13606932  0.0  0.0  236  252  pts/2 A    10:24:19  0:00 grep ruby 
+proddb     446554  0.0  0.0 1600 1788  pts/2 A    10:16:05  0:00 ruby system_te
+ INFO obs:   Mass (1 put end!!Through13.857117 seconds)
+ INFO obs: End mass (1 !!Through56.708134 seconds)
+ INFO obs: Start mass (2 !!)
+proddb   14434424 12.0  2.0 164148 164336  pts/0 A    10:16:33  7:33 ruby ora_backu
+proddb   14409952  0.0  0.0  236  252  pts/2 A    10:24:25  0:00 grep ruby 
+proddb     446554  0.0  0.0 1600 1788  pts/2 A    10:16:05  0:00 ruby system_te
+proddb   14434424 12.0  2.0 164148 164336  pts/0 A    10:16:33  7:39 ruby ora_backu
+proddb   14372966  0.0  0.0  236  252  pts/2 A    10:24:30  0:00 grep ruby 
+proddb     446554  0.0  0.0 1600 1788  pts/2 A    10:16:05  0:00 ruby system_te
+ INFO obs:   Mass (2 get end!!)Through15.307963 seconds)
+proddb   14434424 12.0  2.0 164148 164336  pts/0 A    10:16:33  7:44 ruby ora_backu
+proddb   13606940  0.0  0.0  236  252  pts/2 A    10:24:35  0:00 grep ruby 
+proddb     446554  0.0  0.0 1600 1788  pts/2 A    10:16:05  0:00 ruby system_te
+proddb   14434424 12.0  2.0 164148 164336  pts/0 A    10:16:33  7:49 ruby ora_backu
+proddb   14372970  0.0  0.0  236  252  pts/2 A    10:24:41  0:00 grep ruby 
+proddb     446554  0.0  0.0 1600 1788  pts/2 A    10:16:05  0:00 ruby system_te
+proddb   14434424 12.0  2.0 164148 164336  pts/0 A    10:16:33  7:55 ruby ora_backu
+proddb   13606944  0.0  0.0  236  252  pts/2 A    10:24:46  0:00 grep ruby 
+proddb     446554  0.0  0.0 1600 1788  pts/2 A    10:16:05  0:00 ruby system_te
+proddb   14434424 12.0  2.0 164148 164336  pts/0 A    10:16:33  8:00 ruby ora_backu
+proddb   14372974  0.0  0.0  236  252  pts/2 A    10:24:51  0:00 grep ruby 
+proddb     446554  0.0  0.0 1600 1788  pts/2 A    10:16:05  0:00 ruby system_te
+ INFO obs:   Mass (2 sort end!!Through17.907206 seconds)
+ INFO obs:     data.size: (150000)
+proddb   14434424 12.0  2.0 164148 164336  pts/0 A    10:16:33  8:05 ruby ora_backu
+proddb   13606948  0.0  0.0  236  252  pts/2 A    10:24:56  0:00 grep ruby 
+proddb     446554  0.0  0.0 1600 1788  pts/2 A    10:16:05  0:00 ruby system_te
+proddb   14434424 12.0  2.0 164148 164336  pts/0 A    10:16:33  8:10 ruby ora_backu
+proddb   14372978  0.0  0.0  236  252  pts/2 A    10:25:02  0:00 grep ruby 
+proddb     446554  0.0  0.0 1600 1788  pts/2 A    10:16:05  0:00 ruby system_te
+ INFO obs:     data.size: (103536,del -46464)
+ INFO obs:   Mass (2 uniq end!!Through10.273907 seconds)
+proddb   14434424 12.0  2.0 164984 165172  pts/0 A    10:16:33  8:15 ruby ora_backu
+proddb   14442554  0.0  0.0  236  252  pts/2 A    10:25:07  0:00 grep ruby 
+proddb     446554  0.0  0.0 1600 1788  pts/2 A    10:16:05  0:00 ruby system_te
+proddb   14434424 12.1  2.0 164984 165172  pts/0 A    10:16:33  8:22 ruby ora_backu
+proddb   13606958  0.0  0.0  236  252  pts/2 A    10:25:12  0:00 grep ruby 
+proddb     446554  0.0  0.0 1600 1788  pts/2 A    10:16:05  0:00 ruby system_te
+ INFO obs:   Mass (2 put end!!Through12.430393 seconds)
+ INFO obs: End mass (2 !!Through55.920967 seconds)
+ INFO obs: Start mass (3 !!)
+proddb   14434424 12.1  2.0 164984 165172  pts/0 A    10:16:33  8:27 ruby ora_backu
+proddb   13606960  0.0  0.0  236  252  pts/2 A    10:25:18  0:00 grep ruby 
+proddb     446554  0.0  0.0 1600 1788  pts/2 A    10:16:05  0:00 ruby system_te
+proddb   14434424 12.1  2.0 164984 165172  pts/0 A    10:16:33  8:32 ruby ora_backu
+proddb   14397546  0.0  0.0  236  252  pts/2 A    10:25:23  0:00 grep ruby 
+proddb     446554  0.0  0.0 1600 1788  pts/2 A    10:16:05  0:00 ruby system_te
+proddb   14434424 12.1  2.0 164984 165172  pts/0 A    10:16:33  8:37 ruby ora_backu
+proddb   14397548  0.0  0.0  236  252  pts/2 A    10:25:28  0:00 grep ruby 
+proddb     446554  0.0  0.0 1600 1788  pts/2 A    10:16:05  0:00 ruby system_te
+ INFO obs:   Mass (3 get end!!)Through15.055475 seconds)
+proddb   14434424 12.1  2.0 164984 165172  pts/0 A    10:16:33  8:42 ruby ora_backu
+proddb   14397550  0.0  0.0  236  252  pts/2 A    10:25:34  0:00 grep ruby 
+proddb     446554  0.0  0.0 1600 1788  pts/2 A    10:16:05  0:00 ruby system_te
+proddb   14434424 12.1  2.0 164984 165172  pts/0 A    10:16:33  8:47 ruby ora_backu
+proddb   14381092  0.0  0.0  236  252  pts/2 A    10:25:39  0:00 grep ruby 
+proddb     446554  0.0  0.0 1600 1788  pts/2 A    10:16:05  0:00 ruby system_te
+proddb   14434424 12.0  2.0 164984 165172  pts/0 A    10:16:33  8:52 ruby ora_backu
+proddb   14397554  0.0  0.0  236  252  pts/2 A    10:25:44  0:00 grep ruby 
+proddb     446554  0.0  0.0 1600 1788  pts/2 A    10:16:05  0:00 ruby system_te
+ INFO obs:   Mass (3 sort end!!Through17.802958 seconds)
+ INFO obs:     data.size: (150000)
+proddb   14434424 12.1  2.0 164984 165172  pts/0 A    10:16:33  8:58 ruby ora_backu
+proddb   14381096  0.0  0.0  236  252  pts/2 A    10:25:50  0:00 grep ruby 
+proddb     446554  0.0  0.0 1600 1788  pts/2 A    10:16:05  0:00 ruby system_te
+proddb   14434424 12.1  2.0 164984 165172  pts/0 A    10:16:33  9:03 ruby ora_backu
+proddb   14397558  0.0  0.0  236  252  pts/2 A    10:25:55  0:00 grep ruby 
+proddb     446554  0.0  0.0 1600 1788  pts/2 A    10:16:05  0:00 ruby system_te
+ INFO obs:     data.size: (112983,del -37017)
+ INFO obs:   Mass (3 uniq end!!Through10.70157 seconds)
+proddb   14434424 12.1  2.0 164984 165172  pts/0 A    10:16:33  9:09 ruby ora_backu
+proddb   14381100  0.0  0.0  236  252  pts/2 A    10:26:00  0:00 grep ruby 
+proddb     446554  0.0  0.0 1600 1788  pts/2 A    10:16:05  0:00 ruby system_te
+proddb   14434424 12.1  2.0 164984 165172  pts/0 A    10:16:33  9:14 ruby ora_backu
+proddb   14397562  0.0  0.0  236  252  pts/2 A    10:26:06  0:00 grep ruby 
+proddb     446554  0.0  0.0 1604 1792  pts/2 A    10:16:05  0:00 ruby system_te
+proddb   14434424 12.1  2.0 164984 165172  pts/0 A    10:16:33  9:18 ruby ora_backu
+proddb   14381106  0.0  0.0  236  252  pts/2 A    10:26:11  0:00 grep ruby 
+proddb     446554  0.0  0.0 1604 1792  pts/2 A    10:16:05  0:00 ruby system_te
+ INFO obs:   Mass (3 put end!!Through12.684199 seconds)
+ INFO obs: End mass (3 !!Through56.245662 seconds)
+ INFO obs: Start mass (4 !!)
+proddb   14434424 12.1  2.0 164984 165172  pts/0 A    10:16:33  9:23 ruby ora_backu
+proddb   14381108  0.0  0.0  236  252  pts/2 A    10:26:16  0:00 grep ruby 
+proddb     446554  0.0  0.0 1604 1792  pts/2 A    10:16:05  0:00 ruby system_te
+proddb   14434424 12.1  2.0 164984 165172  pts/0 A    10:16:33  9:29 ruby ora_backu
+proddb   14381110  0.0  0.0  236  252  pts/2 A    10:26:22  0:00 grep ruby 
+proddb     446554  0.0  0.0 1604 1792  pts/2 A    10:16:05  0:00 ruby system_te
+proddb   14434424 12.1  2.0 164984 165172  pts/0 A    10:16:33  9:33 ruby ora_backu
+proddb   14381112  0.0  0.0  236  252  pts/2 A    10:26:27  0:00 grep ruby 
+proddb     446554  0.0  0.0 1604 1792  pts/2 A    10:16:05  0:00 ruby system_te
+ INFO obs:   Mass (4 get end!!)Through15.198271 seconds)
+proddb   14434424 12.1  2.0 164984 165172  pts/0 A    10:16:33  9:38 ruby ora_backu
+proddb   14381114  0.0  0.0  236  252  pts/2 A    10:26:32  0:00 grep ruby 
+proddb     446554  0.0  0.0 1604 1792  pts/2 A    10:16:05  0:00 ruby system_te
+proddb   14434424 12.1  2.0 164984 165172  pts/0 A    10:16:33  9:44 ruby ora_backu
+proddb   14381116  0.0  0.0  236  252  pts/2 A    10:26:37  0:00 grep ruby 
+proddb     446554  0.0  0.0 1604 1792  pts/2 A    10:16:05  0:00 ruby system_te
+proddb   14434424 12.1  2.0 164984 165172  pts/0 A    10:16:33  9:49 ruby ora_backu
+proddb   14389252  0.0  0.0  236  252  pts/2 A    10:26:43  0:00 grep ruby 
+proddb     446554  0.0  0.0 1604 1792  pts/2 A    10:16:05  0:00 ruby system_te
+ INFO obs:   Mass (4 sort end!!Through16.52368 seconds)
+ INFO obs:     data.size: (141998)
+proddb   14434424 12.1  2.0 164984 165172  pts/0 A    10:16:33  9:53 ruby ora_backu
+proddb   14385266  0.0  0.0  236  252  pts/2 A    10:26:48  0:00 grep ruby 
+proddb     446554  0.0  0.0 1604 1792  pts/2 A    10:16:05  0:00 ruby system_te
+ INFO obs:     data.size: (116604,del -25394)
+ INFO obs:   Mass (4 uniq end!!Through6.536316 seconds)
+proddb   14434424 12.1  2.0 164984 165172  pts/0 A    10:16:33  9:59 ruby ora_backu
+proddb   14397588  0.0  0.0  236  252  pts/2 A    10:26:53  0:00 grep ruby 
+proddb     446554  0.0  0.0 1604 1792  pts/2 A    10:16:05  0:00 ruby system_te
+proddb   14434424 12.1  2.0 164984 165172  pts/0 A    10:16:33 10:04 ruby ora_backu
+proddb   14385270  0.0  0.0  236  252  pts/2 A    10:26:59  0:00 grep ruby 
+proddb     446554  0.0  0.0 1604 1792  pts/2 A    10:16:05  0:00 ruby system_te
+proddb   14434424 12.1  2.0 164984 165172  pts/0 A    10:16:33 10:09 ruby ora_backu
+proddb   14397592  0.0  0.0  236  252  pts/2 A    10:27:04  0:00 grep ruby 
+proddb     446554  0.0  0.0 1604 1792  pts/2 A    10:16:05  0:00 ruby system_te
+ INFO obs:   Mass (4 put end!!Through14.625327 seconds)
+ INFO obs: End mass (4 !!Through52.885082 seconds)
+proddb   14434424 12.0  2.0 164984 165172  pts/0 A    10:16:33 10:13 ruby ora_backu
+proddb   14385276  0.0  0.0  236  252  pts/2 A    10:27:09  0:00 grep ruby 
+proddb     446554  0.0  0.0 1604 1792  pts/2 A    10:16:05  0:00 ruby system_te
+proddb   14434424 12.0  2.0 164984 165172  pts/0 A    10:16:33 10:16 ruby ora_backu
+proddb   14385278  0.0  0.0  236  252  pts/2 A    10:27:15  0:00 grep ruby 
+proddb     446554  0.0  0.0 1604 1792  pts/2 A    10:16:05  0:00 ruby system_te
+proddb   14434424 12.0  2.0 164984 165172  pts/0 A    10:16:33 10:21 ruby ora_backu
+proddb   14397600  0.0  0.0  236  252  pts/2 A    10:27:20  0:00 grep ruby 
+proddb     446554  0.0  0.0 1604 1792  pts/2 A    10:16:05  0:00 ruby system_te
+ INFO obs: The (1) through 295.861046 seconds!
+ INFO obs: total row count: 543510
+ INFO obs: total del percent: 0.43305711674949/
+ INFO obs:   sort_uniq_all End!
+ INFO obs: App End! time: 2008-01-11 10:27:23  486
+ INFO obs: Through 649.855858 seconds!
+ INFO obs: 
+ INFO obs: @test_equal_count : 0
+ INFO obs: @test_item_count : 0
+ INFO obs: @test_item_nodo_count : 0
+ INFO obs: @test_datafile_count : 0
+proddb   14434426  0.0  0.0  236  252  pts/2 A    10:27:25  0:00 grep ruby 
+proddb     446554  0.0  0.0 1604 1792  pts/2 A    10:16:05  0:00 ruby system_te
+proddb   14397604  0.0  0.0  236  252  pts/2 A    10:27:31  0:00 grep ruby 
+proddb     446554  0.0  0.0 1604 1792  pts/2 A    10:16:05  0:00 ruby system_te
+proddb   14434430  0.0  0.0  236  252  pts/2 A    10:27:36  0:00 grep ruby 
+proddb     446554  0.0  0.0 1604 1792  pts/2 A    10:16:05  0:00 ruby system_te
+proddb   14397608  0.0  0.0  236  252  pts/2 A    10:27:41  0:00 grep ruby 
+proddb     446554  0.0  0.0 1604 1792  pts/2 A    10:16:05  0:00 ruby system_te
+proddb   14434434  0.0  0.0  236  252  pts/2 A    10:27:47  0:00 grep ruby 
+proddb     446554  0.0  0.0 1604 1792  pts/2 A    10:16:05  0:00 ruby system_te
+proddb   14434436  0.0  0.0  236  252  pts/2 A    10:27:52  0:00 grep ruby 
+proddb     446554  0.0  0.0 1604 1792  pts/2 A    10:16:05  0:00 ruby system_te
+proddb   14397614  0.0  0.0  236  252  pts/2 A    10:27:57  0:00 grep ruby 
+proddb     446554  0.0  0.0 1604 1792  pts/2 A    10:16:05  0:00 ruby system_te
+proddb   14434440  0.0  0.0  236  252  pts/2 A    10:28:03  0:00 grep ruby 
+proddb     446554  0.0  0.0 1604 1792  pts/2 A    10:16:05  0:00 ruby system_te
+proddb   14397618  0.0  0.0  236  252  pts/2 A    10:28:08  0:00 grep ruby 
+proddb     446554  0.0  0.0 1604 1792  pts/2 A    10:16:05  0:00 ruby system_te
+proddb   14397620  0.0  0.0  236  252  pts/2 A    10:28:13  0:00 grep ruby 
+proddb     446554  0.0  0.0 1604 1792  pts/2 A    10:16:05  0:00 ruby system_te
+proddb   14397622  0.0  0.0  236  252  pts/2 A    10:28:18  0:00 grep ruby 
+proddb     446554  0.0  0.0 1608 1796  pts/2 A    10:16:05  0:00 ruby system_te
+proddb   14389262  0.0  0.0  236  252  pts/2 A    10:28:24  0:00 grep ruby 
+proddb     446554  0.0  0.0 1608 1796  pts/2 A    10:16:05  0:00 ruby system_te
+proddb   14397626  0.0  0.0  236  252  pts/2 A    10:28:29  0:00 grep ruby 
+proddb     446554  0.0  0.0 1608 1796  pts/2 A    10:16:05  0:00 ruby system_te
+proddb   14389266  0.0  0.0  236  252  pts/2 A    10:28:34  0:00 grep ruby 
+proddb     446554  0.0  0.0 1608 1796  pts/2 A    10:16:05  0:00 ruby system_te
+proddb   14397630  0.0  0.0  236  252  pts/2 A    10:28:40  0:00 grep ruby 
+proddb     446554  0.0  0.0 1608 1796  pts/2 A    10:16:05  0:00 ruby system_te
+proddb   14397632  0.0  0.0  236  252  pts/2 A    10:28:45  0:00 grep ruby 
+proddb     446554  0.0  0.0 1608 1796  pts/2 A    10:16:05  0:00 ruby system_te
+proddb   14389272  0.0  0.0  236  252  pts/2 A    10:28:50  0:00 grep ruby 
+proddb     446554  0.0  0.0 1608 1796  pts/2 A    10:16:05  0:00 ruby system_te
+proddb   14397636  0.0  0.0  236  252  pts/2 A    10:28:56  0:00 grep ruby 
+proddb     446554  0.0  0.0 1608 1796  pts/2 A    10:16:05  0:00 ruby system_te
+proddb   14389276  0.0  0.0  236  252  pts/2 A    10:29:01  0:00 grep ruby 
+proddb     446554  0.0  0.0 1608 1796  pts/2 A    10:16:05  0:00 ruby system_te
+proddb   14397640  0.0  0.0  236  252  pts/2 A    10:29:06  0:00 grep ruby 
+proddb     446554  0.0  0.0 1608 1796  pts/2 A    10:16:05  0:00 ruby system_te
+proddb   14434448  0.0  0.0  236  252  pts/2 A    10:29:12  0:00 grep ruby 
+proddb     446554  0.0  0.0 1608 1796  pts/2 A    10:16:05  0:00 ruby system_te

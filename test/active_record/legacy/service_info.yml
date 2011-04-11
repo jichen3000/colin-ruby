@@ -1,0 +1,12 @@
+<% 1.upto(3) do |i| %>service_info<%= i %>:
+  service_id: <%= i %>
+  name: s<%= i %>
+  status: A
+  sub_id: 1
+<% end %>
+<% 4.upto(6) do |i| %>service_info<%= i %>:
+  service_id: <%= i %>
+  name: serv<%= i %>
+  status: S
+  sub_id: 2
+<% end %>

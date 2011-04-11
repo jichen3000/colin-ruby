@@ -1,0 +1,77 @@
+# Logfile created on Fri Aug 15 15:22:32 +0800 2008 by /
+  [4;36;1mSQL (0.031000)[0m   [0;1mselect lower(table_name) from user_tables[0m
+  [4;35;1mSQL (1.828000)[0m   [0mDROP TABLE addresses[0m
+  [4;36;1mSQL (0.203000)[0m   [0;1mDROP SEQUENCE addresses_seq[0m
+  [4;35;1mSQL (0.563000)[0m   [0mCREATE TABLE addresses (id NUMBER(38) NOT NULL PRIMARY KEY, street VARCHAR2(255) DEFAULT NULL NULL, city VARCHAR2(255) DEFAULT NULL NULL, addressable_id NUMBER(38) DEFAULT NULL NULL, addressable_type VARCHAR2(255) DEFAULT NULL NULL) [0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mCREATE SEQUENCE addresses_seq START WITH 10000[0m
+  [4;35;1mFarmer Columns (0.000000)[0m   [0m select column_name as name, data_type as sql_type, data_default, nullable,
+ decode(data_type, 'NUMBER', data_precision,
+ 'FLOAT', data_precision,
+ 'VARCHAR2', data_length,
+ 'CHAR', data_length,
+ null) as limit,
+ decode(data_type, 'NUMBER', data_scale, null) as scale
+ from all_tab_columns
+ where owner = 'COLIN'
+ and table_name = 'FARMERS'
+ order by column_id
+[0m
+  [4;36;1mFarmer Load (0.000000)[0m   [0;1mselect * from (select raw_sql_.*, rownum raw_rnum_ from (SELECT * FROM farmers WHERE (farmers.name = 'Farmer Fred') ) raw_sql_ where rownum <= 1) where raw_rnum_ > 0[0m
+  [4;35;1mFarmer Update (0.015000)[0m   [0mUPDATE farmers SET address = 'aaaa' WHERE id = 10000[0m
+  [4;36;1mCow Columns (0.000000)[0m   [0;1m select column_name as name, data_type as sql_type, data_default, nullable,
+ decode(data_type, 'NUMBER', data_precision,
+ 'FLOAT', data_precision,
+ 'VARCHAR2', data_length,
+ 'CHAR', data_length,
+ null) as limit,
+ decode(data_type, 'NUMBER', data_scale, null) as scale
+ from all_tab_columns
+ where owner = 'COLIN'
+ and table_name = 'COWS'
+ order by column_id
+[0m
+  [4;35;1mCow Load (0.016000)[0m   [0mselect * from (select raw_sql_.*, rownum raw_rnum_ from (SELECT * FROM cows WHERE (cows.name = 'Cow mm') ) raw_sql_ where rownum <= 1) where raw_rnum_ > 0[0m
+  [4;36;1mCow Load (0.000000)[0m   [0;1mselect * from (select raw_sql_.*, rownum raw_rnum_ from (SELECT * FROM cows WHERE (cows.name = 'Cow mm0') ) raw_sql_ where rownum <= 1) where raw_rnum_ > 0[0m
+  [4;35;1mCow Load (0.000000)[0m   [0mselect * from (select raw_sql_.*, rownum raw_rnum_ from (SELECT * FROM cows WHERE (cows.name = 'Cow mm1') ) raw_sql_ where rownum <= 1) where raw_rnum_ > 0[0m
+  [4;36;1mCow Load (0.000000)[0m   [0;1mselect * from (select raw_sql_.*, rownum raw_rnum_ from (SELECT * FROM cows WHERE (cows.name = 'Cow mm2') ) raw_sql_ where rownum <= 1) where raw_rnum_ > 0[0m
+  [4;35;1mCow Load (0.000000)[0m   [0mselect * from (select raw_sql_.*, rownum raw_rnum_ from (SELECT * FROM cows WHERE (cows.name = 'Cow mm3') ) raw_sql_ where rownum <= 1) where raw_rnum_ > 0[0m
+  [4;36;1mCow Load (0.000000)[0m   [0;1mselect * from (select raw_sql_.*, rownum raw_rnum_ from (SELECT * FROM cows WHERE (cows.name = 'Cow mm4') ) raw_sql_ where rownum <= 1) where raw_rnum_ > 0[0m
+  [4;35;1mCow Load (0.000000)[0m   [0mselect * from (select raw_sql_.*, rownum raw_rnum_ from (SELECT * FROM cows WHERE (cows.name = 'Cow mm5') ) raw_sql_ where rownum <= 1) where raw_rnum_ > 0[0m
+  [4;36;1mCow Load (0.000000)[0m   [0;1mselect * from (select raw_sql_.*, rownum raw_rnum_ from (SELECT * FROM cows WHERE (cows.name = 'Cow mm6') ) raw_sql_ where rownum <= 1) where raw_rnum_ > 0[0m
+  [4;35;1mCow Load (0.000000)[0m   [0mselect * from (select raw_sql_.*, rownum raw_rnum_ from (SELECT * FROM cows WHERE (cows.name = 'Cow mm7') ) raw_sql_ where rownum <= 1) where raw_rnum_ > 0[0m
+  [4;36;1mCow Load (0.000000)[0m   [0;1mselect * from (select raw_sql_.*, rownum raw_rnum_ from (SELECT * FROM cows WHERE (cows.name = 'Cow mm8') ) raw_sql_ where rownum <= 1) where raw_rnum_ > 0[0m
+  [4;35;1mCow Load (0.000000)[0m   [0mselect * from (select raw_sql_.*, rownum raw_rnum_ from (SELECT * FROM cows WHERE (cows.name = 'Cow mm9') ) raw_sql_ where rownum <= 1) where raw_rnum_ > 0[0m
+  [4;36;1mFarmer Load (0.000000)[0m   [0;1mselect * from (select raw_sql_.*, rownum raw_rnum_ from (SELECT * FROM farmers WHERE (farmers.name = 'Farmer Fred') ) raw_sql_ where rownum <= 1) where raw_rnum_ > 0[0m
+  [4;35;1mReseller Columns (0.000000)[0m   [0m select column_name as name, data_type as sql_type, data_default, nullable,
+ decode(data_type, 'NUMBER', data_precision,
+ 'FLOAT', data_precision,
+ 'VARCHAR2', data_length,
+ 'CHAR', data_length,
+ null) as limit,
+ decode(data_type, 'NUMBER', data_scale, null) as scale
+ from all_tab_columns
+ where owner = 'COLIN'
+ and table_name = 'RESELLERS'
+ order by column_id
+[0m
+  [4;36;1mReseller Load (0.000000)[0m   [0;1mselect * from (select raw_sql_.*, rownum raw_rnum_ from (SELECT * FROM resellers WHERE (resellers.name = 'R 2') ) raw_sql_ where rownum <= 1) where raw_rnum_ > 0[0m
+  [4;35;1mAddress Columns (0.000000)[0m   [0m select column_name as name, data_type as sql_type, data_default, nullable,
+ decode(data_type, 'NUMBER', data_precision,
+ 'FLOAT', data_precision,
+ 'VARCHAR2', data_length,
+ 'CHAR', data_length,
+ null) as limit,
+ decode(data_type, 'NUMBER', data_scale, null) as scale
+ from all_tab_columns
+ where owner = 'COLIN'
+ and table_name = 'ADDRESSES'
+ order by column_id
+[0m
+  [4;36;1mAddress Load (0.000000)[0m   [0;1mselect * from (select raw_sql_.*, rownum raw_rnum_ from (SELECT * FROM addresses WHERE (addresses.city = 'HangZhou') ) raw_sql_ where rownum <= 1) where raw_rnum_ > 0[0m
+  [4;35;1mAddress Create (0.000000)[0m   [0mINSERT INTO addresses (city, addressable_type, addressable_id, id, street) VALUES('HangZhou', NULL, NULL, 10000, NULL)[0m
+  [4;36;1mAddress Load (0.000000)[0m   [0;1mselect * from (select raw_sql_.*, rownum raw_rnum_ from (SELECT * FROM addresses WHERE (addresses.city = 'ShangHai') ) raw_sql_ where rownum <= 1) where raw_rnum_ > 0[0m
+  [4;35;1mAddress Create (0.000000)[0m   [0mINSERT INTO addresses (city, addressable_type, addressable_id, id, street) VALUES('ShangHai', NULL, NULL, 10001, NULL)[0m
+  [4;36;1mAddress Load (0.000000)[0m   [0;1mselect * from (select raw_sql_.*, rownum raw_rnum_ from (SELECT * FROM addresses WHERE (addresses.addressable_id = 10000 AND addresses.addressable_type = 'Farmer') ) raw_sql_ where rownum <= 1) where raw_rnum_ > 0[0m
+  [4;35;1mAddress Update (0.000000)[0m   [0mUPDATE addresses SET addressable_type = 'Farmer', addressable_id = 10000, street = 'weng' WHERE id = 10000[0m
+  [4;36;1mAddress Load (0.000000)[0m   [0;1mselect * from (select raw_sql_.*, rownum raw_rnum_ from (SELECT * FROM addresses WHERE (addresses.addressable_id = 10002 AND addresses.addressable_type = 'Reseller') ) raw_sql_ where rownum <= 1) where raw_rnum_ > 0[0m
+  [4;35;1mAddress Update (0.000000)[0m   [0mUPDATE addresses SET addressable_type = 'Reseller', addressable_id = 10002, street = 'guang' WHERE id = 10001[0m

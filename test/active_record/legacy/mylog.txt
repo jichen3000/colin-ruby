@@ -1,0 +1,63 @@
+# Logfile created on Mon Aug 18 14:35:03 +0800 2008 by /
+  [4;36;1mSQL (0.141000)[0m   [0;1mselect lower(table_name) from user_tables[0m
+  [4;35;1mSQL (2.469000)[0m   [0mCREATE TABLE mc$dr_mc$dr_sub_system (mc$dr_mc$dr_sub_system_id NUMBER(38) NOT NULL PRIMARY KEY, name VARCHAR2(30) DEFAULT NULL NULL, status VARCHAR2(2) DEFAULT NULL NULL) [0m
+  [4;36;1mSQL (0.047000)[0m   [0;1mCREATE SEQUENCE mc$dr_mc$dr_sub_system_seq START WITH 10000[0m
+  [4;36;1mSQL (0.031000)[0m   [0;1mselect lower(table_name) from user_tables[0m
+  [4;35;1mSQL (0.203000)[0m   [0mDROP TABLE mc$dr_mc$dr_sub_system[0m
+  [4;36;1mSQL (0.188000)[0m   [0;1mDROP SEQUENCE mc$dr_mc$dr_sub_system_seq[0m
+  [4;35;1mSQL (0.093000)[0m   [0mCREATE TABLE mc$dr_mc$dr_sub_system (id NUMBER(38) NOT NULL PRIMARY KEY, name VARCHAR2(30) DEFAULT NULL NULL, status VARCHAR2(2) DEFAULT NULL NULL) [0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mCREATE SEQUENCE mc$dr_mc$dr_sub_system_seq START WITH 10000[0m
+  [4;36;1mSQL (0.032000)[0m   [0;1mselect lower(table_name) from user_tables[0m
+  [4;35;1mSQL (0.125000)[0m   [0mCREATE TABLE mc$dr_sub_system (id NUMBER(38) NOT NULL PRIMARY KEY, name VARCHAR2(30) DEFAULT NULL NULL, status VARCHAR2(2) DEFAULT NULL NULL) [0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mCREATE SEQUENCE mc$dr_sub_system_seq START WITH 10000[0m
+  [4;36;1mSQL (0.031000)[0m   [0;1mselect lower(table_name) from user_tables[0m
+  [4;35;1mSQL (0.016000)[0m   [0mDROP TABLE mc$dr_sub_system[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mDROP SEQUENCE mc$dr_sub_system_seq[0m
+  [4;35;1mSQL (0.047000)[0m   [0mCREATE TABLE mc$dr_sub_system (mc$dr_sub_system_id NUMBER(38) NOT NULL PRIMARY KEY, name VARCHAR2(30) DEFAULT NULL NULL, status VARCHAR2(2) DEFAULT NULL NULL) [0m
+  [4;36;1mSQL (0.016000)[0m   [0;1mCREATE SEQUENCE mc$dr_sub_system_seq START WITH 10000[0m
+  [4;36;1mSQL (0.047000)[0m   [0;1mselect lower(table_name) from user_tables[0m
+  [4;35;1mSQL (0.015000)[0m   [0mDROP TABLE mc$dr_sub_system[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mDROP SEQUENCE mc$dr_sub_system_seq[0m
+  [4;35;1mSQL (0.094000)[0m   [0mCREATE TABLE mc$dr_sub_system (sub_id NUMBER(38) NOT NULL PRIMARY KEY, name VARCHAR2(30) DEFAULT NULL NULL, status VARCHAR2(2) DEFAULT NULL NULL) [0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mCREATE SEQUENCE mc$dr_sub_system_seq START WITH 10000[0m
+  [4;36;1mSQL (0.204000)[0m   [0;1mselect lower(table_name) from user_tables[0m
+  [4;35;1mSQL (2.047000)[0m   [0mDROP TABLE mc$dr_sub_system[0m
+  [4;36;1mSQL (0.250000)[0m   [0;1mDROP SEQUENCE mc$dr_sub_system_seq[0m
+  [4;35;1mSQL (0.687000)[0m   [0mCREATE TABLE mc$dr_sub_system (sub_id NUMBER(38) NOT NULL PRIMARY KEY, name VARCHAR2(30) DEFAULT NULL NULL, status VARCHAR2(2) DEFAULT NULL NULL) [0m
+  [4;36;1mSQL (0.016000)[0m   [0;1mCREATE SEQUENCE mc$dr_sub_system_seq START WITH 10000[0m
+  [4;35;1mSQL (0.031000)[0m   [0mselect lower(table_name) from user_tables[0m
+  [4;36;1mSQL (0.141000)[0m   [0;1mCREATE TABLE mc$dr_service_info (service_id NUMBER(38) NOT NULL PRIMARY KEY, name VARCHAR2(30) DEFAULT NULL NULL, status VARCHAR2(2) DEFAULT NULL NULL, sub_id NUMBER(38) DEFAULT NULL NULL) [0m
+  [4;35;1mSQL (0.000000)[0m   [0mCREATE SEQUENCE mc$dr_service_info_seq START WITH 10000[0m
+  [4;36;1mSQL (0.031000)[0m   [0;1mselect lower(table_name) from user_tables[0m
+  [4;35;1mSQL (0.016000)[0m   [0mDROP TABLE mc$dr_sub_system[0m
+  [4;36;1mSQL (0.015000)[0m   [0;1mDROP SEQUENCE mc$dr_sub_system_seq[0m
+  [4;35;1mSQL (0.110000)[0m   [0mCREATE TABLE mc$dr_sub_system (sub_id NUMBER(38) NOT NULL PRIMARY KEY, name VARCHAR2(30) DEFAULT NULL NULL, status VARCHAR2(2) DEFAULT NULL NULL) [0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mCREATE SEQUENCE mc$dr_sub_system_seq START WITH 10000[0m
+  [4;35;1mSQL (0.031000)[0m   [0mselect lower(table_name) from user_tables[0m
+  [4;36;1mSQL (0.031000)[0m   [0;1mDROP TABLE mc$dr_service_info[0m
+  [4;35;1mSQL (0.032000)[0m   [0mDROP SEQUENCE mc$dr_service_info_seq[0m
+  [4;36;1mSQL (0.062000)[0m   [0;1mCREATE TABLE mc$dr_service_info (service_id NUMBER(38) NOT NULL PRIMARY KEY, name VARCHAR2(30) DEFAULT NULL NULL, status VARCHAR2(2) DEFAULT NULL NULL, sub_id NUMBER(38) DEFAULT NULL NULL) [0m
+  [4;35;1mSQL (0.000000)[0m   [0mCREATE SEQUENCE mc$dr_service_info_seq START WITH 10000[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mOCIError: ORA-00904: "ID": ±êÊ¶·ûÎÞÐ§: insert into mc$dr_sub_system (id,status) values (11,'C') [0m
+  [4;36;1mSQL (0.000000)[0m   [0;1minsert into mc$dr_sub_system (sub_id,status) values (11,'C') [0m
+  [4;36;1mSQL (0.000000)[0m   [0;1minsert into mc$dr_sub_system (sub_id,name,status) values (11,'s11','C') [0m
+  [4;35;1mSQL (0.000000)[0m   [0mupdate mc$dr_sub_system set status='U' [0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mOCIError: ORA-00903: ±íÃûÎÞÐ§: select * from into mc$dr_sub_system where sub_id>8 [0m
+  [4;36;1mSQL (0.000000)[0m   [0;1minsert into mc$dr_sub_system (sub_id,name,status) values (11,'s11','C') [0m
+  [4;35;1mSQL (0.000000)[0m   [0mupdate mc$dr_sub_system set status='U' [0m
+  [4;36;1mSQL (0.110000)[0m   [0;1mselect * from mc$dr_sub_system where sub_id>8 [0m
+  [4;35;1mSQL (0.000000)[0m   [0mdelete mc$dr_sub_system where sub_id>9 [0m
+  [4;36;1mSQL (0.000000)[0m   [0;1minsert into mc$dr_sub_system (sub_id,name,status) values (11,'s11','C') [0m
+  [4;35;1mSQL (0.000000)[0m   [0mupdate mc$dr_sub_system set status='U' where sub_id=11 [0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mselect * from mc$dr_sub_system where sub_id>8 [0m
+  [4;35;1mSQL (0.000000)[0m   [0mdelete mc$dr_sub_system where sub_id>9 [0m
+  [4;36;1mSQL (0.000000)[0m   [0;1minsert into mc$dr_sub_system (sub_id,name,status) values (11,'s11','C') [0m
+  [4;35;1mSQL (0.000000)[0m   [0mupdate mc$dr_sub_system set status='U' where sub_id=11 [0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mselect * from mc$dr_sub_system where sub_id>8 [0m
+  [4;36;1mSQL (0.000000)[0m   [0;1minsert into mc$dr_sub_system (sub_id,name,status) values (11,'s11','C') [0m
+  [4;35;1mSQL (0.000000)[0m   [0mupdate mc$dr_sub_system set status='U' where sub_id=11 [0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mselect * from mc$dr_sub_system where sub_id>8 [0m
+  [4;36;1mSQL (0.000000)[0m   [0;1minsert into mc$dr_sub_system (sub_id,name,status) values (11,'s11','C') [0m
+  [4;35;1mSQL (0.000000)[0m   [0mupdate mc$dr_sub_system set status='U' where sub_id=11 [0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mselect * from mc$dr_sub_system where sub_id>8 [0m
+  [4;35;1mSQL (0.000000)[0m   [0mdelete mc$dr_sub_system where sub_id>9 [0m

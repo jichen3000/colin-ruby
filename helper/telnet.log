@@ -1,0 +1,261 @@
+Trying 130.36.21.87...
+Connected to 130.36.21.87.
+���
+
+telnet (backup)
+
+
+
+http://whytheluckystiff.net/articles/seeingMetaclassesClearly.html
+http://www.hokstad.com/ruby-object-model.html
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+AIX Version 5
+Copyright IBM Corporation, 1982, 2007.
+login: root
+root's Password: 
+*******************************************************************************
+*                                                                             *
+*                                                                             *
+*  Welcome to AIX Version 5.3!                                                *
+*                                                                             *
+*                                                                             *
+*  Please see the README file in /usr/lpp/bos for information pertinent to    *
+*  this release of the AIX Operating System.                                  *
+*                                                                             *
+*                                                                             *
+*******************************************************************************
+Last unsuccessful login: Sat Feb 23 01:56:25 BEIST 2008 on ftp from ::ffff:10.234.6.143
+Last login: Mon Feb 25 14:23:29 BEIST 2008 on /dev/pts/7 from 130.36.11.235
+
+backup:/#ls
+.TTauthority      archlog           lpp               test
+.Xauthority       audit             lun.map           tftpboot
+.dt               back.io           mnt               tmp
+.dtprofile        bin               opt               tmp.count
+.profile          dev               oracle            u
+.rhosts           etc               patch             unix
+.sh_history       file_bak          proc              usr
+.vi_history       flashback         sbin              var
+.wmrc             home              smit.log          vm.out
+TT_DB             io.out            smit.script
+Tbackup           lib               smit.transaction
+a                 lost+found        sms
+backup:/#date
+Mon Feb 25 15:28:34 BEIST 2008
+backup:/#uname
+AIX
+backup:/#rsh wpgl
+*******************************************************************************
+*                                                                             *
+*                                                                             *
+*  Welcome to AIX Version 5.3!                                                *
+*                                                                             *
+*                                                                             *
+*  Please see the README file in /usr/lpp/bos for information pertinent to    *
+*  this release of the AIX Operating System.                                  *
+*                                                                             *
+*                                                                             *
+*******************************************************************************
+Last unsuccessful login: ��Ԫ2008��02��01��  ������  10ʱ52��54�� on /dev/pts/5 from 130.36.11.189
+Last login: ��Ԫ2008��02��25��  ����һ  14ʱ15��09�� on /dev/pts/3 from backup
+
+P55A_A.root:/#hostname
+P55A_A
+P55A_A.root:/#exit
+Connection closed.
+backup:/#date
+Mon Feb 25 15:28:35 BEIST 2008
+backup:/#Trying 130.36.21.87...
+Connected to 130.36.21.87.
+���
+
+telnet (backup)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+AIX Version 5
+Copyright IBM Corporation, 1982, 2007.
+login: root
+root's Password: 
+*******************************************************************************
+*                                                                             *
+*                                                                             *
+*  Welcome to AIX Version 5.3!                                                *
+*                                                                             *
+*                                                                             *
+*  Please see the README file in /usr/lpp/bos for information pertinent to    *
+*  this release of the AIX Operating System.                                  *
+*                                                                             *
+*                                                                             *
+*******************************************************************************
+Last unsuccessful login: Sat Feb 23 01:56:25 BEIST 2008 on ftp from ::ffff:10.234.6.143
+Last login: Mon Feb 25 15:28:33 BEIST 2008 on /dev/pts/8 from 130.36.11.239
+
+backup:/#ls
+.TTauthority      archlog           lpp               test
+.Xauthority       audit             lun.map           tftpboot
+.dt               back.io           mnt               tmp
+.dtprofile        bin               opt               tmp.count
+.profile          dev               oracle            u
+.rhosts           etc               patch             unix
+.sh_history       file_bak          proc              usr
+.vi_history       flashback         sbin              var
+.wmrc             home              smit.log          vm.out
+TT_DB             io.out            smit.script
+Tbackup           lib               smit.transaction
+a                 lost+found        sms
+backup:/#date
+Mon Feb 25 15:34:11 BEIST 2008
+backup:/#uname
+AIX
+backup:/#rsh wpgl
+*******************************************************************************
+*                                                                             *
+*                                                                             *
+*  Welcome to AIX Version 5.3!                                                *
+*                                                                             *
+*                                                                             *
+*  Please see the README file in /usr/lpp/bos for information pertinent to    *
+*  this release of the AIX Operating System.                                  *
+*                                                                             *
+*                                                                             *
+*******************************************************************************
+Last unsuccessful login: ��Ԫ2008��02��01��  ������  10ʱ52��54�� on /dev/pts/5 from 130.36.11.189
+Last login: ��Ԫ2008��02��25��  ����һ  15ʱ28��49�� on /dev/pts/4 from backup
+
+P55A_A.root:/#hostname
+P55A_A
+P55A_A.root:/#exit
+Connection closed.
+backup:/#date
+Mon Feb 25 15:34:13 BEIST 2008
+backup:/#Trying 130.36.21.87...
+Connected to 130.36.21.87.
+���
+
+telnet (backup)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+AIX Version 5
+Copyright IBM Corporation, 1982, 2007.
+login: root
+root's Password: 
+*******************************************************************************
+*                                                                             *
+*                                                                             *
+*  Welcome to AIX Version 5.3!                                                *
+*                                                                             *
+*                                                                             *
+*  Please see the README file in /usr/lpp/bos for information pertinent to    *
+*  this release of the AIX Operating System.                                  *
+*                                                                             *
+*                                                                             *
+*******************************************************************************
+Last unsuccessful login: Sat Feb 23 01:56:25 BEIST 2008 on ftp from ::ffff:10.234.6.143
+Last login: Mon Feb 25 15:34:11 BEIST 2008 on /dev/pts/8 from 130.36.11.239
+
+backup:/#ls
+.TTauthority      archlog           lpp               test
+.Xauthority       audit             lun.map           tftpboot
+.dt               back.io           mnt               tmp
+.dtprofile        bin               opt               tmp.count
+.profile          dev               oracle            u
+.rhosts           etc               patch             unix
+.sh_history       file_bak          proc              usr
+.vi_history       flashback         sbin              var
+.wmrc             home              smit.log          vm.out
+TT_DB             io.out            smit.script
+Tbackup           lib               smit.transaction
+a                 lost+found        sms
+backup:/#date
+Mon Feb 25 15:34:30 BEIST 2008
+backup:/#uname
+AIX
+backup:/#rsh wpgl
+*******************************************************************************
+*                                                                             *
+*                                                                             *
+*  Welcome to AIX Version 5.3!                                                *
+*                                                                             *
+*                                                                             *
+*  Please see the README file in /usr/lpp/bos for information pertinent to    *
+*  this release of the AIX Operating System.                                  *
+*                                                                             *
+*                                                                             *
+*******************************************************************************
+Last unsuccessful login: ��Ԫ2008��02��01��  ������  10ʱ52��54�� on /dev/pts/5 from 130.36.11.189
+Last login: ��Ԫ2008��02��25��  ����һ  15ʱ34��26�� on /dev/pts/4 from backup
+
+P55A_A.root:/#hostname
+P55A_A
+P55A_A.root:/#exit
+Connection closed.
+backup:/#

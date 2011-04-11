@@ -1,0 +1,24 @@
+digraph graph_example {
+
+ /***** GLOBAL SETTINGS *****/
+
+ graph          [rotate=0, rankdir="LR"]
+ node           [color="#333333", style=filled,
+                 shape=box, fontname="Trebuchet MS"]
+ edge           [color="#666666", arrowhead="open", 
+                 fontname="Trebuchet MS", fontsize="11"]
+ node           [fillcolor="#294b76", fontcolor="white"]
+ 
+/***** Nodes *****/
+ a              [label="Node A"]
+ b              [label="Node B"]
+ c              [label="Node C"]
+ d              [label="Node D", fillcolor="#116611"]
+
+ /***** Edges *****/
+ a              -> b
+ b              -> c
+ c              -> d
+ b              -> d
+ a              -> d [label="direct path"]
+}

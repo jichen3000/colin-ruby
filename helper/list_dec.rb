@@ -1,0 +1,327 @@
+str_src = <<END_OF_STRING
+checkapply.sh*
+checkapply.sql*
+checkchangefile.sh*
+checkchangefile.sql*
+checkcleanlog.sh*
+checkcontrolfile.sql*
+checkdatafile.sql*
+checkdbfileconv.sql*
+checkdbstat.sh*
+checkdbstatsource.sh*
+checkdbstat.sql*
+checkfileconv.sh*
+checkgap.sh*
+checkgap.sql*
+checklogfileconv.sql*
+checklogfile.sql*
+checkresynccatalog.sh*
+checkrmancopy.sh*
+checkschedule.sh*
+checktransdelay.sh*
+checktransdelay.sql*
+checktransfer.sh*
+config/
+contact.tmp*
+Copyfile.sql*
+could*
+dbfileconv.txt.stbtest*
+del_arch.sh*
+del_audit_drb.sh*
+del_audit.sh*
+del_rp.sh*
+disasterdbrac.cfg*
+disastermctest.cfg*
+disastermctest.cfg.primary*
+disastermctest.cfg.standby
+disasteroradb.cfg*
+disasterstbtest.cfg*
+disasterxssi.cfg*
+disasterxssi.cfg.primary*
+disasterxssi.cfg.standby*
+err.datafile*
+exec_sql*
+exec_sql.sh*
+FRP SERVICE*
+generation.tmp*
+GetHA*
+hafile.1.2.lck*
+hafile.lck*
+hafile.lck.tmp*
+host.tmp*
+hzmc.OUT.9198*
+hzmc.SQL.9198*
+hzmc.SYSCHECK*
+initialization.tmp*
+itevdf*
+l*
+last_applied_log.sql*
+last_thread1.sql*
+last_thread2.sql*
+listener*
+listener.tmp*
+l.log*
+login.sql*
+logtransctl.sh*
+manage_disaster.sh*
+manage_query.sh*
+manager_apache.sh*
+manager_mongrel.sh*
+memory.tmp*
+monitor_rfs.sh*
+MOUNTED*
+mrfs*
+Network.cfg*
+Networkcheck*
+nohup.out*
+not.tmp*
+oscheck.sh*
+OSCOMMAND*
+OSSCRIPT*
+pids/
+plan.log*
+primary*
+Production*
+rbmountdb*
+readcfg.sh*
+recovernetwork*
+RISC.tmp*
+rmandel.sql*
+rmanscript.sql*
+rmip*
+rsync_transfer.rb*
+schedule_config.sh*
+schedule.sh*
+schedule_smon*
+sqlnet.log*
+standby*
+startdbra*
+startdrb*
+startweberr.txt*
+startxssi*
+stopdbra*
+stopdrb*
+stopxssi*
+switchdbra*
+switch_info.package*
+switchnetwork*
+SwitchoverGateway*
+sync*
+syscheck.cfg*
+T*
+TAfterSwitchover
+tagent.cfg*
+tagentctl.sh*
+Tagentctl.sh*
+Tagent.sh*
+TAppSwitchover*
+Tback.sh*
+Tbackup.archive*
+Tbackup.archive.sh*
+Tbackup.backup*
+Tbackup.cfg*
+Tbackup.file*
+Tbackup.merge*
+Tbackup.new*
+Tbackup.package*
+Tbackup.pribackup*
+Tbackup.query*
+Tbackup.query.sh*
+Tbackup.sh.test*
+Tbackup.test*
+TBeforeSwitchover*
+TBSwitchover*
+TBSwitchover.20090318*
+TCallRemoteCommand*
+Tcalltest*
+TChangeSync*
+TCheckit*
+TCheckSpaceUsage*
+TCheckSystem*
+Tchmod*
+Tconfigure*
+TCrossCheck*
+Tdisaster.package*
+test.sh*
+Tflashback*
+Tflashback.old*
+tfrp*
+tfsu.cfg*
+TGRestartFileSync*
+TGStopFileSync*
+TGSwitchTransferMode*
+TGWaitFileSync*
+THB*
+THighPackage*
+timeout.tmp*
+Tjobruninfo*
+TKeepPolicy*
+TKeepPolicy2*
+TKeepSpaceUsage*
+TKillWebLogic*
+Tload.sh*
+Tlocalcommand*
+TLogAdmin.Package*
+TLogAdmin.Package.old*
+Tlsnrctl.sh*
+tmergagent.cfg*
+tmergagentctl.sh*
+tmergagerolctl*
+Tmerge*
+TMFRP.Package*
+Tmonitor.package*
+TMonitorRFS*
+Tmonitor.sh*
+TMonitorSystem*
+tmp/
+tmrp*
+TOpenQuery*
+Toscommand*
+Tosscript*
+Tquery.merge*
+Tquery.sh*
+Trecover*
+TrecoverBlock.sh*
+Trecovereg*
+Trecoveregloop*
+Trecover.file*
+Trecover_nojobrun*
+Trecover.package*
+Trecover_pri.sh*
+Trecoverstdby.sh*
+Trecovertest.sh*
+Tremotecommand*
+Treport.sh*
+TRestartFileSync*
+TResync*
+TResyncMirror*
+Trmancomand*
+Trmanscript*
+trp*
+trust*
+trust.cfg*
+trust.cfg.20090318*
+trustdbrac.cfg*
+TrustDbra.cfg*
+trustfile.cfg*
+trustmctest.cfg*
+trustmctest.cfg.primary*
+trustmctest.cfg.primary.bak
+trustmctest.cfg.standby
+trustmctest.cfg.standby.bak
+trustmctest.log*
+trustmctest.log.recover*
+trustmerge.package*
+trustoradb.cfg*
+trustoradb.cfg.bak*
+trustpackage.sh*
+trust.sh*
+trust.sh.20090318*
+truststbtest.cfg*
+truststbtest.log.recover*
+truststbtest.log.rectest*
+truststbtest.log.switch*
+trustxssi.cfg*
+trustxssi.cfg.primary*
+trustxssi.cfg.standby*
+trustxssi.log*
+trustxssl.cfg*
+tsfu.cfg*
+TSplitMirror*
+TSplitSync*
+Tsqlcommand*
+Tsqlscript*
+TStartAfterNetwork*
+TStartAPP*
+TstartdisasLnsr*
+TstartdrbLnsr*
+TStartdrblsnr*
+TStartFRP*
+TStartMRP*
+TStartMRP2*
+TStartOralsnr*
+TStartService*
+TStartTRP*
+TStartTrustListener*
+TStartTuxedo*
+TStartTuxedo.old*
+TStartWebLogic*
+TStartWebLogic1*
+TStatFRP*
+TStatMRFS*
+TStatMRP*
+TStatService*
+TStatTRP*
+TStopAPP*
+TstopdisasLnsr*
+TstopdrbLnsr*
+TStopdrblsnr*
+TStopFileSync*
+TStopFRP*
+TStopMerge*
+TStopMRFS*
+TStopMRP*
+TStopOralsnr*
+TStopService*
+TStopTRP*
+TStopTuxedo*
+TStopWebLogic*
+TStopWebLogic1*
+TSwitchApplyMode*
+TSwitchNetwork*
+TSwitchNetwork.old*
+Tswitchover*
+TSwitchover*
+Tswitchover.old.0218*
+TSwitchTransferMode*
+Tunload.sh*
+Tverify*
+Twaitcommand*
+TWaitFileSync*
+unable*
+unload/
+waitfilesync*
+w.lst*
+w.sh*
+w.sql*
+END_OF_STRING
+def do_src(str_list)
+  r = []
+  str_list.each do |line|
+#    puts line
+    if line =~ /\*/ and (not line =~ /\.(sql)|(old)|(lst)|(log)|(tmp)|(cfg)|(lck)|(out)/)
+      puts line
+      r << line.sub!("*","")
+    end
+  end
+  r
+end
+def do_list2(list)
+  r=[]
+  list.each do |line|
+#    puts line
+    if line.strip! != ""
+      if line =~ /\d\.(.+)/
+        r << $1.strip
+        puts $1.strip
+      else
+        r << line
+        puts line
+      end
+    end
+  end
+  r
+end
+def write_file(list,file_name)
+  file = File.new(file_name,'w') 
+  list.each do |line|
+    file << (line+"\n")
+  end
+  file.close
+end
+#r = do_src(str_src)
+#write_file(r,'t1.txt')
+target_list = File.open('D:\new2','r').readlines
+r = do_list2(target_list)
+write_file(r,'t2.txt')
+p "ok"

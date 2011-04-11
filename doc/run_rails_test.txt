@@ -1,0 +1,23 @@
+生成对应的schema文件，在db/schema.rb
+因为加了前缀，所以可能会有点问题。在schema.rb中所有的表已经有前缀了。
+rake db:schema:dump
+rake RAILS_ENV=test db:schema:dump
+
+生成对应的fixtures文件
+生成对应的test.rb文件。
+rake test会跑所有的测试。
+rake test TEST=test/unit/role_test.rb
+会运行单个test的四个测试：
+
+rake test:units TEST=test/unit/role_test.rb
+
+
+ruby script/generate model department
+
+删除回收表
+purge recyclebin
+
+clob字段不支持find
+p IssueDetail.find_by_detail('issue_detail20')
+这样的语句是会报错的。
+

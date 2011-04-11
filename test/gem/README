@@ -1,0 +1,9 @@
+Colin's gem sample.
+over.
+
+gem build spec_name
+
+使用-i可以指定安装的目录，但是会出现实际不能引用的情况。
+gem ins -l gemsample-1.0.1.gem -i D:/work/test
+
+在使用时，可以直接require在gem包中的脚本文件。

@@ -1,0 +1,70 @@
+colin     5284  0.0  0.1  12204  1932 pts/1    S    00:38   0:00 ruby system_test.rb
+colin     5285  0.0  0.0   3864   528 pts/1    R    00:38   0:00 sh -c ps aux|grep ruby >> bdb_bigfile_test.log
+colin     5284  0.4  0.1  12204  1944 pts/1    S    00:38   0:00 ruby system_test.rb
+colin     5288  0.0  0.0   3864   524 pts/1    R    00:38   0:00 sh -c ps aux|grep ruby >> bdb_bigfile_test.log
+ INFO test: App Start! time: 2008-01-14 00:38:50  875
+ INFO test: loginfo_filename : mcb_20080102_142803.loit
+ INFO test: db_filename : mcb.db
+ INFO test: Write DB start...
+colin     5284  0.3  0.1  12204  1944 pts/1    S    00:38   0:00 ruby system_test.rb
+colin     5291 98.2  0.4  24004  5000 pts/0    R+   00:38   0:03 ruby bdb_bigfile_test.rb
+colin     5292  0.0  0.0   3860   532 pts/1    S    00:38   0:00 sh -c ps aux|grep ruby >> bdb_bigfile_test.log
+colin     5294  0.0  0.0   5024   776 pts/1    R    00:38   0:00 grep ruby
+colin     5284  0.2  0.1  12204  1944 pts/1    S    00:38   0:00 ruby system_test.rb
+colin     5291 95.8  0.4  24004  5000 pts/0    R+   00:38   0:08 ruby bdb_bigfile_test.rb
+colin     5295  0.0  0.0   3864   536 pts/1    S    00:38   0:00 sh -c ps aux|grep ruby >> bdb_bigfile_test.log
+colin     5297  0.0  0.0   5020   812 pts/1    R    00:38   0:00 grep ruby
+colin     5284  0.1  0.1  12204  1944 pts/1    S    00:38   0:00 ruby system_test.rb
+colin     5291 77.5  0.4  24004  5000 pts/0    R+   00:38   0:11 ruby bdb_bigfile_test.rb
+colin     5298  0.0  0.0   3864   528 pts/1    R    00:39   0:00 sh -c ps aux|grep ruby >> bdb_bigfile_test.log
+colin     5300  0.0  0.0   3864    88 pts/1    R    00:39   0:00 sh -c ps aux|grep ruby >> bdb_bigfile_test.log
+colin     5284  0.1  0.1  12204  1944 pts/1    S    00:38   0:00 ruby system_test.rb
+colin     5291 63.0  0.4  24004  5000 pts/0    D+   00:38   0:12 ruby bdb_bigfile_test.rb
+colin     5301  0.0  0.0   3864   532 pts/1    S    00:39   0:00 sh -c ps aux|grep ruby >> bdb_bigfile_test.log
+colin     5303  0.0  0.0   5020   808 pts/1    R    00:39   0:00 grep ruby
+colin     5284  0.0  0.1  12204  1944 pts/1    S    00:38   0:00 ruby system_test.rb
+colin     5291 57.3  0.4  24004  5000 pts/0    R+   00:38   0:14 ruby bdb_bigfile_test.rb
+colin     5304  0.0  0.0   3864   532 pts/1    S    00:39   0:00 sh -c ps aux|grep ruby >> bdb_bigfile_test.log
+colin     5306  0.0  0.0   3916   588 pts/1    R    00:39   0:00 grep ruby
+colin     5284  0.0  0.1  12204  1944 pts/1    S    00:38   0:00 ruby system_test.rb
+colin     5291 50.0  0.4  24004  5000 pts/0    D+   00:38   0:15 ruby bdb_bigfile_test.rb
+colin     5307  0.0  0.0   3864   528 pts/1    R    00:39   0:00 sh -c ps aux|grep ruby >> bdb_bigfile_test.log
+colin     5284  0.0  0.1  12204  1944 pts/1    S    00:38   0:00 ruby system_test.rb
+colin     5291 44.1  0.4  24004  5000 pts/0    D+   00:38   0:15 ruby bdb_bigfile_test.rb
+colin     5310  0.0  0.0   3860   528 pts/1    S    00:39   0:00 sh -c ps aux|grep ruby >> bdb_bigfile_test.log
+colin     5312  0.0  0.0   3860   492 pts/1    R    00:39   0:00 grep ruby
+ INFO test: total line count : 412139
+ INFO test: total record count : 277161
+ INFO test: Write DB end!
+ INFO test: Through 36.865654 seconds!
+ INFO test: Read DB start...
+ INFO test: Read DB end!
+ INFO test: Through 1.910538 seconds!
+ INFO test: App End! time: ColinHelper.str_time(end_time)
+ INFO test: Through 38.777028 seconds!
+ INFO test: 
+colin     5284  0.0  0.1  12204  1944 pts/1    S    00:38   0:00 ruby system_test.rb
+colin     5313  0.0  0.0   3864   532 pts/1    S    00:39   0:00 sh -c ps aux|grep ruby >> bdb_bigfile_test.log
+colin     5315  0.0  0.0   5020   812 pts/1    R    00:39   0:00 grep ruby
+colin     5284  0.0  0.1  12204  1944 pts/1    S    00:38   0:00 ruby system_test.rb
+colin     5316  0.0  0.0   3860   528 pts/1    S    00:39   0:00 sh -c ps aux|grep ruby >> bdb_bigfile_test.log
+colin     5318  0.0  0.0   5024   812 pts/1    R    00:39   0:00 grep ruby
+colin     5284  0.0  0.1  12204  1944 pts/1    R    00:38   0:00 ruby system_test.rb
+colin     5319  0.0  0.0   3864   524 pts/1    R    00:39   0:00 sh -c ps aux|grep ruby >> bdb_bigfile_test.log
+colin     5284  0.0  0.1  12204  1948 pts/1    S    00:38   0:00 ruby system_test.rb
+colin     5322  0.0  0.0   3860   524 pts/1    R    00:39   0:00 sh -c ps aux|grep ruby >> bdb_bigfile_test.log
+colin     5284  0.0  0.1  12204  1948 pts/1    S    00:38   0:00 ruby system_test.rb
+colin     5325  0.0  0.0   3864   532 pts/1    S    00:39   0:00 sh -c ps aux|grep ruby >> bdb_bigfile_test.log
+colin     5327  0.0  0.0    328    88 pts/1    R    00:39   0:00 grep ruby
+colin     5284  0.0  0.1  12204  1948 pts/1    S    00:38   0:00 ruby system_test.rb
+colin     5328  0.0  0.0   3860   524 pts/1    R    00:39   0:00 sh -c ps aux|grep ruby >> bdb_bigfile_test.log
+colin     5330  0.0  0.0   3860    84 pts/1    R    00:39   0:00 sh -c ps aux|grep ruby >> bdb_bigfile_test.log
+colin     5284  0.0  0.1  12204  1948 pts/1    S    00:38   0:00 ruby system_test.rb
+colin     5333  0.0  0.0   3860   532 pts/1    S    00:40   0:00 sh -c ps aux|grep ruby >> bdb_bigfile_test.log
+colin     5335  0.0  0.0   5020   812 pts/1    R    00:40   0:00 grep ruby
+colin     5284  0.0  0.1  12204  1948 pts/1    S    00:38   0:00 ruby system_test.rb
+colin     5336  1.0  0.0   3864   532 pts/1    S    00:40   0:00 sh -c ps aux|grep ruby >> bdb_bigfile_test.log
+colin     5338  0.0  0.0   5020   812 pts/1    R    00:40   0:00 grep ruby
+colin     5284  0.0  0.1  12204  1948 pts/1    S    00:38   0:00 ruby system_test.rb
+colin     5339  0.0  0.0   3860   528 pts/1    R    00:40   0:00 sh -c ps aux|grep ruby >> bdb_bigfile_test.log
+colin     5341  0.0  0.0   5024   812 pts/1    R    00:40   0:00 grep ruby

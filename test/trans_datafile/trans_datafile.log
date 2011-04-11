@@ -1,0 +1,269 @@
+ INFO tds: TransDatafileService App start! time : 2007-10-26 14:27:02  109
+ INFO tds: TransDatafileService App start! time : 2007-10-26 14:27:47  984
+ INFO tds: Total 2 items need do with!
+ INFO tds: TransDatafileService App end! time : 2007-10-26 14:27:47  984
+ INFO tds: Through 0.0 seconds.
+ INFO tds: 
+ INFO tds: TransDatafileService App start! time : 2007-10-26 14:31:58  500
+ INFO tds: Total 2 items need do with!
+ INFO tds: TransDatafileService App end! time : 2007-10-26 14:31:58  500
+ INFO tds: Through 0.0 seconds.
+ INFO tds: 
+ INFO tds: TransDatafileService App start! time : 2007-10-26 14:36:20  859
+ INFO tds: Total 2 items need do with!
+ INFO tds: TransDatafileService App end! time : 2007-10-26 14:36:20  859
+ INFO tds: Through 0.0 seconds.
+ INFO tds: 
+ INFO tds: TransDatafileService App start! time : 2007-10-26 14:38:28  140
+ INFO tds: Total 2 items need do with!
+ INFO tds: TransDatafileService App end! time : 2007-10-26 14:38:28  140
+ INFO tds: Through 0.0 seconds.
+ INFO tds: 
+ INFO tds: TransDatafileService App start! time : 2007-10-26 14:40:24  281
+ INFO tds: Total 2 items need do with!
+ INFO tds: TransDatafileService App end! time : 2007-10-26 14:40:24  281
+ INFO tds: Through 0.0 seconds.
+ INFO tds: 
+ INFO tds: TransDatafileService App start! time : 2007-10-26 14:49:26  312
+ INFO tds: Total 2 items need do with!
+ INFO tds: TransDatafileService App end! time : 2007-10-26 14:49:26  312
+ INFO tds: Through 0.0 seconds.
+ INFO tds: 
+ INFO tds: TransDatafileService App start! time : 2007-10-26 15:07:58  250
+ INFO tds: Transform Datafile !
+ INFO tds: Total 2 items need do with!
+ INFO tds: TransDatafileService App start! time : 2007-10-26 15:08:32  875
+ INFO tds: Transform Datafile !
+ INFO tds: Total 2 items need do with!
+ INFO tds: source block offset: 0, target block offset: 16, size: 4
+ INFO tds: source block offset: 96, target block offset: 112, size: 8
+ INFO tds: TransDatafileService App end! time : 2007-10-26 15:08:32  875
+ INFO tds: Through 0.0 seconds.
+ INFO tds: 
+ INFO tds: TransDatafileService App start! time : 2007-10-26 15:09:17  156
+ INFO tds: Transform Datafile !
+ INFO tds: Total 2 items need do with!
+ INFO tds: source block offset: 0, target block offset: 16, size: 4
+ INFO tds: source block offset: 96, target block offset: 112, size: 8
+ INFO tds: TransDatafileService App end! time : 2007-10-26 15:09:17  156
+ INFO tds: Through 0.0 seconds.
+ INFO tds: 
+ INFO tds: TransDatafileService App start! time : 2007-10-26 15:10:32  500
+ INFO tds: Transform Datafile !
+ INFO tds: Total 2 items need do with!
+ INFO tds: source block offset: 0, target block offset: 16, size: 4
+ INFO tds: source block offset: 96, target block offset: 112, size: 8
+ INFO tds: TransDatafileService App end! time : 2007-10-26 15:10:32  500
+ INFO tds: Through 0.0 seconds.
+ INFO tds: 
+ INFO tds: TransDatafileService App start! time : 2007-10-26 15:11:24  265
+ INFO tds: Transform Datafile !
+ INFO tds: Total 2 items need do with!
+ INFO tds: source block offset: 0, target block offset: 16, size: 4
+ INFO tds: source block offset: 96, target block offset: 112, size: 8
+ INFO tds: TransDatafileService App end! time : 2007-10-26 15:11:24  265
+ INFO tds: Through 0.0 seconds.
+ INFO tds: 
+ INFO tds: TransDatafileService App start! time : 2007-10-26 15:12:25  937
+ INFO tds: Transform Datafile HP2IBM!
+ INFO tds: Total 2 items need do with!
+ INFO tds: source block offset: 0, target block offset: 16, size: 4
+ INFO tds: source block offset: 96, target block offset: 112, size: 8
+ INFO tds: TransDatafileService App end! time : 2007-10-26 15:12:25  937
+ INFO tds: Through 0.0 seconds.
+ INFO tds: 
+ INFO tds: TransDatafileService App start! time : 2007-10-26 15:13:13  281
+ INFO tds: Transform datafile name D:\work\testdata\1_5.dbf!
+ INFO tds: Transform datafile typeHP2IBM!
+ INFO tds: Total 2 items need do with!
+ INFO tds: source block offset: 0, target block offset: 16, size: 4
+ INFO tds: source block offset: 96, target block offset: 112, size: 8
+ INFO tds: TransDatafileService App end! time : 2007-10-26 15:13:13  281
+ INFO tds: Through 0.0 seconds.
+ INFO tds: 
+ INFO tds: TransDatafileService App start! time : 2007-10-26 15:13:31  984
+ INFO tds: Transform datafile name D:\work\testdata\1_5.dbf!
+ INFO tds: Transform datafile typeHP2IBM!
+ INFO tds: Total 2 items need do with!
+ INFO tds: source block offset: 0, target block offset: 16, size: 4
+ INFO tds: source block offset: 96, target block offset: 112, size: 8
+ INFO tds: TransDatafileService App end! time : 2007-10-26 15:13:31  984
+ INFO tds: Through 0.0 seconds.
+ INFO tds: 
+ INFO tds: TransDatafileService App start! time : 2007-10-26 15:13:50  781
+ INFO tds: Transform datafile name D:\work\testdata\1_5.dbf!
+ INFO tds: Transform datafile typeHP2IBM!
+ INFO tds: Total 2 items need do with!
+ INFO tds: source block offset: 0, target block offset: 16, size: 4
+ INFO tds: source block offset: 96, target block offset: 112, size: 8
+ INFO tds: TransDatafileService App end! time : 2007-10-26 15:13:50  781
+ INFO tds: Through 0.0 seconds.
+ INFO tds: 
+ INFO tds: TransDatafileService App start! time : 2007-10-26 15:14:04  125
+ INFO tds: Transform datafile name D:\work\testdata\1_5.dbf!
+ INFO tds: Transform datafile typeHP2IBM!
+ INFO tds: Total 2 items need do with!
+ INFO tds: source block offset: 0, target block offset: 16, size: 4
+ INFO tds: source block offset: 96, target block offset: 112, size: 8
+ INFO tds: TransDatafileService App end! time : 2007-10-26 15:14:04  125
+ INFO tds: Through 0.0 seconds.
+ INFO tds: 
+ INFO tds: TransDatafileService App start! time : 2007-10-26 15:16:11  671
+ INFO tds: Transform datafile name D:\work\testdata\1_5.dbf!
+ INFO tds: Transform datafile typeHP2IBM!
+ INFO tds: Total 2 items need do with!
+ INFO tds: source block offset: 0, target block offset: 16, size: 4
+ INFO tds: source block offset: 96, target block offset: 112, size: 8
+ INFO tds: TransDatafileService App end! time : 2007-10-26 15:16:11  671
+ INFO tds: Through 0.0 seconds.
+ INFO tds: 
+ INFO tds: TransDatafileService App start! time : 2007-10-26 15:16:53  640
+ INFO tds: Transform datafile name D:\work\testdata\1_5.dbf!
+ INFO tds: Transform datafile typeHP2IBM!
+ INFO tds: Total 2 items need do with!
+ INFO tds: source block offset: 0, target block offset: 16, size: 4
+ INFO tds: source block offset: 96, target block offset: 112, size: 8
+ INFO tds: TransDatafileService App end! time : 2007-10-26 15:16:53  640
+ INFO tds: Through 0.0 seconds.
+ INFO tds: 
+ INFO tds: TransDatafileService App start! time : 2007-10-26 15:17:47  421
+ INFO tds: Transform datafile name D:\work\testdata\1_5.dbf!
+ INFO tds: Transform datafile typeHP2IBM!
+ INFO tds: Total 2 items need do with!
+ INFO tds: source block offset: 0, target block offset: 16, size: 4
+ INFO tds: source block offset: 96, target block offset: 112, size: 8
+ INFO tds: TransDatafileService App end! time : 2007-10-26 15:17:47  421
+ INFO tds: Through 0.0 seconds.
+ INFO tds: 
+ERROR tds: Transform type is not support!
+ INFO tds: Support now is IBM2HP , HP2IBM
+ INFO tds: TransDatafileService App start! time : 2007-10-26 16:28:04  671
+ INFO tds: Transform datafile name: D:\work\testdata\datafile\test78.dbf!
+ INFO tds: Transform datafile type: IBM2HP!
+ INFO tds: Block size: 8192!
+ INFO tds: Total 2 items need do with!
+ INFO tds: source block offset: 300, target block offset: 176, size: 48
+ INFO tds: source block offset: 472, target block offset: 224, size: 133
+ INFO tds: TransDatafileService App end! time : 2007-10-26 16:28:04  687
+ INFO tds: Through 0.016 seconds.
+ INFO tds: 
+ INFO tds: TransDatafileService App start! time : 2007-10-26 16:29:52  593
+ INFO tds: Transform datafile name: D:\work\testdata\datafile\test78.dbf!
+ INFO tds: Transform datafile type: IBM2HP!
+ INFO tds: Block size: 8192!
+ INFO tds: Total 2 items need do with!
+ INFO tds: source block offset: 300, target block offset: 176, size: 48
+ INFO tds: source block offset: 472, target block offset: 224, size: 133
+ INFO tds: TransDatafileService App end! time : 2007-10-26 16:29:52  593
+ INFO tds: Through 0.0 seconds.
+ INFO tds: 
+ INFO tds: TransDatafileService App start! time : 2007-10-26 16:30:32  234
+ INFO tds: Transform datafile name: D:\work\testdata\datafile\test78.dbf!
+ INFO tds: Transform datafile type: IBM2HP!
+ INFO tds: Block size: 8192!
+ INFO tds: Total 2 items need do with!
+ INFO tds: source block offset: 300, target block offset: 176, size: 48
+ INFO tds: source block offset: 472, target block offset: 224, size: 133
+ INFO tds: TransDatafileService App end! time : 2007-10-26 16:30:32  265
+ INFO tds: Through 0.031 seconds.
+ INFO tds: 
+ INFO tds: TransDatafileService App start! time : 2007-10-26 16:33:54  906
+ INFO tds: Transform datafile name: D:\work\testdata\datafile\test78.dbf!
+ INFO tds: Transform datafile type: IBM2HP!
+ INFO tds: Block size: 8192!
+ INFO tds: Total 2 items need do with!
+ INFO tds: source block offset: 300, target block offset: 176, size: 48
+ INFO tds: source block offset: 472, target block offset: 224, size: 133
+ INFO tds: TransDatafileService App end! time : 2007-10-26 16:33:54  937
+ INFO tds: Through 0.031 seconds.
+ INFO tds: 
+ INFO tds: TransDatafileService App start! time : 2007-10-26 16:34:34  796
+ INFO tds: Transform datafile name: D:\work\testdata\datafile\test78.dbf!
+ INFO tds: Transform datafile type: IBM2HP!
+ INFO tds: Block size: 8192!
+ INFO tds: Total 2 items need do with!
+ INFO tds: source block offset: 300, target block offset: 176, size: 48
+ INFO tds: source block offset: 472, target block offset: 224, size: 133
+ INFO tds: TransDatafileService App end! time : 2007-10-26 16:34:34  859
+ INFO tds: Through 0.063 seconds.
+ INFO tds: 
+ INFO tds: TransDatafileService App start! time : 2007-10-26 16:35:39  437
+ INFO tds: Transform datafile name: D:\work\testdata\datafile\test78.dbf!
+ INFO tds: Transform datafile type: IBM2HP!
+ INFO tds: Block size: 8192!
+ INFO tds: Total 2 items need do with!
+ INFO tds: source block offset: 300, target block offset: 176, size: 48
+ INFO tds: source block offset: 472, target block offset: 224, size: 133
+ INFO tds: TransDatafileService App end! time : 2007-10-26 16:35:39  500
+ INFO tds: Through 0.063 seconds.
+ INFO tds: 
+ INFO tds: TransDatafileService App start! time : 2007-10-26 16:36:30  109
+ INFO tds: Transform datafile name: D:\work\testdata\datafile\test78.dbf!
+ INFO tds: Transform datafile type: IBM2HP!
+ INFO tds: Block size: 8192!
+ INFO tds: Total 2 items need do with!
+ INFO tds: source block offset: 300, target block offset: 176, size: 48
+ INFO tds: source block offset: 472, target block offset: 224, size: 133
+ INFO tds: TransDatafileService App end! time : 2007-10-26 16:36:30  125
+ INFO tds: Through 0.016 seconds.
+ INFO tds: 
+ INFO tds: TransDatafileService App start! time : 2007-10-26 16:37:54  859
+ INFO tds: Transform datafile name: D:\work\testdata\datafile\test78.dbf!
+ INFO tds: Transform datafile type: IBM2HP!
+ INFO tds: Block size: 8192!
+ INFO tds: Total 2 items need do with!
+ INFO tds: source block offset: 300, target block offset: 176, size: 48
+ INFO tds: source block offset: 472, target block offset: 224, size: 133
+ INFO tds: TransDatafileService App end! time : 2007-10-26 16:37:54  906
+ INFO tds: Through 0.047 seconds.
+ INFO tds: 
+ INFO tds: TransDatafileService App start! time : 2007-10-26 16:40:11  828
+ INFO tds: Transform datafile name: D:\work\testdata\datafile\test78.dbf!
+ INFO tds: Transform datafile type: IBM2HP!
+ INFO tds: Block size: 8192!
+ INFO tds: Total 2 items need do with!
+ INFO tds: source block offset: 300, target block offset: 176, size: 48
+ INFO tds: source block offset: 472, target block offset: 224, size: 133
+ INFO tds: TransDatafileService App end! time : 2007-10-26 16:40:11  875
+ INFO tds: Through 0.047 seconds.
+ INFO tds: 
+ INFO tds: TransDatafileService App start! time : 2007-10-26 16:44:38  984
+ INFO tds: Transform datafile name: D:\work\testdata\datafile\t1.dbf!
+ INFO tds: Transform datafile type: IBM2HP!
+ INFO tds: Block size: 8192!
+ INFO tds: Total 2 items need do with!
+ INFO tds: source block offset: 300, target block offset: 176, size: 48
+ INFO tds: source block offset: 472, target block offset: 224, size: 133
+ INFO tds: TransDatafileService App end! time : 2007-10-26 16:44:39  31
+ INFO tds: Through 0.047 seconds.
+ INFO tds: 
+ INFO tds: TransDatafileService App start! time : 2007-10-26 16:45:30  906
+ INFO tds: Transform datafile name: D:\work\testdata\datafile\t1.dbf.bak!
+ INFO tds: Transform datafile type: IBM2HP!
+ INFO tds: Block size: 8192!
+ INFO tds: Total 2 items need do with!
+ INFO tds: source block offset: 300, target block offset: 176, size: 48
+ INFO tds: source block offset: 472, target block offset: 224, size: 133
+ INFO tds: TransDatafileService App end! time : 2007-10-26 16:45:30  953
+ INFO tds: Through 0.047 seconds.
+ INFO tds: 
+ INFO tds: TransDatafileService App start! time : 2007-10-26 16:47:13  281
+ INFO tds: Transform datafile name: D:\work\testdata\datafile\t1.dbf.bak!
+ INFO tds: Transform datafile type: IBM2HP!
+ INFO tds: Block size: 8192!
+ INFO tds: Total 2 items need do with!
+ INFO tds: source block offset: 300, target block offset: 176, size: 48
+ INFO tds: source block offset: 472, target block offset: 224, size: 133
+ INFO tds: TransDatafileService App end! time : 2007-10-26 16:47:13  343
+ INFO tds: Through 0.062 seconds.
+ INFO tds: 
+ INFO tds: TransDatafileService App start! time : 2007-10-26 17:01:13  843
+ INFO tds: Transform datafile name: D:\work\testdata\datafile\t1.dbf.bak!
+ INFO tds: Transform datafile type: IBM2HP!
+ INFO tds: Block size: 8192!
+ INFO tds: Total 2 items need do with!
+ INFO tds: source block offset: 300, target block offset: 176, size: 48
+ INFO tds: source block offset: 472, target block offset: 224, size: 133
+ INFO tds: TransDatafileService App end! time : 2007-10-26 17:01:13  843
+ INFO tds: Through 0.0 seconds.
+ INFO tds: 

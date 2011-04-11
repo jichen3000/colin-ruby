@@ -1,0 +1,15 @@
+--- !ruby/object:BlurrArgv 
+computer_name: notebook
+last_run_day: 2010-03-02
+start_run_day: 2008-06-02
+computer_argv_arr: 
+- !ruby/object:ComputerArgv 
+  name: notebook
+  music_tool_path: D:\tools\foobar2000\foobar2000.exe
+  language_argv_arr: 
+  - !ruby/object:LanguageArgv 
+    name: eng
+    # news_save_path_module: D:\library\2english\cnn_news\%s
+    news_save_path_module: D:\library\2中文\cnn_news\%s
+  - !ruby/object:LanguageArgv 
+    name: jap

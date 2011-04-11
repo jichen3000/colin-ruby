@@ -1,0 +1,87 @@
+task :default => [:ssh_gcc_file]
+#task :default => ['alcoholic:getSmashed']
+
+#task :list do
+#  p Rake.application.display_tasks_and_comments
+#end
+
+namespace :alcoholic do
+  desc "This task will purchase your Vodka"
+  task :purchaseAlcohol do
+    puts "Purchased Vodka"
+  end
+
+  desc "This task will mix a good cocktail"
+  task :mixDrink => :purchaseAlcohol do
+    puts "Mixed Fuzzy Navel"
+  end
+
+  desc "This task will drink one too many"
+  task :getSmashed => :mixDrink do
+    puts "Dood, everthing's blurry, can I halff noth'r drinnnk?"
+  end
+end
+
+# if the file exist, this will fresh it.
+# if the file exist, this will fresh it.
+def ftp_files(sourceFileList, targetDir, hostname, username, password)
+  require 'net/ftp'
+  Net::FTP.open(hostname, username, password) do |ftp|
+    sourceFileList.each do |srcFile|    
+      targetFile = srcFile.pathmap("#{targetDir}/%f")
+      begin
+        ftp.putbinaryfile(srcFile, targetFile)
+        puts "Copying #{srcFile} -> #{targetFile}"
+      rescue 
+        puts $!
+      end
+    end
+  end
+end
+def ftp_files2(prefixToRemove, sourceFileList, targetDir, hostname, username, password)
+  Net::FTP.open(hostname, username, password) do |ftp|
+  begin
+    puts "Creating dir #{targetDir}" 
+    ftp.mkdir targetDir
+  rescue 
+    puts $!
+  end
+  sourceFileList.each do |srcFile|    
+    if prefixToRemove
+      targetFile = srcFile.pathmap(("%{^#{prefixToRemove},#{targetDir}}p")) 
+    else
+      targetFile = srcFile.pathmap("#{targetDir}/%f")
+    end
+    begin
+      puts "Creating dir #{targetFile}" if File.directory?(srcFile)
+      ftp.mkdir targetFile if File.directory?(srcFile)
+    rescue 
+      puts $!
+    end
+    begin
+      puts "Copying #{srcFile} -> #{targetFile}" unless File.directory?(srcFile)
+      ftp.putbinaryfile(srcFile, targetFile) unless File.directory?(srcFile)
+    rescue 
+      puts $!
+    end
+  end
+  end
+end
+desc "Ftp file 1.txt"
+task :ftp do
+  require 'net/ftp'
+  ftp_files(["d:/cofig.ru"], '/home/colin', '172.16.4.28', 'root', 'root')
+end
+
+def ssh_gcc_file(filename,oname)
+  p "ok"
+end
+task :ssh_gcc_file=> :ftp  do
+  require 'net/ssh'
+  Net::SSH.start('172.16.4.28', 'root', :password => "root") do |ssh|
+    ssh.exec!("LANG=C")
+    oname = "/home/colin/occ"
+    puts ssh.exec!("gcc -o #{oname} /home/colin/checksum.c")
+    puts ssh.exec!("#{oname} /home/colin/linux10g.dbf")
+  end
+end
