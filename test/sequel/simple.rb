@@ -3,7 +3,7 @@ require 'sequel'
 
 db_file_name=__FILE__.sub(".rb",".db")
 db = Sequel.sqlite(db_file_name)
-db.drop_table :person
+db.drop_table :people
 db.create_table :people do
   primary_key :id
   Int :role_id
@@ -37,6 +37,8 @@ puts "person sum income:#{person_set.sum(:income)}"
 person_set.each do |person|
   p person
 end
+require 'pp'
+pp role_set
 person_set.map(:name).each do |person_name|
   p person_name
 end
