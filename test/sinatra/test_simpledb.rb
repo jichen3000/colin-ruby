@@ -7,5 +7,7 @@ db = Sequel::sqlite(db_filename)
 
 pp db[:people].all
 pp db[:roles].all
-  
+
+pp db[:people].first[:name]
+
 p "ok"
