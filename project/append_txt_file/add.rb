@@ -1,5 +1,5 @@
 def append_files(target, source)
-  tfile = File.open(target,'w')
+  tfile = File.new(target,'w')
   if not source.kind_of?(Array)
     source_arr = []
     Dir.open(source).each do |item|
@@ -20,8 +20,14 @@ def append_files(target, source)
   tfile.close
 end
 
-target = 'D:/tmp/t.txt'
+target = 'D:\books\村上春树作品TXT全集\世界尽头与冷酷仙境.txt'
 #source = ['D:/tmp/1.txt','D:/tmp/2.txt']
-source = 'D:/tmp/ebook'
+source = 'D:\books\村上春树作品TXT全集\世界尽头与冷酷仙境'
+p target
+p source
+require 'iconv'
+i=Iconv.new('gbk','utf-8')
+target=i.iconv(target)
+source=i.iconv(source)
 append_files(target, source)
 puts "ok"
