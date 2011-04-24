@@ -13,6 +13,7 @@ class AppTest < Test::Unit::TestCase
   
   def test_people
     get '/people'
-    assert_equal(3,last_response.body.size)
+    result_arr = JSON.parse(last_response.body)
+    assert_equal(3,result_arr.size)
   end
 end

@@ -20,7 +20,13 @@ end
 put '/people/:id' do
 end
 
-post '/people/:id' do
+post '/people' do
+end
+
+delete '/people' do
+end
+
+delete '/people/:id' do
 end
 
 
