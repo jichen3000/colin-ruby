@@ -6,19 +6,8 @@ class User
     id
   end
 end
-class BB
-  def find_b(object)
-    object.bb_id + 1
-  end
-end
 class TestRR < Test::Unit::TestCase
   include RR::Adapters::TestUnit
-  def test_bb
-    bb = BB.new
-    a = Object.new
-    mock(a).bb_id().returns(2)
-    assert_equal(3,bb.find_b(a))
-  end
   def test_s1
     my_object = Object.new
     mock(my_object).hello('bob', 'jane').returns('Hello Bob and Jane')

@@ -1,43 +1,28 @@
 class GenModelTest
-  def initialize(class_name)
-    @keywords = {:class_name=>class_name, 
-                 :instance_name=>class_name_to_instance_name(class_name),
-                 :column_name=>'name'}
+  def initialize(path,class_name)
+    @keywords = {:class_name=>class_name, :instance_name=>class_name.downcase,
+                :column_name=>'name'}
+    @path = path
   end
-  def gen_yml_file(path)
-    file_name = File.join(path,@keywords[:instance_name]+".yml")
+  def gen_yaml_file()
+    file_name = File.join(@path,@keywords[:instance_name]+".yml")
     template_file_name = File.join(File.dirname(__FILE__),'templatefile','yml.template')
     gen_file(file_name,template_file_name)
   end
-  def gen_rb_test_file(path)
-    file_name = File.join(path,@keywords[:instance_name]+"_test.rb")
+  def gen_rb_test_file
+    file_name = File.join(@path,@keywords[:instance_name]+"_test.rb")
     template_file_name = File.join(File.dirname(__FILE__),'templatefile','test.template')
     gen_file(file_name,template_file_name)
   end
-  def gen_model_file(path)
-    file_name = File.join(path,@keywords[:instance_name]+".rb")
+  def gen_model_file
+    file_name = File.join(@path,@keywords[:instance_name]+".rb")
     template_file_name = File.join(File.dirname(__FILE__),'templatefile','model.template')
     gen_file(file_name,template_file_name)
-  end
-  def class_name_to_instance_name(class_name)
-    str = ""
-    class_name.each_byte do |b|
-      if b >= 65 and b<=90
-        str << "_" if str.length>0
-        str << b +32
-      else
-        str << b
-      end
-    end
-    return str
-  end
-  def instance_name_to_class_name(instance_name)
-    instance_name.split("_").map!{|x| x.capitalize!}.join("")
   end
   private
   def gen_file(file_name,template_file_name)
     if File.exist?(file_name)
-       puts "file already exists(#{file_name})!"
+       puts 'file already exists!'
        return nil
     end
     con = replace_keywords(template_file_name)

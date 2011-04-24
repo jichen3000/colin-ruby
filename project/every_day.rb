@@ -167,13 +167,13 @@ class EveryDay
       'http://www.yomiuri.co.jp/',
       'http://www3.nhk.or.jp/toppage/navi/news.html',
       'http://www.asahi.com/paper/column.html',
-      'http://docs.google.com/Doc?docid=0AaaZqGsskH2UZGZkd3I5MjdfMTRkd3dyZ3ZoZA&hl=zh_CN']
+      'https://docs.google.com/document/d/1UpdWZSxz5RC3MQZM6hUUo6G7zBN9XTXTQKsHP1uOGpU/edit?hl=zh_CN']
     open_firefox(url)
   end
   def open_firefox_e
     url = ['http://edition.cnn.com/',
       'http://www.asahi.com/paper/column.html',
-      'http://docs.google.com/Doc?docid=0AaaZqGsskH2UZGZkd3I5MjdfMTRkd3dyZ3ZoZA&hl=zh_CN']
+      'https://docs.google.com/document/d/1UpdWZSxz5RC3MQZM6hUUo6G7zBN9XTXTQKsHP1uOGpU/edit?hl=zh_CN']
     open_firefox(url)
   end
 #  @@office_path = 'C:\Program Files\OpenOffice.org 2.2\program\swriter.exe'
