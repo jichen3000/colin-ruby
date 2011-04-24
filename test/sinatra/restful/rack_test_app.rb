@@ -13,6 +13,6 @@ class AppTest < Test::Unit::TestCase
   
   def test_people
     get '/people'
-    p last_response.body
+    assert_equal(3,last_response.body.size)
   end
 end
