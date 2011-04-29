@@ -1,5 +1,5 @@
 require 'oci8'
-ors = "strmadmin/strmadmin@100sadmin"
+ors = "wzdbra/wzdbra@drb"
 conn = OCI8.new(ors)
 conn.logoff
 p "ok"
