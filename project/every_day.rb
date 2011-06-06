@@ -29,10 +29,12 @@ class EveryDay
   def set_type(type)
     @type = type
     if @type == HOME_TYPE
-      @@e_traslate_path = 'D:\tools\PowerWord Lite\xdict.exe' 
-      @@j_traslate_path = 'D:\tools\Lingoes\Lingoes.exe' 
+      #@@e_traslate_path = 'D:\tools\PowerWord Lite\xdict.exe' 
+      @@e_traslate_path = 'D:\tools\Dict4\YodaoDict.exe' 
+      @@j_traslate_path = 'D:\tools\Translator2\Lingoes.exe' 
+      #@@j_traslate_path = 'D:\tools\Dict4\YodaoDict.exe' 
       @@foobar_path = 'D:\tools\foobar2000\foobar2000.exe' 
-#      @@firefox_path = 'D:\tools\Mozilla Firefox\firefox.exe'
+      #@@firefox_path = 'D:\tools\Mozilla Firefox\firefox.exe'
       @@firefox_path = 'C:\Users\colin\AppData\Local\Google\Chrome\Application\chrome.exe'
       #@@office_path = 'D:\tools\OpenOffice.org 3\program\swriter.exe'
       @@office_path = 'D:\tools\WPS Office Personal\office6\wps.exe'
@@ -75,20 +77,12 @@ class EveryDay
       add_log "download_cnn_news start.."
       download_cnn_news
       add_log "download_cnn_news end."
-      
-#      add_log "open_firefox_e start.."
-#      open_firefox_e
-#      add_log "open_firefox_e end."
-      
+            
     else
       add_log "download_nhk_news start.."
       download_nhk_news
       add_log "download_nhk_news end."
-      
-#      add_log "open_firefox_j start.."
-#      open_firefox_j
-#      add_log "open_firefox_j end."
-      
+            
     end
     
     
@@ -110,10 +104,15 @@ class EveryDay
       open_firefox_e
       add_log "open_firefox_e end."
     else
+      open_japanese_grammar_doc
+
       add_log "open_firefox_j start.."
       open_firefox_j
       add_log "open_firefox_j end."
+      
     end
+    
+    
     if @type == HOME_TYPE
       if is_last_first_mday(@today)
         add_log "open_diary start.."
@@ -121,17 +120,20 @@ class EveryDay
         add_log "open_diary end."
       end
       
-      if (@today.cwday == 6) || is_last_first_mday(@today)
-        add_log "open_skydoc start.."
-        #open_skydoc
-        open_saturday
-        add_log "open_skydoc end."
-      end
+#      if (@today.cwday == 6) || is_last_first_mday(@today)
+#        add_log "open_skydoc start.."
+#        open_saturday
+#        add_log "open_skydoc end."
+#      end
     end  
       
     add_log "App End!"
     p __FILE__
     exit
+  end
+  def open_japanese_grammar_doc
+    filename = 'D:\library\1»’”Ô—ßœ∞\”Ô∑®.doc'
+    open_doc(filename)
   end
   def my_system(call_str)
     add_log call_str
