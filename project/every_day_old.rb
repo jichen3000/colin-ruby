@@ -1,4 +1,3 @@
-# encoding: utf-8
 require "date"
 require 'timeout'
 require 'fileutils'
@@ -38,22 +37,24 @@ class EveryDay
       #@@firefox_path = 'D:\tools\Mozilla Firefox\firefox.exe'
       @@firefox_path = 'C:\Users\colin\AppData\Local\Google\Chrome\Application\chrome.exe'
       #@@office_path = 'D:\tools\OpenOffice.org 3\program\swriter.exe'
-      @@office_path = '"D:\tools\WPS Office Personal\office6\wps.exe"'
-      @@diary_path_module = 'D:\back\secrese\01MyDiary\diary%s.txt' 
-      @@diary_moduledoc_path = 'D:\back\secrese\01MyDiary\module.txt' 
+      @@office_path = 'D:\tools\WPS Office Personal\office6\wps.exe'
+      @@diary_path_module = 'D:\back\ÎÒµÄ×ÊÁÏ\01MyDiary\Ë«ÓïÈÕ¼Ç%s.odt' 
+      @@diary_moduledoc_path = 'D:\back\ÎÒµÄ×ÊÁÏ\01MyDiary\module.odt' 
+      @@sky_path_module = 'D:\library\1ÈÕÓïÑ§Ï°\ÌìÉùÈËÕZ\ÌìÉùÈËÕZ%s.odt' 
+      @@sky_moduledoc_path = 'D:\library\1ÈÕÓïÑ§Ï°\ÌìÉùÈËÕZ\skymodule.odt' 
       @@flashget_path = 'D:/tools/FlashGet/flashget.exe'
-      @@save_nhk_module = 'D:\library\1Japanese\NHK_news\%s'
-      @@save_cnn_module = 'D:\library\2English\CNN_news\%s'
+      @@save_nhk_module = 'D:\library\1ÈÕÓïÑ§Ï°\NHKĞÂÎÅÌıÁ¦\%s'
+      @@save_cnn_module = 'D:\library\2Ó¢ÓïÑ§Ï°\CNNĞÂÎÅÌıÁ¦\%s'
     elsif @type == OFFICE_TYPE
       @@e_traslate_path = 'D:\tools\PowerWord Lite\xdict.exe' 
       @@j_traslate_path = 'D:\tools\Lingoes\Lingoes.exe' 
       @@foobar_path = 'D:\tools\foobar2000\foobar2000.exe' 
       @@firefox_path = 'D:\tools\Mozilla Firefox\firefox.exe'
       @@office_path = 'D:\tools\OpenOffice.org 3\program\swriter.exe'
-#      @@diary_path_module = 'D:\back\æˆ‘çš„èµ„æ–™\01MyDiary\åŒè¯­æ—¥è®°%s.odt' 
-#      @@diary_moduledoc_path = 'D:\back\æˆ‘çš„èµ„æ–™\01MyDiary\module.odt' 
-#      @@sky_path_module = 'D:\library\1æ—¥è¯­å­¦ä¹ \å¤©å£°äººèª\å¤©å£°äººèª%s.odt' 
-#      @@sky_moduledoc_path = 'D:\library\1æ—¥è¯­å­¦ä¹ \å¤©å£°äººèª\skymodule.odt' 
+#      @@diary_path_module = 'D:\back\ÎÒµÄ×ÊÁÏ\01MyDiary\Ë«ÓïÈÕ¼Ç%s.odt' 
+#      @@diary_moduledoc_path = 'D:\back\ÎÒµÄ×ÊÁÏ\01MyDiary\module.odt' 
+#      @@sky_path_module = 'D:\library\1ÈÕÓïÑ§Ï°\ÌìÉùÈËÕZ\ÌìÉùÈËÕZ%s.odt' 
+#      @@sky_moduledoc_path = 'D:\library\1ÈÕÓïÑ§Ï°\ÌìÉùÈËÕZ\skymodule.odt' 
       @@flashget_path = 'D:\tools\FlashGet\FlashGet.exe'
 #      @@flashget_path = 'D:\tools\FlashGet Mini\FlashGetMini.exe'
 #      alias download_by_flashget download_by_flashgetmini 
@@ -67,8 +68,8 @@ class EveryDay
   def perform
     add_log "App start.."
     add_log(colin_str_time(Time.now))
-    # éœ€è¦å…ˆæ‰“å¼€firefoxï¼Œå¦åˆ™ä¼šå‘ç”Ÿæ‰“ä¸ªå¾ˆå¤šä¸ª,æ¯ä¸€ä¸ªåªæœ‰ä¸€ä¸ªtabã€‚
-    # è¿™ç§æƒ…å†µåªæœ‰åœ¨æ¯”è¾ƒæ…¢çš„æœºå™¨ä¸Šä¼šå‘ç”Ÿã€‚
+    # ĞèÒªÏÈ´ò¿ªfirefox£¬·ñÔò»á·¢Éú´ò¸öºÜ¶à¸ö,Ã¿Ò»¸öÖ»ÓĞÒ»¸ötab¡£
+    # ÕâÖÖÇé¿öÖ»ÓĞÔÚ±È½ÏÂıµÄ»úÆ÷ÉÏ»á·¢Éú¡£
     add_log "open_firefox start.."
     open_firefox
     add_log "open_firefox end."
@@ -131,7 +132,7 @@ class EveryDay
     exit
   end
   def open_japanese_grammar_doc
-    filename = 'D:\library\1Japanese\grammar.doc'
+    filename = 'D:\library\1ÈÕÓïÑ§Ï°\Óï·¨.doc'
     open_doc(filename)
   end
   def my_system(call_str)
@@ -187,8 +188,8 @@ class EveryDay
     end
     my_system(call_str) 
   end
-#  @@diary_path_module = 'D:\back\æˆ‘çš„èµ„æ–™\01MyDiary\åŒè¯­æ—¥è®°%s.odt' 
-#  @@diary_moduledoc_path = 'D:\back\æˆ‘çš„èµ„æ–™\01MyDiary\module.odt' 
+#  @@diary_path_module = 'D:\back\ÎÒµÄ×ÊÁÏ\01MyDiary\Ë«ÓïÈÕ¼Ç%s.odt' 
+#  @@diary_moduledoc_path = 'D:\back\ÎÒµÄ×ÊÁÏ\01MyDiary\module.odt' 
   def open_diary
     diary_path = @@diary_path_module % @today.strftime('%Y%m')
     if not File.exist?(diary_path)
@@ -201,8 +202,8 @@ class EveryDay
       'http://docs.google.com/Doc?id=dfdwr927_179fzqtsvc5']
     open_firefox(url)
   end
-#  @@sky_path_module = 'D:\library\1æ—¥è¯­å­¦ä¹ \å¤©å£°äººèª\å¤©å£°äººèª%s.odt' 
-#  @@sky_moduledoc_path = 'D:\library\1æ—¥è¯­å­¦ä¹ \å¤©å£°äººèª\skymodule.odt' 
+#  @@sky_path_module = 'D:\library\1ÈÕÓïÑ§Ï°\ÌìÉùÈËÕZ\ÌìÉùÈËÕZ%s.odt' 
+#  @@sky_moduledoc_path = 'D:\library\1ÈÕÓïÑ§Ï°\ÌìÉùÈËÕZ\skymodule.odt' 
   def open_skydoc
     sky_path = @@sky_path_module % @today.strftime('%Y%m')
     if not File.exist?(sky_path)
@@ -248,7 +249,7 @@ class EveryDay
     @today_save_dir = @@save_nhk_module % @today.strftime('%Y%m')
     download_by_flashget(nhk_addr,@today_save_dir)
   end
-#  @@save_cnn_module = 'D:\library\2è‹±è¯­å­¦ä¹ \CNNæ–°é—»å¬åŠ›\%s'
+#  @@save_cnn_module = 'D:\library\2Ó¢ÓïÑ§Ï°\CNNĞÂÎÅÌıÁ¦\%s'
 #  @@cnn_news_module = 'http://podcasts.cnn.net/cnn/services/podcasting/newscast/audio/%s/CNN-News-%s-5PM.mp3'
 #  @@cnn_biz_module = 'http://podcasts.cnn.net/cnn/services/podcasting/marketplace/audio/%s/CNN-Biz-%s-5PM.mp3'
   def download_cnn_news

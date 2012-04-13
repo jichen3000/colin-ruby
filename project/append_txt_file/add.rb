@@ -20,9 +20,9 @@ def append_files(target, source)
   tfile.close
 end
 
-target = 'D:\books\村上春树作品TXT全集\世界尽头与冷酷仙境.txt'
+target = 'D:\books\novel\村上春树作品TXT全集\海边的卡夫卡.txt'
 #source = ['D:/tmp/1.txt','D:/tmp/2.txt']
-source = 'D:\books\村上春树作品TXT全集\世界尽头与冷酷仙境'
+source = 'D:\books\novel\村上春树作品TXT全集\海边的卡夫卡'
 p target
 p source
 require 'iconv'
