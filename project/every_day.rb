@@ -164,7 +164,7 @@ class EveryDay
     end    
   end
   def open_firefox_j
-    url = ['http://dictionary.www.infoseek.co.jp/',
+    url = ['http://dictionary.infoseek.ne.jp',
       'http://www.yomiuri.co.jp/',
       'http://www3.nhk.or.jp/toppage/navi/news.html',
       'http://www.asahi.com/paper/column.html',
