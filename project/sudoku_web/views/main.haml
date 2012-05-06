@@ -1,0 +1,49 @@
+!!! 5
+%html
+  %head
+    %title Sudoku
+    %link{:href=>"css/bootstrap.css",:rel=>"stylesheet"}
+    %link{:href=>"css/main.css",:rel=>"stylesheet"}
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.pack.js"></script>
+    %script{:type=>"text/javascript", :src=>"js/jquery-ui-1.8.20.custom.min.js"}
+    :javascript
+      $(function() {
+        $(".cell").hover(
+          function() {
+            $(this).addClass("hover");
+          },
+          function(){
+            $(this).removeClass("hover");
+          }
+        );
+
+        $('#dialog').dialog({
+          autoOpen: false,
+          width: 600,
+          buttons: {
+            "Ok": function() {
+              $(this).dialog("close");
+            },
+            "Cancel": function() {
+              $(this).dialog("close");
+            }
+          }
+        });
+
+        // Dialog Link
+        $('.cell').click(function(){
+          $('#dialog').dialog('open');
+          return false;
+        });
+      });
+  %body
+#sudoku_99.row.center.border
+  - locals[:sudoku_size].times do |group_index|
+    .row.group.border{:id=>"group_#{group_index}"} 
+      - locals[:sudoku_size].times do |inner_index|
+        .cell.border{:id=>"cell_#{helper(group_index, inner_index).join("")}"} 
+          %span= inner_index+1
+#dialog{:title=>"demo",:class=>"ui-dialog-content ui-widget-content", 
+  :style=>"width: auto; min-height: 54px; height: auto; ",
+  :scrolltop=>"0", :scrollleft=>"0"}
+  %p test 
