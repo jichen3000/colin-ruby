@@ -1,14 +1,87 @@
 <!COCTYPE html>
 <html>
   <head>
-    <link href="views/bootstrap.css" rel="stylesheet">
-    <link href="views/main.css" rel="stylesheet">
+    <link href="../public/css/bootstrap.css" rel="stylesheet">
+    <link href="../public/css/main.css" rel="stylesheet">
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.pack.js"></script>
+    
+    <script type="text/javascript">
+      function p(msg){
+        $('#messages').text(msg);
+      }
+      $(function() {
+        $(".cell").hover(
+          function() {
+            $(this).addClass("hover");
+          },
+          function(){
+            $(this).removeClass("hover");
+          }
+        );
+
+        // Dialog Link
+        $('#sudoku_99').find('.cell').click(function(e){
+          $('#dialog').css('display','');
+          var position = { top: e.pageY+5, left: e.pageX+5 }
+          $('#dialog').offset(position);
+          p(e.pageX+":"+e.pageY);
+        });
+        
+        $('#dialog').find('.cell').click(function(e){
+          p(this.innerText);
+          $('#close').click();
+        });
+        
+        $('#close').click(function(){
+          $('#dialog').css('display','none');
+        });
+      });
+    </script>
     <title>
       soduku
     </title>
   </head>
   
   <body>
+    <div>
+    <p id='messages'> msg </p>
+    </div>
+    <div id="dialog" style="display:none; float:left;">
+      <form>
+        <div id="group_1" class="row group border">
+          <div id="cell1_11" class="cell border">
+            <span>1</span>
+          </div>
+          <div id="cell1_12" class="cell border">
+            <span>2</span>
+          </div>
+          <div id="cell_13" class="cell border">
+            <span>3</span>
+          </div>
+          <div id="cell_21" class="cell border">
+            <span>4</span>
+          </div>
+          <div id="cell1_22" class="cell border">
+            <span>5</span>
+          </div>
+          <div id="cell_23" class="cell border">
+            <span>6</span>
+          </div>
+          <div id="cell1_31" class="cell border">
+            <span>7</span>
+          </div>
+          <div id="cell1_32" class="cell border">
+            <span>8</span>
+          </div>
+          <div id="cell1_33" class="cell border">
+            <span>9</span>
+          </div>
+        </div>
+        <div>
+          <input type='button' id='close' value='close'/>
+        </div>
+      </form>
+    </div>
     <div id="sudoku_99" class="row center border">
       <div id="group_1" class="row group border">
         <div id="cell1_11" class="cell border">
