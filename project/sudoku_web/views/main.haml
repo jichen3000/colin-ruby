@@ -7,6 +7,9 @@
     <script type="text/javascript" src="http://code.jquery.com/jquery-latest.pack.js"></script>
     %script{:type=>"text/javascript", :src=>"js/jquery-ui-1.8.20.custom.min.js"}
     :javascript
+      function p(msg){
+        $('#messages').text(msg);
+      }
       $(function() {
         $(".cell").hover(
           function() {
@@ -17,33 +20,66 @@
           }
         );
 
-        $('#dialog').dialog({
-          autoOpen: false,
-          width: 600,
-          buttons: {
-            "Ok": function() {
-              $(this).dialog("close");
-            },
-            "Cancel": function() {
-              $(this).dialog("close");
-            }
-          }
-        });
-
+        var fixClass = 'fix';
+        var updateElement = null;
         // Dialog Link
-        $('.cell').click(function(){
-          $('#dialog').dialog('open');
-          return false;
+        $('#sudoku_99').find('.cell').click(function(e){
+          $('#dialog').css('display','');
+          var position = { top: e.pageY+5, left: e.pageX+5 }
+          $('#dialog').offset(position);
+          p(e.pageX+":"+e.pageY);
+          updateElement = this;
+        });
+        $('#dialog').find('.cell').click(function(e){
+          p(this.innerText);
+          updateElement.innerText = this.innerText;
+          $(updateElement).addClass(fixClass);
+          $('#close').click();
+        });
+        
+        $('#close').click(function(){
+          $('#dialog').css('display','none');
+        });
+        $('#null').click(function(){
+          updateElement.innerText = '';
+          $(updateElement).removeClass(fixClass);
+          $('#close').click();
+        });
+        function getFixedValues(){
+          var fixedValues = {};
+          $('.'+fixClass).each(function(){
+            fixedValues[this.id.split("_")] = this.innerText;
+          });
+          return fixedValues;
+        }
+        $('#compute').click(function(){
+          p(getFixedValues().toString());
+        });
+        $('#clear').click(function(){
+          $('.'+fixClass).each(function(){
+            this.innerText = "";
+            $(this).removeClass(fixClass);
+          });
         });
       });
   %body
-#sudoku_99.row.center.border
-  - locals[:sudoku_size].times do |group_index|
-    .row.group.border{:id=>"group_#{group_index}"} 
-      - locals[:sudoku_size].times do |inner_index|
-        .cell.border{:id=>"cell_#{helper(group_index, inner_index).join("")}"} 
-          %span= inner_index+1
-#dialog{:title=>"demo",:class=>"ui-dialog-content ui-widget-content", 
-  :style=>"width: auto; min-height: 54px; height: auto; ",
-  :scrolltop=>"0", :scrollleft=>"0"}
-  %p test 
+    .test
+      %p#messages msg
+    #operate
+      %input#compute{:type=>'button',:value=>'compute'}
+      %input#clear{:type=>'button',:value=>'clear'}
+    #dialog{:style=>"display:none; float:left;"}
+      %form
+        .row.group.border{:id=>"group_dialog"} 
+          - locals[:sudoku_size].times do |inner_index|
+            .cell.border{:id=>"cell_#{helper(0, inner_index).join("")}"} 
+              %span= inner_index+1
+        %div
+          %input#null{:type=>'button',:value=>'null'}
+          %input#close{:type=>'button',:value=>'close'}
+    #sudoku_99.row.center.border
+      - locals[:sudoku_size].times do |group_index|
+        .row.group.border{:id=>"group_#{group_index}"} 
+          - locals[:sudoku_size].times do |inner_index|
+            .cell.border{:id=>"#{helper(group_index, inner_index).join("_")}"} 
+              %span

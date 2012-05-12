@@ -5,348 +5,348 @@
     <link href="../public/css/main.css" rel="stylesheet">
     <script type="text/javascript" src="http://code.jquery.com/jquery-latest.pack.js"></script>
     
-    <script type="text/javascript">
-      function p(msg){
-        $('#messages').text(msg);
-      }
-      $(function() {
-        $(".cell").hover(
-          function() {
-            $(this).addClass("hover");
-          },
-          function(){
-            $(this).removeClass("hover");
-          }
-        );
-
-        // Dialog Link
-        $('#sudoku_99').find('.cell').click(function(e){
-          $('#dialog').css('display','');
-          var position = { top: e.pageY+5, left: e.pageX+5 }
-          $('#dialog').offset(position);
-          p(e.pageX+":"+e.pageY);
-        });
+    <script type='text/javascript'>
+      //<![CDATA[
+        function p(msg){
+          $('#messages').text(msg);
+        }
+        $(function() {
+          $(".cell").hover(
+            function() {
+              $(this).addClass("hover");
+            },
+            function(){
+              $(this).removeClass("hover");
+            }
+          );
         
-        $('#dialog').find('.cell').click(function(e){
-          p(this.innerText);
-          $('#close').click();
+          var updateElement = null;
+          // Dialog Link
+          $('#sudoku_99').find('.cell').click(function(e){
+            $('#dialog').css('display','');
+            var position = { top: e.pageY+5, left: e.pageX+5 }
+            $('#dialog').offset(position);
+            p(e.pageX+":"+e.pageY);
+            updateElement = this;
+          });
+          $('#dialog').find('.cell').click(function(e){
+            p(this.innerText);
+            updateElement.innerText = this.innerText;
+            $('#close').click();
+          });
+          
+          $('#close').click(function(){
+            $('#dialog').css('display','none');
+          });
         });
-        
-        $('#close').click(function(){
-          $('#dialog').css('display','none');
-        });
-      });
+      //]]>
     </script>
-    <title>
-      soduku
-    </title>
   </head>
-  
   <body>
-    <div>
-    <p id='messages'> msg </p>
+    <div class='test'>
+      <p id='messages'>msg</p>
     </div>
-    <div id="dialog" style="display:none; float:left;">
+    <div id='operate'>
+      <input id='compute' type='button' value='compute' />
+    </div>
+    <div id='dialog' style='display:none; float:left;'>
       <form>
-        <div id="group_1" class="row group border">
-          <div id="cell1_11" class="cell border">
+        <div class='row group border' id='group_dialog'>
+          <div class='cell border' id='cell_00'>
             <span>1</span>
           </div>
-          <div id="cell1_12" class="cell border">
+          <div class='cell border' id='cell_01'>
             <span>2</span>
           </div>
-          <div id="cell_13" class="cell border">
+          <div class='cell border' id='cell_02'>
             <span>3</span>
           </div>
-          <div id="cell_21" class="cell border">
+          <div class='cell border' id='cell_10'>
             <span>4</span>
           </div>
-          <div id="cell1_22" class="cell border">
+          <div class='cell border' id='cell_11'>
             <span>5</span>
           </div>
-          <div id="cell_23" class="cell border">
+          <div class='cell border' id='cell_12'>
             <span>6</span>
           </div>
-          <div id="cell1_31" class="cell border">
+          <div class='cell border' id='cell_20'>
             <span>7</span>
           </div>
-          <div id="cell1_32" class="cell border">
+          <div class='cell border' id='cell_21'>
             <span>8</span>
           </div>
-          <div id="cell1_33" class="cell border">
+          <div class='cell border' id='cell_22'>
             <span>9</span>
           </div>
         </div>
         <div>
-          <input type='button' id='close' value='close'/>
+          <input id='close' type='button' value='close' />
         </div>
       </form>
     </div>
-    <div id="sudoku_99" class="row center border">
-      <div id="group_1" class="row group border">
-        <div id="cell1_11" class="cell border">
-          <span>1</span>
+    <div class='row center border' id='sudoku_99'>
+      <div class='row group border' id='group_0'>
+        <div class='cell border' id='cell_00'>
+          <span></span>
         </div>
-        <div id="cell1_12" class="cell border">
-          <span>2</span>
+        <div class='cell border' id='cell_01'>
+          <span></span>
         </div>
-        <div id="cell_13" class="cell border">
-          <span>3</span>
+        <div class='cell border' id='cell_02'>
+          <span></span>
         </div>
-        <div id="cell_21" class="cell border">
-          <span>4</span>
+        <div class='cell border' id='cell_10'>
+          <span></span>
         </div>
-        <div id="cell1_22" class="cell border">
-          <span>5</span>
+        <div class='cell border' id='cell_11'>
+          <span></span>
         </div>
-        <div id="cell_23" class="cell border">
-          <span>6</span>
+        <div class='cell border' id='cell_12'>
+          <span></span>
         </div>
-        <div id="cell1_31" class="cell border">
-          <span>7</span>
+        <div class='cell border' id='cell_20'>
+          <span></span>
         </div>
-        <div id="cell1_32" class="cell border">
-          <span>8</span>
+        <div class='cell border' id='cell_21'>
+          <span></span>
         </div>
-        <div id="cell1_33" class="cell border">
-          <span>9</span>
-        </div>
-      </div>
-      <div id="group_2" class="row group border">
-        <div id="cell1_11" class="cell border">
-          <span>1</span>
-        </div>
-        <div id="cell1_12" class="cell border">
-          <span>2</span>
-        </div>
-        <div id="cell_13" class="cell border">
-          <span>3</span>
-        </div>
-        <div id="cell_21" class="cell border">
-          <span>4</span>
-        </div>
-        <div id="cell1_22" class="cell border">
-          <span>5</span>
-        </div>
-        <div id="cell_23" class="cell border">
-          <span>6</span>
-        </div>
-        <div id="cell1_31" class="cell border">
-          <span>7</span>
-        </div>
-        <div id="cell1_32" class="cell border">
-          <span>8</span>
-        </div>
-        <div id="cell1_33" class="cell border">
-          <span>9</span>
+        <div class='cell border' id='cell_22'>
+          <span></span>
         </div>
       </div>
-      <div id="group_3" class="row group border">
-        <div id="cell1_11" class="cell border">
-          <span>1</span>
+      <div class='row group border' id='group_1'>
+        <div class='cell border' id='cell_01'>
+          <span></span>
         </div>
-        <div id="cell1_12" class="cell border">
-          <span>2</span>
+        <div class='cell border' id='cell_02'>
+          <span></span>
         </div>
-        <div id="cell_13" class="cell border">
-          <span>3</span>
+        <div class='cell border' id='cell_03'>
+          <span></span>
         </div>
-        <div id="cell_21" class="cell border">
-          <span>4</span>
+        <div class='cell border' id='cell_11'>
+          <span></span>
         </div>
-        <div id="cell1_22" class="cell border">
-          <span>5</span>
+        <div class='cell border' id='cell_12'>
+          <span></span>
         </div>
-        <div id="cell_23" class="cell border">
-          <span>6</span>
+        <div class='cell border' id='cell_13'>
+          <span></span>
         </div>
-        <div id="cell1_31" class="cell border">
-          <span>7</span>
+        <div class='cell border' id='cell_21'>
+          <span></span>
         </div>
-        <div id="cell1_32" class="cell border">
-          <span>8</span>
+        <div class='cell border' id='cell_22'>
+          <span></span>
         </div>
-        <div id="cell1_33" class="cell border">
-          <span>9</span>
-        </div>
-      </div>
-      
-      <div id="group_4" class="row group border">
-        <div id="cell1_11" class="cell border">
-          <span>1</span>
-        </div>
-        <div id="cell1_12" class="cell border">
-          <span>2</span>
-        </div>
-        <div id="cell_13" class="cell border">
-          <span>3</span>
-        </div>
-        <div id="cell_21" class="cell border">
-          <span>4</span>
-        </div>
-        <div id="cell1_22" class="cell border">
-          <span>5</span>
-        </div>
-        <div id="cell_23" class="cell border">
-          <span>6</span>
-        </div>
-        <div id="cell1_31" class="cell border">
-          <span>7</span>
-        </div>
-        <div id="cell1_32" class="cell border">
-          <span>8</span>
-        </div>
-        <div id="cell1_33" class="cell border">
-          <span>9</span>
+        <div class='cell border' id='cell_23'>
+          <span></span>
         </div>
       </div>
-      <div id="group_5" class="row group border">
-        <div id="cell1_11" class="cell border">
-          <span>1</span>
+      <div class='row group border' id='group_2'>
+        <div class='cell border' id='cell_02'>
+          <span></span>
         </div>
-        <div id="cell1_12" class="cell border">
-          <span>2</span>
+        <div class='cell border' id='cell_03'>
+          <span></span>
         </div>
-        <div id="cell_13" class="cell border">
-          <span>3</span>
+        <div class='cell border' id='cell_04'>
+          <span></span>
         </div>
-        <div id="cell_21" class="cell border">
-          <span>4</span>
+        <div class='cell border' id='cell_12'>
+          <span></span>
         </div>
-        <div id="cell1_22" class="cell border">
-          <span>5</span>
+        <div class='cell border' id='cell_13'>
+          <span></span>
         </div>
-        <div id="cell_23" class="cell border">
-          <span>6</span>
+        <div class='cell border' id='cell_14'>
+          <span></span>
         </div>
-        <div id="cell1_31" class="cell border">
-          <span>7</span>
+        <div class='cell border' id='cell_22'>
+          <span></span>
         </div>
-        <div id="cell1_32" class="cell border">
-          <span>8</span>
+        <div class='cell border' id='cell_23'>
+          <span></span>
         </div>
-        <div id="cell1_33" class="cell border">
-          <span>9</span>
-        </div>
-      </div>
-      <div id="group_6" class="row group border">
-        <div id="cell1_11" class="cell border">
-          <span>1</span>
-        </div>
-        <div id="cell1_12" class="cell border">
-          <span>2</span>
-        </div>
-        <div id="cell_13" class="cell border">
-          <span>3</span>
-        </div>
-        <div id="cell_21" class="cell border">
-          <span>4</span>
-        </div>
-        <div id="cell1_22" class="cell border">
-          <span>5</span>
-        </div>
-        <div id="cell_23" class="cell border">
-          <span>6</span>
-        </div>
-        <div id="cell1_31" class="cell border">
-          <span>7</span>
-        </div>
-        <div id="cell1_32" class="cell border">
-          <span>8</span>
-        </div>
-        <div id="cell1_33" class="cell border">
-          <span>9</span>
+        <div class='cell border' id='cell_24'>
+          <span></span>
         </div>
       </div>
-      
-      <div id="group_4" class="row group border">
-        <div id="cell1_11" class="cell border">
-          <span>1</span>
+      <div class='row group border' id='group_3'>
+        <div class='cell border' id='cell_10'>
+          <span></span>
         </div>
-        <div id="cell1_12" class="cell border">
-          <span>2</span>
+        <div class='cell border' id='cell_11'>
+          <span></span>
         </div>
-        <div id="cell_13" class="cell border">
-          <span>3</span>
+        <div class='cell border' id='cell_12'>
+          <span></span>
         </div>
-        <div id="cell_21" class="cell border">
-          <span>4</span>
+        <div class='cell border' id='cell_20'>
+          <span></span>
         </div>
-        <div id="cell1_22" class="cell border">
-          <span>5</span>
+        <div class='cell border' id='cell_21'>
+          <span></span>
         </div>
-        <div id="cell_23" class="cell border">
-          <span>6</span>
+        <div class='cell border' id='cell_22'>
+          <span></span>
         </div>
-        <div id="cell1_31" class="cell border">
-          <span>7</span>
+        <div class='cell border' id='cell_30'>
+          <span></span>
         </div>
-        <div id="cell1_32" class="cell border">
-          <span>8</span>
+        <div class='cell border' id='cell_31'>
+          <span></span>
         </div>
-        <div id="cell1_33" class="cell border">
-          <span>9</span>
-        </div>
-      </div>
-      <div id="group_5" class="row group border">
-        <div id="cell1_11" class="cell border">
-          <span>1</span>
-        </div>
-        <div id="cell1_12" class="cell border">
-          <span>2</span>
-        </div>
-        <div id="cell_13" class="cell border">
-          <span>3</span>
-        </div>
-        <div id="cell_21" class="cell border">
-          <span>4</span>
-        </div>
-        <div id="cell1_22" class="cell border">
-          <span>5</span>
-        </div>
-        <div id="cell_23" class="cell border">
-          <span>6</span>
-        </div>
-        <div id="cell1_31" class="cell border">
-          <span>7</span>
-        </div>
-        <div id="cell1_32" class="cell border">
-          <span>8</span>
-        </div>
-        <div id="cell1_33" class="cell border">
-          <span>9</span>
+        <div class='cell border' id='cell_32'>
+          <span></span>
         </div>
       </div>
-      <div id="group_6" class="row group border">
-        <div id="cell1_11" class="cell border">
-          <span>1</span>
+      <div class='row group border' id='group_4'>
+        <div class='cell border' id='cell_11'>
+          <span></span>
         </div>
-        <div id="cell1_12" class="cell border">
-          <span>2</span>
+        <div class='cell border' id='cell_12'>
+          <span></span>
         </div>
-        <div id="cell_13" class="cell border">
-          <span>3</span>
+        <div class='cell border' id='cell_13'>
+          <span></span>
         </div>
-        <div id="cell_21" class="cell border">
-          <span>4</span>
+        <div class='cell border' id='cell_21'>
+          <span></span>
         </div>
-        <div id="cell1_22" class="cell border">
-          <span>5</span>
+        <div class='cell border' id='cell_22'>
+          <span></span>
         </div>
-        <div id="cell_23" class="cell border">
-          <span>6</span>
+        <div class='cell border' id='cell_23'>
+          <span></span>
         </div>
-        <div id="cell1_31" class="cell border">
-          <span>7</span>
+        <div class='cell border' id='cell_31'>
+          <span></span>
         </div>
-        <div id="cell1_32" class="cell border">
-          <span>8</span>
+        <div class='cell border' id='cell_32'>
+          <span></span>
         </div>
-        <div id="cell1_33" class="cell border">
-          <span>9</span>
+        <div class='cell border' id='cell_33'>
+          <span></span>
         </div>
       </div>
-      
+      <div class='row group border' id='group_5'>
+        <div class='cell border' id='cell_12'>
+          <span></span>
+        </div>
+        <div class='cell border' id='cell_13'>
+          <span></span>
+        </div>
+        <div class='cell border' id='cell_14'>
+          <span></span>
+        </div>
+        <div class='cell border' id='cell_22'>
+          <span></span>
+        </div>
+        <div class='cell border' id='cell_23'>
+          <span></span>
+        </div>
+        <div class='cell border' id='cell_24'>
+          <span></span>
+        </div>
+        <div class='cell border' id='cell_32'>
+          <span></span>
+        </div>
+        <div class='cell border' id='cell_33'>
+          <span></span>
+        </div>
+        <div class='cell border' id='cell_34'>
+          <span></span>
+        </div>
+      </div>
+      <div class='row group border' id='group_6'>
+        <div class='cell border' id='cell_20'>
+          <span></span>
+        </div>
+        <div class='cell border' id='cell_21'>
+          <span></span>
+        </div>
+        <div class='cell border' id='cell_22'>
+          <span></span>
+        </div>
+        <div class='cell border' id='cell_30'>
+          <span></span>
+        </div>
+        <div class='cell border' id='cell_31'>
+          <span></span>
+        </div>
+        <div class='cell border' id='cell_32'>
+          <span></span>
+        </div>
+        <div class='cell border' id='cell_40'>
+          <span></span>
+        </div>
+        <div class='cell border' id='cell_41'>
+          <span></span>
+        </div>
+        <div class='cell border' id='cell_42'>
+          <span></span>
+        </div>
+      </div>
+      <div class='row group border' id='group_7'>
+        <div class='cell border' id='cell_21'>
+          <span></span>
+        </div>
+        <div class='cell border' id='cell_22'>
+          <span></span>
+        </div>
+        <div class='cell border' id='cell_23'>
+          <span></span>
+        </div>
+        <div class='cell border' id='cell_31'>
+          <span></span>
+        </div>
+        <div class='cell border' id='cell_32'>
+          <span></span>
+        </div>
+        <div class='cell border' id='cell_33'>
+          <span></span>
+        </div>
+        <div class='cell border' id='cell_41'>
+          <span></span>
+        </div>
+        <div class='cell border' id='cell_42'>
+          <span></span>
+        </div>
+        <div class='cell border' id='cell_43'>
+          <span></span>
+        </div>
+      </div>
+      <div class='row group border' id='group_8'>
+        <div class='cell border' id='cell_22'>
+          <span></span>
+        </div>
+        <div class='cell border' id='cell_23'>
+          <span></span>
+        </div>
+        <div class='cell border' id='cell_24'>
+          <span></span>
+        </div>
+        <div class='cell border' id='cell_32'>
+          <span></span>
+        </div>
+        <div class='cell border' id='cell_33'>
+          <span></span>
+        </div>
+        <div class='cell border' id='cell_34'>
+          <span></span>
+        </div>
+        <div class='cell border' id='cell_42'>
+          <span></span>
+        </div>
+        <div class='cell border' id='cell_43'>
+          <span></span>
+        </div>
+        <div class='cell border' id='cell_44'>
+          <span></span>
+        </div>
+      </div>
     </div>
   </body>
 </html>

@@ -8,7 +8,7 @@ get "/index" do
 end
 
 def helper(group_index, inner_index)
-  i,j = group_index.divmod(3)
-  inner_i, inner_j = inner_index.divmod(3)
-  [i+inner_i, j+inner_j]
+  y, x = group_index.divmod(3)
+  inner_y, inner_x = inner_index.divmod(3)
+  [x*3+inner_x, y*3+inner_y]
 end
