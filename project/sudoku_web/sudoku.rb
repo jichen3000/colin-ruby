@@ -67,17 +67,33 @@ class NineSquare
     @result_map = {}
     @empty_points_arr = []
     @group_null_point_arr = get_arr_9.map {[]}
-    start_arr.each_with_index do |sub_arr,y_index|
-      sub_arr.each_with_index do |value,x_index|
-        group_index = compute_group_index(x_index,y_index)
-        value = value.to_i
-        if exist_value?(value)
-          set_value(value, x_index, y_index, group_index)
-        else
-          @empty_points_arr << [x_index,y_index,group_index]
-          @group_null_point_arr[group_index] << [x_index,y_index]
+    if start_arr.kind_of?(Array)
+      start_arr.each_with_index do |sub_arr,y_index|
+        sub_arr.each_with_index do |value,x_index|
+          value = value.to_i
+          group_index = compute_group_index(x_index,y_index)
+          if exist_value?(value)
+            set_value(value, x_index, y_index, group_index)
+          else
+            @empty_points_arr << [x_index,y_index,group_index]
+            @group_null_point_arr[group_index] << [x_index,y_index]
+          end
+        end    
+      end
+    elsif start_arr.kind_of?(Hash)
+      9.times do |x_index|
+        9.times do |y_index|
+          value = start_arr["#{x_index}_#{y_index}"]
+          value = value.to_i
+          group_index = compute_group_index(x_index,y_index)
+          if exist_value?(value)
+            set_value(value, x_index, y_index, group_index)
+          else
+            @empty_points_arr << [x_index,y_index,group_index]
+            @group_null_point_arr[group_index] << [x_index,y_index]
+          end
         end
-      end    
+      end
     end
   end
   def perform
@@ -102,6 +118,9 @@ class NineSquare
 
 
     self
+  end
+  def get_multi_result
+    @guessed_result_arr
   end
   def show_all()
     @guessed_result_arr.each_with_index do |result_map,index|

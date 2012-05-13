@@ -6,62 +6,7 @@
     %link{:href=>"css/main.css",:rel=>"stylesheet"}
     <script type="text/javascript" src="http://code.jquery.com/jquery-latest.pack.js"></script>
     %script{:type=>"text/javascript", :src=>"js/jquery-ui-1.8.20.custom.min.js"}
-    :javascript
-      function p(msg){
-        $('#messages').text(msg);
-      }
-      $(function() {
-        $(".cell").hover(
-          function() {
-            $(this).addClass("hover");
-          },
-          function(){
-            $(this).removeClass("hover");
-          }
-        );
-
-        var fixClass = 'fix';
-        var updateElement = null;
-        // Dialog Link
-        $('#sudoku_99').find('.cell').click(function(e){
-          $('#dialog').css('display','');
-          var position = { top: e.pageY+5, left: e.pageX+5 }
-          $('#dialog').offset(position);
-          p(e.pageX+":"+e.pageY);
-          updateElement = this;
-        });
-        $('#dialog').find('.cell').click(function(e){
-          p(this.innerText);
-          updateElement.innerText = this.innerText;
-          $(updateElement).addClass(fixClass);
-          $('#close').click();
-        });
-        
-        $('#close').click(function(){
-          $('#dialog').css('display','none');
-        });
-        $('#null').click(function(){
-          updateElement.innerText = '';
-          $(updateElement).removeClass(fixClass);
-          $('#close').click();
-        });
-        function getFixedValues(){
-          var fixedValues = {};
-          $('.'+fixClass).each(function(){
-            fixedValues[this.id.split("_")] = this.innerText;
-          });
-          return fixedValues;
-        }
-        $('#compute').click(function(){
-          p(getFixedValues().toString());
-        });
-        $('#clear').click(function(){
-          $('.'+fixClass).each(function(){
-            this.innerText = "";
-            $(this).removeClass(fixClass);
-          });
-        });
-      });
+    %script{:type=>"text/javascript", :src=>"js/main.js"}
   %body
     .test
       %p#messages msg
