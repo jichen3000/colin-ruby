@@ -23,7 +23,7 @@ $(function() {
   });
   $('#dialog').find('.cell').click(function(e){
     p(this.innerText);
-    updateElement.innerText = this.innerText;
+    updateElement.innerHTML = this.innerHTML;
     $(updateElement).addClass(fixClass);
     $('#close').click();
   });
@@ -41,11 +41,14 @@ $(function() {
     $('.'+fixClass).each(function(){
       fixedValues[this.id] = this.innerText;
     });
-    return fixedValues;
+    return fixedValues;    
   }
   $('#compute').click(function(){
     $.get('/sudoku/sudokuresult',{fix_values:getFixedValues()},function(result){
       var dataHash = JSON.parse(result);
+      for (var key in dataHash){
+        $("#"+key+" span").text(dataHash[key]);
+      }
       p('get success!'+result+","+dataHash);
     });
   });
@@ -54,5 +57,8 @@ $(function() {
       this.innerText = "";
       $(this).removeClass(fixClass);
     });
+  });
+  $('#example1').click(function(){
+
   });
 });

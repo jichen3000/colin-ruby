@@ -10,7 +10,7 @@ end
 
 get "/sudoku/sudokuresult" do
   params[:fix_values].each {|point,v| p point,v}
-  {[0,0]=>9,[5,3]=>3}.to_json
+  {"0_0"=>9,"5_3"=>3}.to_json
 end
 
 def helper(group_index, inner_index)
