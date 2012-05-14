@@ -12,13 +12,13 @@
     #operate
       %input#compute{:type=>'button',:value=>'compute'}
       %input#clear{:type=>'button',:value=>'clear'}
+      %input#record{:type=>'button',:value=>'record'}
       %input#example1{:type=>'button',:value=>'example1'}
     #dialog{:style=>"display:none; float:left;"}
       %form
         .row.group.border{:id=>"group_dialog"} 
           - locals[:sudoku_size].times do |inner_index|
-            .cell.border{:id=>"cell_#{helper(0, inner_index).join("")}"} 
-              %span= inner_index+1
+            .cell.border{:id=>"cell_#{helper(0, inner_index).join("")}"}= inner_index+1 
         %div
           %input#null{:type=>'button',:value=>'null'}
           %input#close{:type=>'button',:value=>'close'}
@@ -26,5 +26,4 @@
       - locals[:sudoku_size].times do |group_index|
         .row.group.border{:id=>"group_#{group_index}"} 
           - locals[:sudoku_size].times do |inner_index|
-            .cell.border{:id=>"#{helper(group_index, inner_index).join("_")}"} 
-              %span
+            .cell.border{:id=>"#{helper(group_index, inner_index).join("_")}"}

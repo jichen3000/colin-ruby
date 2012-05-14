@@ -231,7 +231,7 @@ class NineSquare
   end
 end
 
-if $PROGRAM_NAME = __FILE__
+if $PROGRAM_NAME == __FILE__
   start_arr = [
     %w(9 0 0 0 0 0 0 0 5),
     %w(0 4 0 3 0 0 0 2 0),

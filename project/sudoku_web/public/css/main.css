@@ -5,6 +5,10 @@
   line-height: 35px;
   background-color: #EEE;
   float: left;
+  border-color: black;
+}
+.cell.answered{
+  color: blue;
 }
 .cell.hover{
   background-color: #999999;
