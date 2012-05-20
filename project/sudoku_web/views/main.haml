@@ -6,24 +6,42 @@
     %link{:href=>"css/main.css",:rel=>"stylesheet"}
     <script type="text/javascript" src="http://code.jquery.com/jquery-latest.pack.js"></script>
     %script{:type=>"text/javascript", :src=>"js/main.js"}
+    -#TODO 1.add message div, 2. add button info, 3. add at least 17 alert, 4. add process when computering
   %body
-    .test
-      %p#messages msg
-    #operate
-      %input#compute{:type=>'button',:value=>'compute'}
-      %input#clear{:type=>'button',:value=>'clear'}
-      %input#record{:type=>'button',:value=>'record'}
-      %input#example1{:type=>'button',:value=>'example1'}
-    #dialog{:style=>"display:none; float:left;"}
-      %form
-        .row.group.border{:id=>"group_dialog"} 
-          - locals[:sudoku_size].times do |inner_index|
-            .cell.border{:id=>"cell_#{helper(0, inner_index).join("")}"}= inner_index+1 
-        %div
-          %input#null{:type=>'button',:value=>'null'}
-          %input#close{:type=>'button',:value=>'close'}
-    #sudoku_99.row.center.border
-      - locals[:sudoku_size].times do |group_index|
-        .row.group.border{:id=>"group_#{group_index}"} 
-          - locals[:sudoku_size].times do |inner_index|
-            .cell.border{:id=>"#{helper(group_index, inner_index).join("_")}"}
+    .navbar.navbar-fixed-top
+      .navbar-inner
+        .container
+          %a.brand{:href=>"/sudoku"} Colin
+    .container
+      %header
+        %h1 
+          Answer Soduku 
+          %p.lead Answer your any Soduku puzzle             
+      %section#main
+        #page-herder
+          %h3 
+            Cells 
+            %small please input your puzzle
+        .row.span5
+          #sudoku_99.row.border
+            - locals[:sudoku_size].times do |group_index|
+              .row.group.border{:id=>"group_#{group_index}"} 
+                - locals[:sudoku_size].times do |inner_index|
+                  .cell.border{:id=>"#{helper(group_index, inner_index).join("_")}"}
+        #operate.row.span4
+          %button.btn.btn-primary#compute Computer
+          %button.btn#clear Clear
+          %button.btn.btn-success#example1 Example
+          -#%input#record{:type=>'button',:value=>'record'}
+          .test{:style=>"display:none;"}
+            %p#messages msg
+      %section#other
+        #dialog{:style=>"display:none; float:left;"}
+          %form
+            .row.group.border{:id=>"group_dialog"} 
+              - locals[:sudoku_size].times do |inner_index|
+                .cell.border{:id=>"cell_#{helper(0, inner_index).join("")}"}= inner_index+1 
+            %div
+              %input#null{:type=>'button',:value=>'null'}
+              %input#close{:type=>'button',:value=>'close'}
+                
