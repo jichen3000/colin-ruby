@@ -6,7 +6,8 @@
     %link{:href=>"css/main.css",:rel=>"stylesheet"}
     <script type="text/javascript" src="http://code.jquery.com/jquery-latest.pack.js"></script>
     %script{:type=>"text/javascript", :src=>"js/main.js"}
-    -#TODO 1.add message div, 2. add button info, 3. add at least 17 alert, 4. add process when computering
+    %script{:type=>"text/javascript", :src=>"js/bootstrap-alert.js"}
+    -#TODO 3. add cell change event, 4. add process when computering 5. more beautify in dialog
   %body
     .navbar.navbar-fixed-top
       .navbar-inner
@@ -23,18 +24,34 @@
             Cells 
             %small please input your puzzle
         .row.span5
-          #sudoku_99.row.border
+          .s99.row.alert.alert-success
+            %p#cell-messages 
+              It is null.
+          #sudoku-99.border.row
             - locals[:sudoku_size].times do |group_index|
               .row.group.border{:id=>"group_#{group_index}"} 
                 - locals[:sudoku_size].times do |inner_index|
                   .cell.border{:id=>"#{helper(group_index, inner_index).join("_")}"}
-        #operate.row.span4
-          %button.btn.btn-primary#compute Computer
-          %button.btn#clear Clear
-          %button.btn.btn-success#example1 Example
+        #operate.row.span3
+          .alert.alert-success
+            %p#messages 
+              Try it now. You just need to input the puzzle in the cells, then click the Computer button.
+          .button-box.well-small
+            To answer out the puzzle in the cells which has at least 17 values.
+            .button
+              %button.btn.btn-primary#compute Computer
+          .button-box.well-small
+            To clear the cells.
+            .button
+              %button.btn#clear Clear
+          .button-box.well-small
+            To generate an example puzzle in the cells.
+            .button
+              %button.btn.btn-success#example1 Example
           -#%input#record{:type=>'button',:value=>'record'}
-          .test{:style=>"display:none;"}
-            %p#messages msg
+          .alert.alert-error
+            %p
+              Please input 17 values in the cells.
       %section#other
         #dialog{:style=>"display:none; float:left;"}
           %form

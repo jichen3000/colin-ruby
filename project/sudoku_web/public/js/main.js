@@ -1,5 +1,5 @@
 function p(msg){
-  $('#messages').text(msg);
+  $('p#messages').text(msg);
 }
 $(function() {
   $(".cell").hover(
@@ -15,13 +15,17 @@ $(function() {
   var answeredClass = 'answered';
   var updateElement = null;
 
-  $('#sudoku_99').find('.cell').click(function(e){
+  $('#sudoku-99').find('.cell').click(function(e){
     $('#dialog').css('display','');
     var position = { top: e.pageY+5, left: e.pageX+5 }
     $('#dialog').offset(position);
     p(e.pageX+":"+e.pageY);
     updateElement = this;
   });
+  $('#sudoku-99').find('.cell').change(function(e){
+    alert('123');
+  });
+  
   $('#dialog').find('.cell').click(function(e){
     p(this.innerText);
     $(updateElement).addClass(fixClass).text(this.innerText);
@@ -45,16 +49,17 @@ $(function() {
     });
     return fixedPoints;    
   }
-  function hasFixedPoints(){
-    return ($('.'+fixClass).length > 0);
+  function validateFixedPoints(){
+    return ($('.'+fixClass).length > 16);
   }
   function displayPoints(points, needClass){
     for (var key in points){
       $("#"+key).text(points[key]).addClass(needClass);
     }
   }
-  $('#compute').click(function(){
-    if (!hasFixedPoints()){
+  $('button#compute').click(function(){
+    if (!validateFixedPoints()){
+      
       p("no fixed values!");
       return; 
     }
@@ -62,10 +67,11 @@ $(function() {
     var fixedPoints = getFixedPoints();
     $.get('/sudoku/sudokuresult',{fix_values:fixedPoints},function(result){
       displayPoints(JSON.parse(result), answeredClass);
-      p('get success!'+result);
+      //p('get success!'+result);
+      p('Successful!');
     });
   });
-  $('#clear').click(function(){
+  $('button#clear').click(function(){
     $('.'+answeredClass).each(function(){
       clearCell(this);
     });
@@ -73,15 +79,16 @@ $(function() {
       clearCell(this);
     });
   });
-  $('#record').click(function(){
-    if (!hasFixedPoints()){
+  $('button#record').click(function(){
+    if (!validateFixedPoints()){
       p("no fixed values!");
       return; 
     }
     var fixedPoints = getFixedPoints();
     p(JSON.stringify(fixedPoints));
   });
-  $('#example1').click(function(){
+  $('button#example1').click(function(){
+    $('button#clear').click();
     var fixedPoints = '{"0_0":5,"1_0":3,"0_1":6,"1_2":9,"2_2":8,"4_0":7,"3_1":1,"4_1":9,"5_1":5,"7_2":6,"0_3":8,"0_4":4,"0_5":7,"4_3":6,"3_4":8,"5_4":3,"4_5":2,"8_3":3,"8_4":1,"8_5":6,"1_6":6,"3_7":4,"4_7":1,"5_7":9,"4_8":8,"6_6":2,"7_6":8,"8_7":5,"7_8":7,"8_8":9}';
     displayPoints(JSON.parse(fixedPoints), fixClass);
   });

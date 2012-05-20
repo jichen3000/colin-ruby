@@ -3,15 +3,18 @@
   height: 35px;
   text-align: center;
   line-height: 35px;
-  background-color: #EEE;
+  background-color: #F7F7F9;
   float: left;
-  border-color: black;
+  border-color: #DDD;
 }
 .cell.answered{
   color: blue;
 }
+.cell.fix{
+  font-weight: bold;
+}
 .cell.hover{
-  background-color: #999999;
+  background-color: #BEBEC5;
 }
 .group{
   width: 111px;      
@@ -22,8 +25,11 @@
   border-style:solid;
   border-width:1px;        
 }
-#sudoku_99{
+#sudoku-99{
   width: 339px;
+}
+.s99{
+  width: 289px;
 }
 .container{
   width: 724px;
