@@ -34,3 +34,12 @@
 .container{
   width: 724px;
 }
+#choose-form{
+  background-color: #F7F7F9;
+}
+.atv {
+  color: #D14;
+}
+#values-count{
+  font-size: 13px;
+}
