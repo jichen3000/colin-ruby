@@ -4,7 +4,7 @@
     %title Sudoku
     %link{:href=>"css/bootstrap.css",:rel=>"stylesheet"}
     %link{:href=>"css/main.css",:rel=>"stylesheet"}
-    -#TODO 4. more beautify in dialog 5. add process when computering 
+    -#TODO 5. add time prompt when computering 
   %body
     .navbar.navbar-fixed-top
       .navbar-inner
@@ -46,15 +46,19 @@
               %button.btn#example1 Example
           -#%input#record{:type=>'button',:value=>'record'}
       %section#other
-        #choose-value-dialog{:style=>"display:none; float:left;"}
-          %form#choose-form
+        #process-dialog.modal.hide
+          .modal-body
+            .alert.alert-success
+              %span I am answering your quiz...
+        #choose-value-dialog.modal.hide
+          .modal-body
             .row.group.border{:id=>"group_dialog"} 
               - locals[:sudoku_size].times do |inner_index|
                 .cell.border{:id=>"cell_#{helper(0, inner_index).join("")}"}= inner_index+1 
-            #choose-buttons
-              %input#null{:type=>'button',:value=>'null'}
-              %input#close{:type=>'button',:value=>'close'}
+          #choose-buttons.modal-footer
+            %button.btn#null null
+            %button.btn{'data-dismiss'=>'modal',:href=>'#'} close
     <script type="text/javascript" src="http://code.jquery.com/jquery-latest.pack.js"></script>
-    %script{:type=>"text/javascript", :src=>"js/main.js"}
     %script{:type=>"text/javascript", :src=>"js/bootstrap-modal.js"}
+    %script{:type=>"text/javascript", :src=>"js/main.js"}
                 

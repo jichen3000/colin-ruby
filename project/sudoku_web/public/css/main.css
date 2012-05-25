@@ -43,3 +43,10 @@
 #values-count{
   font-size: 13px;
 }
+#choose-value-dialog{
+  width: auto;
+}
+#process-dialog{
+  width: auto;
+  height: auto;
+}

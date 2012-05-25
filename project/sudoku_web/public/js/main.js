@@ -17,8 +17,8 @@ $(function() {
 
   $('#sudoku-99').find('.cell').click(function(e){
     var position = { top: e.pageY+5, left: e.pageX+5 }
-    $('#choose-value-dialog').css('display','');
-    $('#choose-value-dialog').modal;
+    $('#choose-value-dialog').modal({backdrop: false});
+    $('#choose-value-dialog').offset(position);
     $('#choose-value-dialog').offset(position);
     p(e.pageX+":"+e.pageY);
     updateElement = this;
@@ -30,16 +30,13 @@ $(function() {
   $('#choose-value-dialog').find('.cell').click(function(e){
     p(this.innerText);
     $(updateElement).addClass(fixClass).text(this.innerText);
-    $('#close').click();
+    $('#choose-value-dialog').modal('hide');
     refreshFixedPointsCount();
   });
   
-  $('#close').click(function(){
-    $('#choose-value-dialog').css('display','none');
-  });
   $('#null').click(function(){
     clearCell(updateElement);
-    $('#close').click();
+    $('#choose-value-dialog').modal('hide');
     refreshFixedPointsCount();
   });
   function clearCell(current){
@@ -70,11 +67,15 @@ $(function() {
       p("No fixed values!");
       return; 
     }
-    
+    $('#process-dialog').modal({backdrop: false});
+    var position = { top: 93, left: 733 }
+    $('#process-dialog').offset(position);
+    $('#process-dialog').offset(position);
     var fixedPoints = getFixedPoints();
     $.get('/sudoku/sudokuresult',{fix_values:fixedPoints},function(result){
       displayPoints(JSON.parse(result), answeredClass);
       //p('get success!'+result);
+      $('#process-dialog').modal('hide');
       p('Successful!');
       refreshFixedPointsCount();
     });
