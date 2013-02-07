@@ -27,8 +27,17 @@ end
 #		puts item
 #	end
 #end
-dir = "D:\\work\\testdata"
+dir = "/Volumes/NO NAME/data"
+from_extension = '.rmvb'
+to_extension = '.data'
 mcb = "w"
-arr = get_filename_arr(dir,false,/.*_#{mcb}_\d+_\d.+\.test/)
-#arr = get_filename_arr(dir,false)
+#arr = get_filename_arr(dir,false,/.*_#{mcb}_\d+_\d.+\.test/)
+arr = get_filename_arr(dir,false)
+arr.each do |filename|
+  from_file_path = File.join(dir,filename)
+  require 'fileutils'
+  to_file_path = from_file_path.sub(from_extension, to_extension)
+  p to_file_path
+  FileUtils.move(from_file_path, to_file_path)
+end
 p arr
