@@ -1,5 +1,6 @@
 require 'rubygems'
 require 'sinatra'
+require 'haml'
 gem 'ruby-openid', '>=2.1.2'
 require 'openid'
 require 'openid/store/filesystem'

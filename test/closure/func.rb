@@ -1,9 +1,8 @@
-def func
-  x = 12
+def func(x)
   lambda {x += 1; p x}
 end
 
-proc = func
+proc = func(12)
 proc[]
 proc[]
 proc.call
