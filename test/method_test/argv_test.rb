@@ -24,3 +24,10 @@ meth 1, scope: "meh"
 # => "options"
 meth 1, options: "jcc"
 puts RUBY_VERSION
+
+def jc( *str, is_optional:false)
+    p "jc:", is_optional, str
+end
+
+jc(12,34,56)
+jc(12,34,56, is_optional:true)

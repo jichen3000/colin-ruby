@@ -1,91 +1,55 @@
-# grammar:
-# declarations : eventBlock commandBlock;
-# eventBlock   : Event-keyword eventDec* End-keyword;
-# eventDec     : Identifier Identifier;
-# commandBlock : Command-keyword commandDec* End-keyword;
-# commandDec   : Identifier Identifier;
+# grammar file...
+#   stateMachine: eventBlock optionalResetBlock optionalCommandBlock stateList
+#   eventBlock: eventKeyword eventDecList endKeyword
+#   eventDecList: eventDec+
+#   eventDec: identifier identifier
 # 
-# And this input:
-# events
-#   doorClosed  D1CL
-#   drawOpened  D2OP
-# end
-# 
-# token stream:
-# [Event-keyword: "events"]
-# [Identifier: "doorClosed"]
-# [Identifier: "D1CL"]
-# [Identifier: "drawOpened"]
-# [Identifier:"D2OP"]
-# [End-keyword: "end"]
+# token_stream = [{:payload=>"stateMachine", :token_type=>:ITEM_NAME, :regexp=>/\Aevents/, :is_output=>true}},
+#         {:payload=>"doorClosed", :token_type=>{:name=>:IDENTIFIER, :regexp=>/\A(\w)+/, :is_output=>true}},
+#         {:payload=>"D1CL", :token_type=>{:name=>:IDENTIFIER, :regexp=>/\A(\w)+/, :is_output=>true}},
+#         {:payload=>"drawOpened", :token_type=>{:name=>:IDENTIFIER, :regexp=>/\A(\w)+/, :is_output=>true}},
+#         {:payload=>"D2OP", :token_type=>{:name=>:IDENTIFIER, :regexp=>/\A(\w)+/, :is_output=>true}},
+#         {:payload=>"end", :token_type=>{:name=>:END, :regexp=>/\Aend/, :is_output=>true}}]
 
-class TokenType
-    @@all = []
-    def self.create(name, re, is_output: true)
-        @@all.push({:name=>name,
-            :regexp=>re,
-            :is_output=>is_output})
-        @@all.last
-    end
-    def self.all()
-        @@all
-    end
-    def self.get(name)
-        @@all.detect {|item| item[:name]==name}
-    end
-    TokenType.create(:EVENT, /\Aevents/)
-    TokenType.create(:RESET, /\AresetEvents/)
-    TokenType.create(:COMMANDS, /\Acommands/)
-    TokenType.create(:END, /\Aend/)
-    TokenType.create(:ACTIONS, /\Astate/)
-    TokenType.create(:LEFT, /\A\{/)
-    TokenType.create(:RIGHT, /\A\}/)
-    TokenType.create(:TRANSITION, /\A=>/)
-    TokenType.create(:IDENTIFIER, /\A(\w)+/)
-    TokenType.create(:WHITESPACE, /\A(\s)+/,is_output:false)
-    TokenType.create(:COMMENT, /\A\\(.)*$/,is_output:false)
-    TokenType.create(:EOF, /\AEOF/,is_output:false)
-
+$:.unshift File.dirname(__FILE__)
+require 'common_lexer'
+class StateMachineTokenType
+    extend TokenType
+    create(:EVENTS, /\Aevents/)
+    create(:RESET, /\AresetEvents/)
+    create(:COMMANDS, /\Acommands/)
+    create(:END, /\Aend/)
+    create(:ACTIONS, /\Astate/)
+    create(:LEFT, /\A\{/)
+    create(:RIGHT, /\A\}/)
+    create(:TRANSITION, /\A=>/)
+    create(:IDENTIFIER, /\A(\w)+/)
+    create(:WHITESPACE, /\A(\s)+/,is_output:false)
+    create(:COMMENT, /\A\\(.)*$/,is_output:false)
+    create(:EOF, /\AEOF/,is_output:false)
 end
+if __FILE__ == $0
+    require 'minitest/spec'
+    require 'minitest/autorun'
 
-def tokenize(content)
-    token_list = []
-    str = content
-    find_flag = false
-    while str.length > 1 do
-        TokenType.all.each do |token_type|
-            # p "token_type:", token_type
-            if token_type[:regexp].match(str)
-                if token_type[:is_output]
-                    token_list.push({:payload=>$&, :token=>token_type})
-                end
-                # p "current:",$&
-                # p "next:",$'
-                find_flag = true
-                str = $'
-                break
-            end
-        end
-        if not find_flag
-            raise "error: cannot match for "+str
-        end
-    end
-    token_list
-end
-
-def test_tokenize()
-    str = <<EOF
+    describe "tokenize" do
+        it "can tokenize the grammar string" do
+            str = <<EOF
 events
   doorClosed  D1CL
   drawOpened  D2OP
 end
 EOF
-    puts tokenize(str)
-end
+            result = [{:payload=>"events", :type_name=>:EVENTS}, 
+                {:payload=>"doorClosed", :type_name=>:IDENTIFIER}, 
+                {:payload=>"D1CL", :type_name=>:IDENTIFIER}, 
+                {:payload=>"drawOpened", :type_name=>:IDENTIFIER}, 
+                {:payload=>"D2OP", :type_name=>:IDENTIFIER}, 
+                {:payload=>"end", :type_name=>:END}]
 
-if __FILE__ == $0
-    # puts TokenType.all()
-    # puts TokenType.get(:END)
-    test_tokenize()
-    puts "ok"
+            StateMachineTokenType.tokenize(str).must_equal result
+        end
+
+    end
+
 end
