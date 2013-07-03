@@ -1,0 +1,15 @@
+computer do
+  processor do
+    cores 2
+    i386
+    speed 2.2
+  end 
+  disk do
+    size 150 
+  end
+  disk do
+    size 75
+    speed 7200
+    sata 
+  end
+end

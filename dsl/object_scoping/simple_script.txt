@@ -1,0 +1,16 @@
+allow {
+   department :mf
+   ends 2018, 10, 18
+ }
+refuse department :finance
+refuse department :audit
+allow {
+  grade_at_least :director
+  during 1100, 1500
+  ends 2018, 5, 1
+}
+refuse {
+  department :k9
+  grade_at_least :director
+}
+allow department :k9

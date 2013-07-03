@@ -18,6 +18,14 @@
 
 # On Wikipedia, a closure is defined as a function that refers to free variables in its lexical context. 
 
+# TODO, I can generate abstract syntax tree by rule, not using action.
+# eventList
+#  : 'events' event* 'end' -> ^(EVENT_LIST event*);
+# event  :  n=ID c=ID -> ^(EVENT $n $c);
+# commandList : 'commands' command* 'end' -> ^(COMMAND_LIST command*);
+# command : ID ID -> ^(COMMAND ID+);
+# resetEventList : 'resetEvents' ID* 'end' -> ^(RESET_EVENT_LIST ID*);
+
 $:.unshift File.dirname(__FILE__)
 require 'state_machine_lexer'
 require 'common_lexer'

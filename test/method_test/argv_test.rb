@@ -31,3 +31,7 @@ end
 
 jc(12,34,56)
 jc(12,34,56, is_optional:true)
+
+p "123\
+    sdlkfdsk\
+"
