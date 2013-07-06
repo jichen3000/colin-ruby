@@ -23,11 +23,14 @@ class DecisionTable
 end
 
 class Person
+    def initialize(name)
+        @name = name
+    end
     def myname
-        "jc"
+        @name
     end
 end
-a = Condition.new("j"){ Person.new.myname}
+a = Condition.new("j"){ Person.new("jc").myname}
 p a.test?
 
 # multi blocks
