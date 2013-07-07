@@ -27,7 +27,7 @@
 # resetEventList : 'resetEvents' ID* 'end' -> ^(RESET_EVENT_LIST ID*);
 
 $:.unshift File.dirname(__FILE__)
-require 'state_machine_lexer'
+require 'lexer'
 require 'common_lexer'
 
 class StateMachineCombinatorParser
