@@ -1,6 +1,6 @@
 
 $:.unshift File.dirname(__FILE__)
-require 'order_decision_table'
+require 'order_table'
 
 class ArrayHelper
     class << self

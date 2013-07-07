@@ -1,6 +1,6 @@
 Premium Customer,X,X,Y,Y,N,N
 Priority Order,Y,N,Y,N,Y,N
 International Order,Y,Y,N,N,N,N
-Weight Range(kg),>10,1=<?<=10,<= 1,<= 1, ,
+Weight Range(kg),>10,2<?<=10,<= 2,<= 2, ,
 Fee,150,100,70,50,80,60
 Alert Rep,Y,Y,Y,N,N,N

@@ -1,5 +1,5 @@
 $:.unshift File.dirname(__FILE__)
-require 'decision_table'
+require 'table'
 
 def premium_customer?(order)
     return nil if (not order) or (not order.costomer_name)
@@ -7,11 +7,10 @@ def premium_customer?(order)
 end
 class Order
     attr_reader :costomer_name
-    def initialize(costomer_name, cost, from, weight)
+    def initialize(costomer_name, cost, from)
         @from = from
         @cost = cost
         @costomer_name = costomer_name
-        @weight = weight
     end
     def priority?
         @cost > 1000
