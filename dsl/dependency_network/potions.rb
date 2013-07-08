@@ -2,10 +2,11 @@
 
 class Substance
     attr_reader :name
-    def initialize(name, recipe_time_stamp)
+    def initialize(name, recipe_time_stamp= Time.now)
         @name = name
         @inputs = []
         @profile = nil
+        # recipe_time_stamp ||= Time.now
         @recipe = Recipe.new(recipe_time_stamp)
 
     end
@@ -61,11 +62,11 @@ if __FILE__ == $0
                     end
                 end
             end
-            health_potion = Substance.new("Health Portion", Time.new(2013,3,5))
-            clarified_water = Substance.new("Clarified Water", Time.new(2013,3,2))
-            dessicated_glass = Substance.new("Dessicated Glass", Time.new(2013,3,1))
-            octopus_essence = Substance.new("Octopus Essence", Time.new(2013,3,4))
-            octopus = Substance.new("Octopus", Time.new(2013,3,3))
+            health_potion = Substance.new("Health Portion")
+            clarified_water = Substance.new("Clarified Water")
+            dessicated_glass = Substance.new("Dessicated Glass")
+            octopus_essence = Substance.new("Octopus Essence")
+            octopus = Substance.new("Octopus")
 
             health_potion.add_input(clarified_water)
             health_potion.add_input(octopus_essence)

@@ -1,34 +1,22 @@
-events
-  doorClosed  D1CL
-  drawerOpened  D2OP
-  lightOn     L1ON
-  doorOpened  D1OP
-  panelClosed PNCL
+Health Portion needs 
+    Clarified Water 
+    Octopus Essence
+end 
+
+Clarified Water needs
+    Dessicated Glass 
 end
-resetEvents
-  doorOpened
+
+Octopus Essence needs
+    Clarified Water
+    Octopus
 end
-commands
-  unlockPanel PNUL
-  lockPanel   PNLK
-  lockDoor    D1LK
-  unlockDoor  D1UL
+
+Dessicated Glass needs
 end
-state idle
-  actions {unlockDoor lockPanel}
-  doorClosed => active
+
+Octopus needs
 end
-state active
-  drawerOpened => waitingForLight
-  lightOn    => waitingForDrawer
-end
-state waitingForLight
-  lightOn => unlockedPanel
-end
-state waitingForDrawer
-  drawerOpened => unlockedPanel
-end
-state unlockedPanel
-  actions {unlockPanel lockDoor}
-  panelClosed => idle
+
+Magic Young needs
 end

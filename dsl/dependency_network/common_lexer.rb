@@ -5,19 +5,22 @@ module TokenType
         base.extend(ClassMethods)
     end
     module ClassMethods
-        @@all = []
+        @@token_type_list = []
         def create(name, re, is_output: true, get_group_num: 0)
-            @@all.push({:name=>name,
+            @@token_type_list.push({:name=>name,
                 :regexp=>re,
                 :is_output=>is_output,
                 :get_group_num=>get_group_num})
-            @@all.last
+            @@token_type_list.last
         end
-        def all()
-            @@all
+        def get_token_type_list()
+            @@token_type_list
         end
-        def get(name)
-            @@all.detect {|item| item[:name]==name}
+        def get_token_type(name)
+            @@token_type_list.detect {|item| item[:name]==name}
+        end
+        def get_token_type_regexp(name)
+            get_token_type(name)[:regexp]
         end
         def is_type(type_name, token)
             type_name.upcase().to_sym() == token[:type_name]
@@ -28,66 +31,33 @@ module TokenType
             end
             super
         end
-
+        def gen_new_token?(token_type, str)
+            find_flag = false
+            new_token = nil
+            if reg_result = token_type[:regexp].match(str)
+                if token_type[:is_output]
+                    new_token = {:payload=>reg_result[token_type[:get_group_num]], 
+                        :type_name=>token_type[:name]}
+                end
+                find_flag = true
+            end
+            [find_flag, new_token]
+        end
         def tokenize(content)
             token_list = []
-            str = content
             find_flag = false
-            while str.length > 1 do
-                all.each do |token_type|
-                    # p "token_type:", token_type
-                    if reg_result = token_type[:regexp].match(str)
-                        if token_type[:is_output]
-                            token_list.push({:payload=>reg_result[token_type[:get_group_num]], 
-                                :type_name=>token_type[:name]})
-                        end
-                        # p "current:",$&
-                        # p "next:",$'
-                        find_flag = true
-                        str = $'
-                        break
-                    end
+            content.split("\n").each do |line|    
+                get_token_type_list.each do |token_type|
+                    find_flag, new_token = gen_new_token?(token_type, line)
+                    token_list.push(new_token) if new_token
+                    break if find_flag
                 end
-                if not find_flag
-                    raise "error: cannot match for "+str
+                if not find_flag and not line.strip.empty?
+                    raise "error: cannot match for "+line
                 end
             end
             token_list
         end
-    end
-end
-
-
-class TokenBuffer
-    def initialize(token_list, current_pos=0)
-        @token_list = token_list
-        @current_pos = current_pos
-    end
-    def get_current_position()
-        @current_pos
-    end
-    def next_token()
-        raise "The list has been out of size!" if @current_pos >= @token_list.size()
-        @token_list[@current_pos]
-    end
-    def pop_token()
-        @current_pos += 1
-    end
-    def reset_current_position(pos)
-        @current_pos = pos
-    end
-    def done?()
-        return @current_pos >= @token_list.size()
-    end
-    def create_next_copy(pos_interval: 1)
-        TokenBuffer.new(@token_list, @current_pos+pos_interval)
-    end
-    def size()
-        @token_list.size()
-    end
-    def ==(other)
-        @token_list == other.instance_variable_get('@token_list') and 
-            @current_pos == other.get_current_position
     end
 end
 
@@ -103,30 +73,6 @@ if __FILE__ == $0
             MyTokenType.is_identifier(token).must_equal true
 
             MyTokenType.is_type(:IDENTIFIER, token).must_equal true
-        end
-    end
-    describe TokenBuffer do
-        before do
-            token_list = [{:payload=>"events", :type_name=>:EVENT}, 
-                {:payload=>"doorClosed", :type_name=>:IDENTIFIER}, 
-                {:payload=>"D1CL", :type_name=>:IDENTIFIER}, 
-                {:payload=>"end", :type_name=>:END}]
-
-            @token_buffer = TokenBuffer.new(token_list)
-        end
-        it "can be finished" do
-            @token_buffer.size().times do 
-                @token_buffer.next_token()
-                @token_buffer.pop_token()
-            end
-            @token_buffer.done?.must_equal true
-        end
-        it "can be equaled!" do
-            next_token_buffer = @token_buffer.create_next_copy()
-            next_token_buffer.wont_equal @token_buffer
-            @token_buffer.pop_token
-            next_token_buffer.must_equal @token_buffer
-
         end
     end
 
