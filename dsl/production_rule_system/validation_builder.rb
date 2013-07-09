@@ -1,3 +1,7 @@
+# It's from DSL chapter 50
+# It's using the internal DSL, so this builder just likes a parser.
+
+
 $:.unshift File.dirname(__FILE__)
 require 'validation_engine'
 
