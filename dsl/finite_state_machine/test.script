@@ -1,0 +1,39 @@
+events
+    # name, from,   to state
+    start   NIL     green  
+    warn    green   yellow 
+    panic   green   red    
+    panic   yellow  red    
+    calm    red     yellow 
+    clear   red     green  
+    clear   yellow  green  
+end
+
+callbacks
+    # timing, state or event, method name
+    before      start       log_proc
+    on          start       log_proc
+
+    before      warn        log_proc
+    before      panic       log_proc
+    before      calm        log_proc
+    before      clear       log_proc
+
+    on          warn        log_proc
+    on          panic       log_proc
+    on          calm        log_proc
+    on          clear       log_proc
+
+    after       anyevent    log_proc
+
+    leave       green       log_proc
+    leave       yellow      log_proc
+    leave       red         log_proc
+
+    on          green       log_proc
+    on          yellow      log_proc
+    on          red         log_proc
+
+    enter       anystate    log_proc
+
+end

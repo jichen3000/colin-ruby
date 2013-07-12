@@ -40,21 +40,22 @@ module TokenType
                         :type_name=>token_type[:name]}
                 end
                 find_flag = true
+                str = $'
             end
-            [find_flag, new_token]
+            [find_flag, new_token, str]
         end
-        # it will seperate the lines firstly
         def tokenize(content)
             token_list = []
+            str = content
             find_flag = false
-            content.split("\n").each do |line|    
+            while str.length > 1 do
                 get_token_type_list.each do |token_type|
-                    find_flag, new_token = gen_new_token?(token_type, line)
+                    find_flag, new_token, str = gen_new_token?(token_type, str)
                     token_list.push(new_token) if new_token
                     break if find_flag
                 end
-                if not find_flag and not line.strip.empty?
-                    raise "error: cannot match for "+line
+                if not find_flag
+                    raise "error: cannot match for "+str
                 end
             end
             token_list
