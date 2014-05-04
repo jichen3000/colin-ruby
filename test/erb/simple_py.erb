@@ -1,0 +1,10 @@
+#<%= @comment%>
+<% @names.each do |name| -%>
+def <%= name%>():
+    <% if name != "any" -%>
+    print "this is <%= name%> method."
+    <% else -%>
+    print "any!"
+    <% end -%>
+
+<% end %>

@@ -115,5 +115,9 @@ if __FILE__ == $0
         end
         
     end
-
+    describe "some" do
+        it "can work!" do
+            "jc".must_equal("jc")
+        end
+    end
 end

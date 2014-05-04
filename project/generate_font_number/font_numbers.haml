@@ -1,0 +1,66 @@
+
+
+!!! 5
+%html
+  %head
+    %title Font Numbers
+    :css
+      body {
+        margin: 50px;
+      }
+      div.group {
+        width: 400px;     
+        margin-top: 10px; 
+      }
+      div.title {
+        margin-top: 10px;
+        height: 50px;
+        float: left;
+        width: 400px;     
+      }
+      div.font_cell {
+        margin: 2px;
+        border: 2px solid;
+        font-size: 1.5em;
+        width: 32px;
+        height: 32px;
+        text-align: center;
+        line-height: 35px;
+        float: left;
+      }
+      div.bottom {
+        margin-top: 10px;
+        height: 100px;
+        float: left;
+        width: 400px;     
+      }
+    - font_styles.each do |font_style|
+      :css
+        div.style_#{font_style}{
+          font-style: #{font_style};
+        }
+    - font_weights.each do |font_weight|
+      :css
+        div.weight_#{font_weight}{
+          font-weight: #{font_weight};
+        }
+    - font_with_names.each do |name, family|
+      :css
+        .#{name}{
+          font-family: "#{family}";
+        }
+  %body
+    %h2
+      Show the font's numbers, and there are #{font_with_names.size} fonts totally.
+    - font_with_names.each do |name, family|
+      .group
+        .title
+          %h3{:class=>"#{name}"} #{family}
+        - font_styles.each do |font_style|
+          - font_weights.each do |font_weight|
+            .row
+              - 10.times.each do |i|
+                .font_cell{:id=>"#{name}_#{font_style}_#{font_weight}_#{i}", 
+                    :class=>"#{name} style_#{font_style} weight_#{font_weight}"}
+                  #{i}
+    .bottom

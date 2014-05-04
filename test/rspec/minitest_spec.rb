@@ -39,8 +39,10 @@ describe Colin do
   end
   it "can test an instance private method by the 'send' method of Object." do
     Colin.new.send(:mm, @str).must_equal @str
+    Colin.new.send(:mm, @str).must_equal '456'
   end
   it "can be test an instance private variable" do
     Colin.new.instance_variable_get('@cc').must_equal "ccc"
+    Colin.new.instance_variable_get('@cc').must_equal "ccc1"
   end
 end

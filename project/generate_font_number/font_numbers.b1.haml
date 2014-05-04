@@ -1,0 +1,56 @@
+
+
+!!! 5
+%html
+  %head
+    %title Font Numbers
+    :css
+      div.font_cell {
+        width: 413px;
+        border: 5px solid;
+        font-size: 2em;
+        padding: 20px;
+        margin: 10px;
+        word-spacing: 20px;
+      }
+      body {
+        margin: 50px;
+      }
+    - font_styles.each do |font_style|
+      :css
+        div.#{font_style}{
+          font-style: #{font_style};
+        }
+    - font_with_names.each do |name, family|
+      :css
+        .#{name}{
+          font-family: "#{family}";
+        }
+    :css
+      div.arial{
+        width: 441px;
+      }
+      div.courier{
+        width: 541px;
+      }
+      div.georgia{
+        width: 428px;
+      }
+      div.helvetica{
+        width: 441px;
+      }
+      div.impact{
+        width: 393px;
+      }
+      div.verdana{
+        width: 479px;
+      }
+  %body
+    %h2
+      Show the font's numbers, and there are #{font_with_names.size} fonts totally.
+    - font_with_names.each do |name, family|
+      %h3{:class=>"#{name}"} #{family}
+      - font_styles.each do |font_style|
+        .font_cell{:id=>"#{name}_#{font_style}", :class=>"#{name} #{font_style}"}
+          1 2 3 4 5 6 7 8 9 0
+

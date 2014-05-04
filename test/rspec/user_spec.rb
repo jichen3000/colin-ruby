@@ -9,10 +9,12 @@ describe User do
     user = User.new
     role = "assigned role"
     user.assign_role(role)
-    user.should be_in_role(role)  end
+    user.should be_in_role(role)
+  end
   it "should NOT be in any roles not assigned to it" do
     user = User.new
     role = "unassigned role"
     user.should_not be_in_role(role)
-  endend
+  end
+end
 
