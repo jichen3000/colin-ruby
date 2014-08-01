@@ -7,9 +7,11 @@ class Admit
         Admit.send(admit_obj.class.to_s.downcase, employee)
     end
     def self.department(employee)
+        p __method__
         p employee
     end
     def self.grade(employee)
+        p __method__
         p employee
     end
 end
@@ -25,4 +27,4 @@ Admit.check(g, colin)
 # d.check
 # Admit.check
 
-d_hash = {:type=>:department, :name=>}
+# d_hash = {:type=>:department, :name=>}
