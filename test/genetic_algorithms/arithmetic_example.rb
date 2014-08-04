@@ -1,47 +1,6 @@
 direc = File.dirname(__FILE__)
 require "#{direc}/binary_tree"
 
-
-# class ArithmeticMethod
-#     class << self
-#         include Enumerable
-#     end
-#     @@add = Proc.new do |a, b|
-#         a + b
-#     end
-#     def self.add
-#         @@add
-#     end
-
-#     @@sub = Proc.new do |a, b|
-#         a - b
-#     end
-#     def self.sub
-#         @@sub
-#     end
-
-#     @@mul = Proc.new do |a, b|
-#         a - b
-#     end
-#     def self.mul
-#         @@mul
-#     end
-
-#     @@div = Proc.new do |a, b|
-#         a - b
-#     end
-#     def self.div
-#         @@div
-#     end
-#     def self.each
-#         yield @@add
-#         yield @@sub
-#         yield @@mul
-#         yield @@div
-#     end
-
-# end
-
 module ArithmeticMethod
     def am_add(a, b)
         a + b
@@ -61,10 +20,10 @@ module GA
     class << self
         include ArithmeticMethod
     end
-    class GAExecption < Exception
+    class CalculateException < Exception
     end
 
-    def self.set_variables(node_terminal_value_is_const_probability:0.5, 
+    def self.set_variables(node_terminal_value_is_const_probability:0.75, 
             node_value_is_terminal_probility:0.5)
         @@functions = [:am_add, :am_sub, :am_mul, :am_div]
         @@variables = [:x, :x2]
@@ -130,17 +89,6 @@ module GA
 
         tree
     end
-    def self.call_proc(proc_code, variable_values)
-        if variable_values.size != @@variables.size
-            raise 
-        end
-
-        eval(proc_code).call(*variable_values)        
-    end
-    def self.package_proc_code(proc_content)
-        "proc { | "+@@variables.join(", ")+" | "+
-            proc_content + " }"
-    end
     def self.generate_code_list(the_node)
         codes = []
         if the_node.is_leaf
@@ -155,37 +103,30 @@ module GA
         end
         codes
     end
-    # def self.exec_node(the_node)
-    #     if the_node.is_leaf
-    #         the_node.value
-    #     else
-    #         left_value = exec_node(the_node.left)
-    #         right_value = exec_node(the_node.right)
-    #         call_func(the_node.value, left_value, right_value)
-    #     end
-    # end
+    def self.package_proc_code(proc_content)
+        "proc { | "+@@variables.join(", ")+" | "+
+            proc_content + " }"
+    end
+    def self.call_proc(proc_code, variable_values)
+        eval(proc_code).call(*variable_values)        
+    end
+
+    def self.eval_tree(binary_tree, variable_values)
+        if variable_values.size != @@variables.size
+            raise CalculateException.new("Size of the variables are not match! "+
+                "There should be #{@@variables.size}, but #{variable_values.size} now!")
+        end
+
+        code_list = generate_code_list(binary_tree.root)
+        proc_code = package_proc_code(code_list.join())
+        call_proc(proc_code, variable_values)
+    end
 end
 
 if __FILE__ == $0
     require 'minitest/spec'
     require 'minitest/autorun'
     require 'testhelper'
-
-    # describe ArithmeticMethod do
-    #     AM = ArithmeticMethod
-    #     it "can call the methods" do
-    #         AM.sub.call(3,2).must_equal(1)
-
-    #         # AM.each{|x| x.pt}
-    #         AM.map{|x| x}.size.must_equal(4)
-    #         # AM.map(&:tap).size.must_equal(4)
-    #         # [1,2,3].map(&:tap).pt()
-
-
-    #         # function_arr = [AM.sub, AM.sub, AM.sub, AM.sub]
-
-    #     end
-    # end
 
     describe GA do
         before do
@@ -235,6 +176,15 @@ if __FILE__ == $0
         it "call_proc" do
             proc_code = "proc { | x, x2 | am_mul(x,am_sub(-4.0,-2.0)) }"
             GA.call_proc(proc_code, [2,4]).must_equal(-4.0)
+
+        end
+
+        it "eval_tree" do
+            srand(3)
+            tree = GA.generate_random_tree()
+            GA.eval_tree(tree, [2,4]).must_equal(-4.582805771512074)
+
+            lambda { GA.eval_tree(tree, [2,4,1]) }.must_raise GA::CalculateException
         end
     end
 end
