@@ -24,6 +24,11 @@ class TestNew
     @a = a
     @b = b
   end
+  def self.set_option()
+    @@mm = "mm"
+    pp @@mm
+  end
+  self.set_option()
 end
 v1 = 'mm'
 str = 'jc'
@@ -33,3 +38,4 @@ b = 2
 tn2 = TestNew.new(v1,a,b)
 pp tn1
 pp tn2
+

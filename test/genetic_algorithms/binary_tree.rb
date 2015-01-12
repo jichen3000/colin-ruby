@@ -1,231 +1,309 @@
+def get_indexes(the_list)
+    the_list.map.with_index {|x, index| index if x}.select{|x| x!=nil}
+end
+
 module GA
-    class BinaryTreeException < Exception
+    class TreeException < Exception
     end
 
 
-    class BinaryTreeNode
-        attr_accessor :parent, :left, :right, :value, :is_leaf, :tree
-        attr_reader :node_position, :depth
-        def initialize(value=nil, is_leaf=true, tree=nil, parent=nil, node_position=nil)
-            raise BinaryTreeException.new(
+    class TreeNode
+        attr_accessor :parent, :children, :value, :position, :depth
+        # attr_reader :depth
+        def initialize(value=nil, parent=nil)
+            raise TreeException.new(
                 "Node's value cannot be null!") if not value
-            # raise BinaryTreeException.new(
+            # raise TreeException.new(
             #     "Node's tree cannot be null!") if not tree
             # tree.pt
             @value = value
-            @tree = tree
             @parent = parent
-            @is_leaf = is_leaf
             @depth = @parent ? @parent.depth + 1 : 0
-            @node_position = node_position
+            @children = []
         end
-        def add_child(node_position, value, is_leaf)
-            # self.is_leaf = false
-            raise BinaryTreeException.new(
-                "The leaf node cannot have children!") if @is_leaf
-            child = BinaryTreeNode.new(value, is_leaf, self.tree, self, node_position)
-            if node_position == :left
-                @left = child
+        def add_child(child_node, position=nil)
+            # @children ||= []
+            if position
+                if @children[position]
+                    raise TreeException.new(
+                        "There has been a child in this position #{position}!")
+                end
+                @children[position] = child_node
+                child_node.position = position
             else
-                @right = child
+                @children.push(child_node) 
+                child_node.position = @children.size()-1
             end
-            # child.value.pt
-            @tree.check_and_set_depth(child.depth)
-            @tree.add_count()
-
+            child_node.parent = self
+            child_node.depth = @depth + 1
             self
         end
-        def add_left(value:nil, is_leaf:true)
-            add_child(:left, value, is_leaf)
-        end
-        def add_right(value:nil, is_leaf:true)
-            add_child(:right, value, is_leaf)
-        end
-        def search_same_depth(the_depth)
-            nodes = []
-            if @depth == the_depth
-                nodes << self
+        def to_hash()
+            if @children and @children.size > 0
+                {value: self.value, children_positions: get_indexes(@children)}
             else
-                nodes += @left.search_same_depth(the_depth) if @left
-                nodes += @right.search_same_depth(the_depth) if @right
+                {value: self.value}
             end
-
-            nodes
         end
-        def breadth_first_search()
-            nodes = []
-            # add root
-            nodes << self if parent == nil
-
-            nodes << @left if @left
-            nodes << @right if @right
-
-            nodes += @left.breadth_first_search() if @left
-            nodes += @right.breadth_first_search() if @right
-
-            nodes
-        end 
-        def depth_first_search()
-            nodes = []
-
-            nodes << self
-
-            nodes += @left.depth_first_search() if @left
-            nodes += @right.depth_first_search() if @right
-
-            nodes
+        def tree_depth()
+            self.to_breadth_first_list().last.depth - self.depth
         end
-        def set_self_and_children(the_depth, the_tree)
-            @depth = the_depth
-            @tree = the_tree
-            if @left
-                @left.set_self_and_children(the_depth+1, the_tree)
-            end
-            if @right
-                @right.set_self_and_children(the_depth+1, the_tree)
-            end
-                
-            @tree.check_and_set_depth(the_depth)
-            self
+        def to_depth_first_hash_list()
+            to_depth_first_list().map{|item| item.to_hash}
         end
-        def change_self(other_node)
-            other_node.parent = @parent
-            other_node.set_self_and_children(@depth, @tree)
-            if node_position==:left
-                @parent.left = other_node
-            elsif node_position==:right
-                @parent.right = other_node
-            else # it is the root
-                @tree.root = other_node
-            end
-            other_node
-        end
-        def inspect()
-            result = "  " * @depth + "value:#{@value}, is_leaf:#{@is_leaf}"
-            # if not @is_leaf
-            #     result += "\n"+@left.inspect() + 
-            #         "\n" + @right.inspect()
-            # end
-            result
-        end
-    end
-    class BinaryTree
-        attr_accessor :root
-        attr_reader :depth, :count
-        def initialize(root_value)
-            # self.pt
-            @root = BinaryTreeNode.new(root_value, false, self, nil, nil)
-            @depth = 0
-            @count = 1
-        end
-        def inspect()
-            search().inspect()
-        end
-        def check_and_set_depth(the_depth)
-            if the_depth > @depth
-                @depth = the_depth
-            end
-
-            self
-        end
-        def add_count()
-            @count += 1
-            self
-        end
-        def del_count()
-            @count -= 1
-            self
-        end
-        def search(the_depth:-1, search_type: :depth_first_search)
-            raise BinaryTreeException.new(
-                "The depth is out of maximum #{@depth}") if the_depth > @depth
-            if the_depth and the_depth > 0
-                root.search_same_depth(the_depth)
-            else
-                if search_type ==  :breadth_first_search
-                    root.breadth_first_search
-                else
-                    root.depth_first_search
+        def to_depth_first_list()
+            results = []
+            doing_stack = [self]
+            while doing_stack.size > 0
+                cur_node = doing_stack.pop()
+                results.push(cur_node)
+                cur_node.children.reverse.map do |item|
+                    doing_stack.push(item) if item
                 end
             end
+            results
+        end
+        def self.from_depth_first_hash_list(node_list, root=nil, first_position=nil)
+            cloned_list = node_list.clone()
+            parent_node_stack = [root]
+            if first_position
+                child_position_stack = [first_position]
+            else
+                child_position_stack = []
+            end
+            # root = nil
+            while cur_hash = cloned_list.shift()
+                cur_node = TreeNode.new(cur_hash[:value])
+                if parent_node = parent_node_stack.pop()
+                    parent_node.add_child(cur_node, child_position_stack.pop())
+                else
+                    root = cur_node
+                end
+                if cur_hash[:children_positions]
+                    cur_hash[:children_positions].reverse.map() do |item|
+                        child_position_stack.push(item)
+                        parent_node_stack.push(cur_node)
+                    end
+                end
+            end
+            root
+        end
+        def to_breadth_first_hash_list()
+            to_breadth_first_list().map {|item| item.to_hash}
+        end
+        def to_breadth_first_list()
+            doing_stack = [self]
+            results = []
+            while doing_stack.size > 0
+                cur_node = doing_stack.shift()
+                results.push(cur_node)
+                cur_node.children.each do |item|
+                    doing_stack.push(item) if item
+                end
+            end
+            results
+        end
+        def self.from_breadth_first_hash_list(node_list, root=nil)
+            cloned_list = node_list.clone()
+            parent_node_stack = [root]
+            child_position_stack = []
+            # root = nil
+            while cur_hash = cloned_list.shift()
+                cur_node = TreeNode.new(cur_hash[:value])
+                if parent_node = parent_node_stack.shift()
+                    parent_node.add_child(cur_node, child_position_stack.shift())
+                else
+                    root = cur_node
+                end
+                if cur_hash[:children_positions]
+                    cur_hash[:children_positions].map do |item|
+                        child_position_stack.push(item)
+                        parent_node_stack.push(cur_node)
+                    end
+                end
+            end
+            root
+        end
+        def inspect()
+            "GA::TreeNode.from_depth_first_hash_list(" +
+                to_depth_first_hash_list().inspect()+ ")"
+        end
+        def to_s()
+            inspect()
+        end
+        def ==(other)
+            return false if other == nil
+            return false if not other.is_a?(TreeNode)
+            inspect() == other.inspect()
+        end
+        def is_leaf()
+            return @children.length == 0
+        end
+        def replace(other)
+            other_hash_list = other.to_depth_first_hash_list()
+            if self.parent == nil
+                return TreeNode.from_depth_first_hash_list(other_hash_list)
+            end
+            self.parent.children[self.position] = nil
+            TreeNode.from_depth_first_hash_list(
+                    other_hash_list, self.parent, self.position)
+            self
+        end
+        def clone()
+            TreeNode.from_depth_first_hash_list(self.to_depth_first_hash_list)
         end
     end
 end
 
 if __FILE__ == $0
-    require 'minitest/spec'
     require 'minitest/autorun'
+    require 'minitest/spec'
     require 'testhelper'
 
-    describe GA::BinaryTree do
+    the_list= [
+        {value: "a", children_positions: [0,1]},
+           {value: "b", children_positions: [1]},
+                {value: "b2", children_positions: nil},
+           {value: "c", children_positions: [0,1]},
+                {value: "c1", children_positions: nil},
+                {value: "c2", children_positions: nil}]
+    the_list_simple = [
+        {value: "a", children_positions: [0,1]},
+           {value: "b", children_positions: [1]},
+                {value: "b2"},
+           {value: "c", children_positions: [0,1]},
+                {value: "c1"},
+                {value: "c2"}]
+    # the_list.pt
 
-        before do
-            @tree_2_depth = GA::BinaryTree.new('a')
-            @tree_2_depth.root.add_left(value:'b', is_leaf:false)
-                .add_right(value:'c', is_leaf:false)
-            @tree_2_depth.root.left.add_left(value:'b1').add_right(value:'d')
-            @tree_2_depth.root.right.add_left(value:'c1').add_right(value:'e')
+    describe GA::TreeNode do
+        node_a = GA::TreeNode.new("a")
+        node_b = GA::TreeNode.new("b")
+        node_b2 = GA::TreeNode.new("b2")
+        node_c = GA::TreeNode.new("c")
+        node_c1 = GA::TreeNode.new("c1")
+        node_c2 = GA::TreeNode.new("c2")
+        node_a.add_child(node_b).add_child(node_c)
+        node_c.add_child(node_c1).add_child(node_c2)
+        node_b.add_child(node_b2, 1)
+        it "to_hash" do
+            node_a.to_hash().must_equal(
+                {:value=>"a", :children_positions=>[0, 1]})
+            node_c2.to_hash().must_equal({:value=>"c2",})
+        end
+        it "to_depth_first_hash_list" do
+            node_a.to_depth_first_hash_list().must_equal(the_list_simple)       
+        end
+        it "from_depth_first_hash_list" do
+            node_a_tree = GA::TreeNode.from_depth_first_hash_list(the_list_simple)
+            node_a_tree1 = GA::TreeNode.from_depth_first_hash_list(the_list)
+            node_a_tree.to_depth_first_hash_list.must_equal(the_list_simple)
+            node_a_tree1.to_depth_first_hash_list.must_equal(the_list_simple)
+
+            node_b_tree = GA::TreeNode.from_depth_first_hash_list([
+                        {value: "0e", children_positions: [0]},
+                           {value: "1f"}])
+            node_b_tree.to_depth_first_hash_list.must_equal(
+                    [{:value=>"0e", :children_positions=>[0]}, {:value=>"1f"}])
+            node_c_tree = GA::TreeNode.from_depth_first_hash_list(the_list,
+                    node_b_tree.children[0])
+            node_c_tree.to_depth_first_hash_list.must_equal([
+                    {:value=>"1f", :children_positions=>[0]}, 
+                        {:value=>"a", :children_positions=>[0, 1]}, 
+                            {:value=>"b", :children_positions=>[1]}, 
+                                {:value=>"b2"}, 
+                            {:value=>"c", :children_positions=>[0, 1]}, 
+                                {:value=>"c1"}, 
+                                {:value=>"c2"}])
+            node_b_tree.to_depth_first_hash_list.must_equal(
+                    [{:value=>"0e", :children_positions=>[0]},
+                        {:value=>"1f", :children_positions=>[0]}, 
+                            {:value=>"a", :children_positions=>[0, 1]}, 
+                                {:value=>"b", :children_positions=>[1]}, 
+                                    {:value=>"b2"}, 
+                                {:value=>"c", :children_positions=>[0, 1]}, 
+                                    {:value=>"c1"}, 
+                                    {:value=>"c2"}])
+        end
+        it "to_breadth_first_hash_list" do
+            node_a.to_breadth_first_hash_list().must_equal([
+                {:value=>"a", :children_positions=>[0, 1]}, 
+                    {:value=>"b", :children_positions=>[1]}, 
+                    {:value=>"c", :children_positions=>[0, 1]}, 
+                        {:value=>"b2"}, 
+                        {:value=>"c1"}, 
+                        {:value=>"c2"}])
+        end
+        it "from_breadth_first_hash_list" do
+            breadth_first_list = [
+                {:value=>"a", :children_positions=>[0, 1]}, 
+                    {:value=>"b", :children_positions=>[1]}, 
+                    {:value=>"c", :children_positions=>[0, 1]}, 
+                        {:value=>"b2"}, 
+                        {:value=>"c1"}, 
+                        {:value=>"c2"}]
+            # breadth_first_list.pt()
+            node_a_tree = GA::TreeNode.from_breadth_first_hash_list(breadth_first_list)
+            node_a_tree.to_breadth_first_hash_list.must_equal(breadth_first_list)
+            # (1).must_equal(2)
+        end
+        it "tree_depth" do
+            node_a_tree = GA::TreeNode.from_depth_first_hash_list(the_list_simple)
+            node_a_tree.tree_depth.must_equal(2)
+            node_a_tree.children[0].tree_depth.must_equal(1)
+        end
+        it "inspect" do
+            node_a_tree = GA::TreeNode.from_depth_first_hash_list(the_list_simple)
+            # node_a_tree.pt()
+            node_a_tree.inspect.must_equal('GA::TreeNode.from_depth_first_hash_list([{:value=>"a", :children_positions=>[0, 1]}, {:value=>"b", :children_positions=>[1]}, {:value=>"b2"}, {:value=>"c", :children_positions=>[0, 1]}, {:value=>"c1"}, {:value=>"c2"}])')
+        end
+        it "is_leaf" do
+            node_a_tree = GA::TreeNode.from_depth_first_hash_list(the_list_simple)
+            node_a_tree.is_leaf.must_equal(false)
+            node_a_tree.children[1].children[0].is_leaf.must_equal(true)
+        end
+        it "replace" do
+            node_a_tree = GA::TreeNode.from_depth_first_hash_list(the_list_simple)
+            node_a_tree.tree_depth.must_equal(2)
+            node_b_tree = GA::TreeNode.from_depth_first_hash_list([
+                        {value: "0e", children_positions: [0]},
+                           {value: "1f", children_positions: [0]},
+                                {value: "1g"}])
+            node_a_tree.children[1].replace(node_b_tree)
+            node_a_tree.to_depth_first_hash_list.must_equal([
+                    {:value=>"a", :children_positions=>[0, 1]}, 
+                        {:value=>"b", :children_positions=>[1]}, 
+                            {:value=>"b2"}, 
+                        {:value=>"0e", :children_positions=>[0]}, 
+                            {:value=>"1f", :children_positions=>[0]}, 
+                                {:value=>"1g"}])
+            node_a_tree.tree_depth.must_equal(3)
+
+            node_c_tree = GA::TreeNode.from_depth_first_hash_list([
+                        {value: "0e", children_positions: [0, 1]},
+                           {value: "1f0"},
+                           {value: "1f1"}])
+            node_a_tree.children[1].replace(node_c_tree)
+            node_a_tree.to_depth_first_hash_list.must_equal([
+                    {:value=>"a", :children_positions=>[0, 1]}, 
+                        {:value=>"b", :children_positions=>[1]}, 
+                            {:value=>"b2"}, 
+                        {:value=>"0e", :children_positions=>[0, 1]}, 
+                            {:value=>"1f0"}, 
+                            {:value=>"1f1"}])
         end
 
-        it "search" do
-            @tree_2_depth.depth.must_equal(2)
-
-            @tree_2_depth.search(the_depth:1).to_s.must_equal(
-                '[  value:b, is_leaf:false,   value:c, is_leaf:false]')
-            @tree_2_depth.search(the_depth:2).to_s.must_equal(
-                '[    value:b1, is_leaf:true,     value:d, is_leaf:true,'+
-                '     value:c1, is_leaf:true,     value:e, is_leaf:true]')
-
-            @tree_2_depth.search(search_type: :breadth_first_search).to_s.must_equal(
-                '[value:a, is_leaf:false,'+
-                '   value:b, is_leaf:false,'+
-                '   value:c, is_leaf:false,'+
-                '     value:b1, is_leaf:true,'+
-                '     value:d, is_leaf:true,'+
-                '     value:c1, is_leaf:true,'+
-                '     value:e, is_leaf:true]'
-                )
-
-            @tree_2_depth.search(search_type: :depth_first_search).to_s.must_equal(
-                '[value:a, is_leaf:false,'+
-                '   value:b, is_leaf:false,'+
-                '     value:b1, is_leaf:true,'+
-                '     value:d, is_leaf:true,'+
-                '   value:c, is_leaf:false,'+
-                '     value:c1, is_leaf:true,'+
-                '     value:e, is_leaf:true]'
-                )
-        end
-
-        it "depth" do
-            @tree_2_depth.depth.must_equal(2)
-        end
-
-        it "count" do
-            @tree_2_depth.count.must_equal(7)
-        end
-
-        it "change" do
-            
-            node_list = @tree_2_depth.search(search_type: :depth_first_search)
-            old_node = node_list[2]
-            changed_node = old_node.change_self(GA::BinaryTreeNode.new('new', true))
-            changed_node.tree.object_id.must_equal(@tree_2_depth.object_id)
-            changed_node.parent.object_id.must_equal(old_node.parent.object_id)
-            changed_node.depth.must_equal(old_node.depth)
-            # @tree_2_depth.search(search_type: :depth_first_search).ppt()
-
-            new_tree = GA::BinaryTree.new('h')
-            new_tree.root.add_left(value:'i', is_leaf:false)
-            new_tree.root.left.add_left(value:'j', is_leaf:true)
-            old_node = node_list[4]
-            changed_node = old_node.change_self(new_tree.root)
-            changed_node.tree.object_id.must_equal(@tree_2_depth.object_id)
-            changed_node.parent.object_id.must_equal(old_node.parent.object_id)
-            changed_node.left.left.tree.object_id.must_equal(@tree_2_depth.object_id)
-            @tree_2_depth.depth.must_equal(3)
-            # @tree_2_depth.search(search_type: :depth_first_search).ppt()
-
+        it "clone" do
+            node_a_tree = GA::TreeNode.from_depth_first_hash_list(the_list_simple)
+            node_a_clone = node_a_tree.clone()
+            node_a_tree.object_id.wont_equal(node_a_clone.object_id)
+            node_a_tree.must_equal(node_a_clone)
+            node_a_clone.children[1].children[1].value = "m"
+            node_a_tree.wont_equal(node_a_clone)
+            # node_a_tree.pt
+            # node_a_clone.pt
         end
     end
+
+
 end

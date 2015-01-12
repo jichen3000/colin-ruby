@@ -1,0 +1,70 @@
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_PROGRAM_VERSION	5.8	//
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+==	binary_tree.rb	/^        def ==(other)$/;"	f	class:GA.TreeNode
+GA	binary_tree.rb	/^module GA$/;"	m
+TreeException	binary_tree.rb	/^    class TreeException < Exception$/;"	c	class:GA
+TreeNode	binary_tree.rb	/^    class TreeNode$/;"	c	class:GA
+add_child	binary_tree.rb	/^        def add_child(child_node, position=nil)$/;"	f	class:GA.TreeNode
+from_breadth_first_hash_list	binary_tree.rb	/^        def self.from_breadth_first_hash_list(node_list, root=nil)$/;"	F	class:GA.TreeNode
+from_depth_first_hash_list	binary_tree.rb	/^        def self.from_depth_first_hash_list(node_list, root=nil, first_position=nil)$/;"	F	class:GA.TreeNode
+get_indexes	binary_tree.rb	/^def get_indexes(the_list)$/;"	f
+initialize	binary_tree.rb	/^        def initialize(value=nil, parent=nil)$/;"	f	class:GA.TreeNode
+inspect	binary_tree.rb	/^        def inspect()$/;"	f	class:GA.TreeNode
+is_leaf	binary_tree.rb	/^        def is_leaf()$/;"	f	class:GA.TreeNode
+replace	binary_tree.rb	/^        def replace(other)$/;"	f	class:GA.TreeNode
+to_breadth_first_hash_list	binary_tree.rb	/^        def to_breadth_first_hash_list()$/;"	f	class:GA.TreeNode
+to_breadth_first_list	binary_tree.rb	/^        def to_breadth_first_list()$/;"	f	class:GA.TreeNode
+to_depth_first_hash_list	binary_tree.rb	/^        def to_depth_first_hash_list()$/;"	f	class:GA.TreeNode
+to_depth_first_list	binary_tree.rb	/^        def to_depth_first_list()$/;"	f	class:GA.TreeNode
+to_hash	binary_tree.rb	/^        def to_hash()$/;"	f	class:GA.TreeNode
+tree_depth	binary_tree.rb	/^        def tree_depth()$/;"	f	class:GA.TreeNode
+ArithmeticMethod	cell.rb	/^module ArithmeticMethod$/;"	m
+BinaryTreeCell	cell.rb	/^    module BinaryTreeCell$/;"	m	class:GA
+CalculateException	cell.rb	/^        class CalculateException < Exception$/;"	c	class:GA
+GA	cell.rb	/^module GA$/;"	m
+am_add	cell.rb	/^    def am_add(a, b)$/;"	f	class:ArithmeticMethod
+am_div	cell.rb	/^    def am_div(a, b)$/;"	f	class:ArithmeticMethod
+am_mul	cell.rb	/^    def am_mul(a, b)$/;"	f	class:ArithmeticMethod
+am_sub	cell.rb	/^    def am_sub(a, b)$/;"	f	class:ArithmeticMethod
+cal_difference	cell.rb	/^        def self.cal_difference(the_proc, standard_proc, variable_values)$/;"	F	class:GA
+cal_fitness	cell.rb	/^        def self.cal_fitness(binary_tree, standard_proc)$/;"	F	class:GA.cal_difference
+call_proc	cell.rb	/^        def self.call_proc(the_proc, variable_values)$/;"	F	class:GA
+create_random_node	cell.rb	/^        def self.create_random_node()$/;"	F	class:GA
+create_random_node_terminal_value	cell.rb	/^        def self.create_random_node_terminal_value()$/;"	F	class:GA
+crossover	cell.rb	/^        def self.crossover(mother_binary_tree, father_binary_tree)$/;"	F	class:GA.cal_difference
+crossover_safely	cell.rb	/^        def self.crossover_safely(mother_binary_tree, father_binary_tree, standard_proc)$/;"	F	class:GA.cal_difference
+exchange	cell.rb	/^        def self.exchange(source_node, target_node)$/;"	F	class:GA.cal_difference
+generate_code_list	cell.rb	/^        def self.generate_code_list(the_node)$/;"	F	class:GA
+generate_proc	cell.rb	/^        def self.generate_proc(binary_tree)$/;"	F	class:GA
+generate_randomly	cell.rb	/^        def self.generate_randomly(the_depth)$/;"	F	class:GA
+generate_randomly_and_safely	cell.rb	/^        def self.generate_randomly_and_safely(scale_threshold, standard_proc)$/;"	F	class:GA
+generate_variable_values	cell.rb	/^        def self.generate_variable_values(variable_range, step_value, variable_procs)$/;"	F	class:GA
+get_random_constant	cell.rb	/^        def self.get_random_constant()$/;"	F	class:GA
+get_random_function	cell.rb	/^        def self.get_random_function()$/;"	F	class:GA
+get_random_variable	cell.rb	/^        def self.get_random_variable()$/;"	F	class:GA
+good_fitness	cell.rb	/^        def self.good_fitness?(fitness)$/;"	F	class:GA.cal_difference
+is_leaf	cell.rb	/^        def self.is_leaf(the_node)$/;"	F	class:GA
+mutate	cell.rb	/^        def self.mutate(binary_tree)$/;"	F	class:GA.cal_difference
+mutate_safely	cell.rb	/^        def self.mutate_safely(binary_tree, standard_proc)$/;"	F	class:GA.cal_difference
+package_proc_code	cell.rb	/^        def self.package_proc_code(proc_content)$/;"	F	class:GA
+set_options	cell.rb	/^        def self.set_options(options={})$/;"	F	class:GA
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+GA	selection.rb	/^module GA$/;"	m
+PrivateMethods	selection.rb	/^        module PrivateMethods$/;"	m	class:GA.Selection
+Selection	selection.rb	/^    module Selection$/;"	m	class:GA
+cal_acculate_ratios	selection.rb	/^            def self.cal_acculate_ratios(fitness_arr)$/;"	F	class:GA.Selection.PrivateMethods
+cal_fitness_arr	selection.rb	/^        def self.cal_fitness_arr(the_generation)$/;"	F	class:GA.Selection
+can_stop	selection.rb	/^        def self.can_stop(fitness_arr, iteration_index)$/;"	F	class:GA.Selection
+choose_indexes_randomly_by_fitness	selection.rb	/^            def self.choose_indexes_randomly_by_fitness(fitness_arr, count)$/;"	F	class:GA.Selection.PrivateMethods
+crossover	selection.rb	/^            def self.crossover(pre_generation, pre_fitness_arr, crossover_count, standard_proc)$/;"	F	class:GA.Selection.PrivateMethods
+direct_copy	selection.rb	/^            def self.direct_copy(pre_generation, pre_fitness_arr, direct_copy_count)$/;"	F	class:GA.Selection.PrivateMethods
+evolve	selection.rb	/^        def self.evolve(pool_size)$/;"	F	class:GA.Selection
+get_first	selection.rb	/^        def self.get_first(pool_size)$/;"	F	class:GA.Selection
+get_index_in_acculate_ratios	selection.rb	/^            def self.get_index_in_acculate_ratios(acculate_ratios, the_value)$/;"	F	class:GA.Selection.PrivateMethods
+get_next	selection.rb	/^        def self.get_next(pre_generation, pre_fitness_arr)$/;"	F	class:GA.Selection
+mutate	selection.rb	/^            def self.mutate(pre_generation, pre_fitness_arr, mutation_count, standard_proc)$/;"	F	class:GA.Selection.PrivateMethods
+set_options	selection.rb	/^        def self.set_options(options={})$/;"	F	class:GA.Selection
+verify_bad_fitness	selection.rb	/^        def self.verify_bad_fitness(cell_arr)$/;"	F	class:GA.Selection

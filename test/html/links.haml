@@ -1,0 +1,19 @@
+!!! 5
+%html
+  %head
+    %title= "Links from #{start_date_str} to #{end_date_str}"
+    %noscript
+      :css
+        a:link{color: #FF0000;}
+        a:visited {color: #00FF00;}
+        a:hover {color: #FF00FF;}
+        a:active {color: #0000FF;}
+  %body
+%h2= "Links from #{start_date_str} to #{end_date_str}"
+#links
+  - links.each do |link|
+    #link
+      %span= link[:author_name]
+      %span= link[:date]
+      %a{ href: "#{base_url}#{link[:href]}"}
+        = link[:title]

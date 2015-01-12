@@ -1,8 +1,12 @@
 module GA
+    def self.puts_me()
+        puts("me")
+    end
     def self.set_functions(functions)
         @@functions = functions
     end
     def self.get_function(index)
+        puts_me
         @@functions[index]
     end
 
