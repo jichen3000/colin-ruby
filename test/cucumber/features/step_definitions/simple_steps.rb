@@ -1,9 +1,10 @@
 require "./simple"
-
+require "testhelper"
 
 cal = Calculator.new()
 
 Given(/^I have entered (\d+) into it$/) do |arg1|
+    arg1.pt()
     cal.push(arg1.to_i)
 end
 

@@ -1,3 +1,0 @@
-require "a"
-
-p "ok"

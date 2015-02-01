@@ -12,3 +12,6 @@ module AM
     p "b"
   end
 end
+def mm
+    puts "mm"
+end
