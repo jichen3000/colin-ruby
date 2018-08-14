@@ -1,4 +1,4 @@
-Department = Struct.new(:name)
+ Department = Struct.new(:name)
 Grade = Struct.new(:score)
 Employee = Struct.new(:name)
 

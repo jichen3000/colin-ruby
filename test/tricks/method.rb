@@ -12,6 +12,14 @@ def plus(a,b)
     a + b
 end
 
+def plus_type1(a,b)
+    a + b + 1
+end
+
+def choose_method(method_name, type_name)
+    
+end
+
 
 if __FILE__ == $0
     require 'minitest/spec'

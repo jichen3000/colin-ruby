@@ -1,0 +1,17 @@
+!!!start
+0
+  501 57583  8566   0  2:33PM ttys000    0:00.37 ruby app.rb
+  501 60844  8566   0  5:33PM ttys000    0:00.49 ruby app.rb
+  501 60917 60844   0  5:34PM ttys000    0:00.01 sh -c ps -ef|grep ruby >> app.log
+  501 60919 60917   0  5:34PM ttys000    0:00.00 grep ruby
+1
+  501 57583  8566   0  2:33PM ttys000    0:00.37 ruby app.rb
+  501 60844  8566   0  5:33PM ttys000    0:00.49 ruby app.rb
+  501 60921 60844   0  5:34PM ttys000    0:00.00 sh -c ps -ef|grep ruby >> app.log
+  501 60923 60921   0  5:34PM ttys000    0:00.01 grep ruby
+2
+  501 57583  8566   0  2:33PM ttys000    0:00.37 ruby app.rb
+  501 60844  8566   0  5:33PM ttys000    0:00.49 ruby app.rb
+  501 60925 60844   0  5:34PM ttys000    0:00.01 sh -c ps -ef|grep ruby >> app.log
+  501 60927 60925   0  5:34PM ttys000    0:00.00 grep ruby
+!!!end

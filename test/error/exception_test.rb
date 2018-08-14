@@ -16,7 +16,8 @@ def read_data(socket)
   # .. normal processing
 end
 def read_data2
-#  data = socket.read(512)
+  data = nil
+  # data = socket.read(512)
   if data.nil?
     raise TestException.new(true), "transient read error"
   end
@@ -28,10 +29,13 @@ end
 
 begin
   stuff = read3
+  # 1 / 0
   # .. process stuff
-rescue ColinError => detail
+rescue TestException => detail
+  puts "some"
   puts detail.message
-#  print detail.backtrace.join("\n")
+  # raise
+ # print detail.backtrace.join("\n")
 #  retry if detail.ok_to_retry
 #  raise
 ensure

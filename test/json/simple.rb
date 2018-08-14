@@ -15,5 +15,10 @@ if __FILE__ == $0
             int_hash["a"].must_equal(2)
         end
 
+        it "read comment" do
+            default_conf = JSON.parse(File.read('comment.json'))
+            default_conf.pt
+        end
+
     end
 end

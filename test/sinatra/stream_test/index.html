@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <title>Sinatra streaming example</title>
+    <meta charset="utf-8" />
+    <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <script src="http://code.jquery.com/jquery-1.9.0.min.js"></script>
+    <style>body {font-family: sans-serif;}</style>
+ </head>
+  <body>
+    <h1>Welcome to this Sinatra Streaming example!</h1>
+    <input id="bottles-button" type="button" value="Bottles!"/>
+    <pre id="bottles-output">
+    </pre>
+    <script>
+      $("#bottles-button").click(function() {
+        var src = new EventSource('/bottles?foo=bar');
+        src.onmessage = function(e) {
+          console.log(e)
+          $('#bottles-output').append("\n" + e.data)
+          if ( e.data == 'CLOSE' ) src.close()
+        };
+        src.onerror = function(e) {
+          src.close();
+        };
+      });
+    </script>
+  </body>
+</html>

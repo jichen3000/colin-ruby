@@ -1,0 +1,3 @@
+require "a"
+
+p "ok"

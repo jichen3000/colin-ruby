@@ -1,11 +1,25 @@
 require 'haml'
 
+# def gen_cmd(name, mode=nil)
+#     cmd_str = %Q{
+# edit #{name}
+# - if mode
+#     unset mode
+# end
+#     }
+#     # engine = Haml::Engine.new(cmd_str)
+#     Haml::Engine.new(cmd_str).render(Object.new, {:name => name, :mode => mode})
+# end
+
 if __FILE__ == $0
     require 'minitest/autorun'
     require 'minitest/spec'
     require 'testhelper'
 
     describe "haml" do
+        # it "gen_cmd" do
+        #     gen_cmd('t1','mm').must_equal("edit t1\n    unset ")
+        # end
         it "simple" do
             engine = Haml::Engine.new("%p Haml code!")
             engine.render.must_equal("<p>Haml code!</p>\n")
@@ -15,6 +29,12 @@ if __FILE__ == $0
             Haml::Engine.new("%p= upcase").render(the_str).must_equal("<p>FOOBER</p>\n")
             engine = Haml::Engine.new('%p= foo')
             engine.render(Object.new, :foo => "Hello, world!").must_equal("<p>Hello, world!</p>\n")
+
+        end
+        it "raw html" do
+            engine = Haml::Engine.new('%div= foo')
+            engine.render(Object.new, :foo => "<a href='http://www.a.com'>Test</a>").must_equal(
+                    "<div><a href='http://www.a.com'>Test</a></div>\n")
 
         end
 

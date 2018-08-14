@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sinatra streaming example</title>
+    <meta charset="utf-8" />
+    <script src="http://code.jquery.com/jquery-1.9.0.min.js"></script>
+    <style>body {font-family: sans-serif;}</style>
+ </head>
+  <body>
+    <h1>log streaming!</h1>
+    <input id="run" type="button" value="Run!"/>
+    <pre id="output">
+    output:
+    </pre>
+    <script>
+      $("#run").click(function() {
+        $('#output').append("start...\n");
+        var src = new EventSource('/run');
+        src.onmessage = function(e) {
+          console.log(e)
+          $('#output').append("\n" + e.data);
+          if ( e.data == '!!!end' ) src.close();
+        };
+      });
+    </script>
+  </body>
+</html>

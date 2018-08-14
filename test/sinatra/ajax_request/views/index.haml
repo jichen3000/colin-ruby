@@ -1,0 +1,22 @@
+!!! 5
+%html
+  %head
+    %title= @the_title
+    :css
+      .margin-bottom-60 {
+        margin-bottom: 60pt;
+      }
+  %body
+    .container
+      %header.margin-bottom-60
+        %h1.text-center.h1= @the_title
+      .sections.margin-bottom-60
+        #button-group
+          %label{:for=>"sleep-seconds"}="sleep seconds"
+          %input#input-sleep-seconds.text{:type=>"text",:value=>"25"}
+          %button#refresh.btn.btn-warning.margin-left-60="Refresh"
+      .sections.margin-bottom-60
+        #msg
+
+  %script{:type=>"text/javascript", :src=>"https://code.jquery.com/jquery-1.12.4.js"}
+  %script{:type=>"text/javascript", :src=>"main.js"}
